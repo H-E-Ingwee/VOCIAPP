@@ -18,40 +18,40 @@ document.addEventListener('DOMContentLoaded', () => {
             const interest = document.getElementById('interest');
             const message = document.getElementById('message');
             const consent = document.getElementById('consent');
+            const submitButton = joinForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+
+            // Clear any previous invalid states
+            fullName.classList.remove('is-invalid');
+            email.classList.remove('is-invalid');
+            interest.classList.remove('is-invalid');
+            message.classList.remove('is-invalid');
+            consent.classList.remove('is-invalid');
+
 
             if (!fullName.value.trim()) {
                 isValid = false;
                 fullName.classList.add('is-invalid');
-            } else {
-                fullName.classList.remove('is-invalid');
             }
 
             if (!email.value.trim() || !email.value.includes('@')) {
                 isValid = false;
                 email.classList.add('is-invalid');
-            } else {
-                email.classList.remove('is-invalid');
             }
 
             if (!interest.value) {
                 isValid = false;
                 interest.classList.add('is-invalid');
-            } else {
-                interest.classList.remove('is-invalid');
             }
 
             if (!message.value.trim()) {
                 isValid = false;
                 message.classList.add('is-invalid');
-            } else {
-                message.classList.remove('is-invalid');
             }
 
             if (!consent.checked) {
                 isValid = false;
                 consent.classList.add('is-invalid'); // Visually indicate unchecked checkbox
-            } else {
-                consent.classList.remove('is-invalid');
             }
 
             if (!isValid) {
@@ -60,15 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return; // Stop execution if validation fails
             }
 
-            // Simulate form submission
-            const submitButton = joinForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.innerHTML;
-            
+            // Disable button and show loading indicator
             submitButton.disabled = true;
             submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Submitting...';
 
-            // In a real application, you would send this data to your backend
-            // using fetch API or XMLHttpRequest. Example:
+            // Simulate form submission (replace with actual fetch API call in production)
+            // Example of a real fetch call (commented out):
             /*
             const formData = new FormData(joinForm);
             fetch('/api/join', {
@@ -81,21 +78,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     formMessage.textContent = 'Application submitted successfully! We will contact you soon.';
                     formMessage.classList.add('text-success');
                     joinForm.reset(); // Clear the form
-                    // Optionally close modal after success:
-                    // var myModalEl = document.getElementById('joinModal');
-                    // var modal = bootstrap.Modal.getInstance(myModalEl);
-                    // modal.hide();
+                    // Keep modal open briefly before closing
+                    setTimeout(() => {
+                        const joinModal = bootstrap.Modal.getInstance(document.getElementById('joinModal'));
+                        if (joinModal) {
+                            joinModal.hide();
+                        }
+                        formMessage.textContent = ''; // Clear message after modal closes
+                        formMessage.classList.remove('text-success');
+                    }, 2000); // Wait 2 seconds before closing
                 } else {
                     formMessage.textContent = 'Submission failed: ' + (data.message || 'Please try again.');
                     formMessage.classList.add('text-danger');
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
                 }
             })
             .catch(error => {
                 console.error('Error submitting form:', error);
                 formMessage.textContent = 'An error occurred. Please try again later.';
                 formMessage.classList.add('text-danger');
-            })
-            .finally(() => {
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalButtonText;
             });
@@ -109,17 +111,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalButtonText;
 
-                // Optionally close modal after successful submission
-                const joinModal = bootstrap.Modal.getInstance(document.getElementById('joinModal'));
-                if (joinModal) {
-                    joinModal.hide();
-                }
-
-                // Show a brief success message and then clear it
+                // New: Keep modal open briefly after success message appears, then close
                 setTimeout(() => {
-                    formMessage.textContent = '';
-                    formMessage.classList.remove('text-success');
-                }, 5000); // Message disappears after 5 seconds
+                    const joinModal = bootstrap.Modal.getInstance(document.getElementById('joinModal'));
+                    if (joinModal) {
+                        joinModal.hide();
+                    }
+                    // Clear the message after the modal has had a chance to fully close,
+                    // or if it's not closing, ensure it's removed for next use.
+                    setTimeout(() => {
+                        formMessage.textContent = '';
+                        formMessage.classList.remove('text-success');
+                    }, 500); // Small delay to ensure modal close animation starts
+                }, 2000); // Keep success message visible for 2 seconds before closing modal
 
             }, 2000); // Simulate 2-second network delay
         });

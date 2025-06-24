@@ -17,12 +17,20 @@
 }
 
 .hero-section h1 {
+    color: #1E90FF; /* VOCI Blue */
     font-size: 3.8rem;
     font-weight: 700;
     line-height: 1.2;
 }
-
+.hero-section p.lead {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px; /* Add some space below the heading */
+}
 .hero-section p {
+    
     font-size: 1.3rem;
     max-width: 900px;
     margin-left: auto;
@@ -38,7 +46,37 @@
 #about-section .about-img {
     height: 450px; /* Fixed height for consistency */
     position: relative; /* Ensure positioning context for stats-box */
+    /* Added subtle blue overlay to the about section image */
+    overflow: hidden; /* Ensure overlay respects rounded corners */
 }
+
+#about-section .about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+#about-section .about-img img:hover {
+    transform: scale(1.05); /* Slightly zoom on hover */
+}
+
+/* Updated overlay for the about section image */
+#about-section .img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 144, 255, 0.2); /* VOCI Blue with 20% opacity */
+    border-radius: inherit; /* Inherit border-radius from parent */
+    transition: background 0.3s ease;
+}
+
+#about-section .about-img:hover .img-overlay {
+    background: rgba(30, 144, 255, 0.35); /* Slightly more opaque on hover */
+}
+
 
 #about-section .stats-box {
     /* Positioning for desktop, adjusted for better fit */
@@ -51,8 +89,11 @@
     flex-wrap: wrap; /* Ensure content wraps */
     justify-content: center; /* Center items if wrapped */
     background-color: rgba(26, 42, 68, 0.98); /* Make background more opaque for visibility */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4); /* Stronger shadow for contrast */
+    /* Refined shadow for a softer look */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2); /* Softer shadow */
     border: 2px solid var(--voci-gold); /* Added gold border for professionalism */
+    display: flex; /* Ensure flexbox properties apply consistently */
+    align-items: center; /* Vertically align items in the center */
 }
 
 #about-section .stats-box .stat-item {
@@ -65,11 +106,13 @@
     border: 1px solid #eee;
     transition: all 0.3s ease;
     height: 100%; /* Ensure cards are same height in grid */
+    /* Refined shadow for value cards */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Lighter initial shadow */
 }
 .core-values-grid .value-card:hover {
     background-color: var(--voci-light-blue);
     border-color: var(--voci-blue);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Slightly stronger hover shadow */
 }
 .core-values-grid .value-card i {
     font-size: 1.8rem;
@@ -91,6 +134,8 @@
     align-items: center;
     padding-top: 50px;
     padding-bottom: 30px;
+    /* Refined shadow for program cards */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Lighter initial shadow */
 }
 #programs-section .program-icon-circle {
     /* Additional styling for the circles in this section */
@@ -121,6 +166,13 @@
 /* Events Section - Teaser Specific Adjustments */
 #events-section .event-item {
     padding: 20px;
+    /* Refined shadow for event items in list */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Lighter initial shadow */
+    transition: all 0.3s ease;
+}
+#events-section .event-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Slightly stronger hover shadow */
+    transform: translateY(-3px);
 }
 #events-section .event-date-sm {
     font-size: 1.5rem; /* Smaller font for small date */
@@ -136,6 +188,48 @@
     font-size: 1.1rem;
 }
 
+/* Event Card image overlay */
+#events-section .event-card.featured { /* Targeting the featured event card specifically */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Slightly stronger shadow for featured card */
+    transition: all 0.3s ease;
+}
+#events-section .event-card.featured:hover {
+    box-shadow: 0 12px 35px rgba(0,0,0,0.25); /* More pronounced hover shadow for featured */
+    transform: translateY(-5px);
+}
+
+#events-section .event-card .event-img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+#events-section .event-card .event-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+#events-section .event-card .event-img-wrapper:after { /* Use ::after for overlay */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 144, 255, 0.25); /* VOCI Blue with 25% opacity */
+    transition: background 0.3s ease;
+    border-radius: inherit; /* Inherit border-radius from parent */
+}
+
+#events-section .event-card .event-img-wrapper:hover img {
+    transform: scale(1.05); /* Slightly zoom on hover */
+}
+
+#events-section .event-card .event-img-wrapper:hover:after {
+    background: rgba(30, 144, 255, 0.4); /* More opaque on hover */
+}
+
 
 /* Testimonials Section Specific Adjustments */
 /* Reduced vertical spacing in testimonial items */
@@ -145,7 +239,15 @@
     display: flex !important; /* Ensure flexbox for vertical centering */
     flex-direction: column;
     justify-content: center; /* Vertically center content */
+    /* Refined shadow for testimonial items */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Lighter initial shadow */
+    transition: all 0.3s ease;
 }
+.testimonial-item:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15); /* Slightly stronger hover shadow */
+    transform: translateY(-5px);
+}
+
 .testimonial-item .testimonial-img {
     margin-bottom: 8px; /* Reduced margin */
 }
@@ -170,13 +272,50 @@
 
 
 /* Resources Section - Teaser Specific Adjustments */
-#resources-section .resource-card {
+#articles .resource-card { /* Changed from #resources-section to #articles as per HTML ID */
     min-height: 400px; /* Ensure consistent height for resource cards */
+    /* Refined shadow for resource cards */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Lighter initial shadow */
+    transition: all 0.3s ease;
 }
-#resources-section .resource-img-wrapper {
+#articles .resource-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15); /* Slightly stronger hover shadow */
+    transform: translateY(-5px);
+}
+#articles .resource-img-wrapper { /* Changed from #resources-section to #articles */
     height: 200px;
+    position: relative; /* For overlay positioning */
+    overflow: hidden; /* For image overflow */
 }
-#resources-section .resource-content h3 {
+
+#articles .resource-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+#articles .resource-img-wrapper:after { /* Overlay for resource images */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 144, 255, 0.2); /* VOCI Blue with 20% opacity */
+    transition: background 0.3s ease;
+    border-radius: inherit;
+}
+
+#articles .resource-card:hover .resource-img-wrapper img {
+    transform: scale(1.05);
+}
+
+#articles .resource-card:hover .resource-img-wrapper:after {
+    background: rgba(30, 144, 255, 0.35); /* More opaque on hover */
+}
+
+#articles .resource-content h3 { /* Changed from #resources-section to #articles */
     min-height: 60px; /* Ensure title lines don't cause layout shifts */
 }
 .resource-category {
@@ -221,10 +360,19 @@
         left: 15px; /* Ensure it stays within bounds */
         right: 15px;
         border-width: 1px; /* Thinner border on mobile */
+        /* Further refined for small screens */
+        padding: 15px !important; /* Slightly less padding on very small screens */
+        bottom: 10px; /* Closer to the bottom of the image */
     }
     #about-section .stats-box .stat-item {
         flex: 1 1 45%; /* Two items per row on small screens */
         min-width: unset; /* Remove min-width constraint */
+    }
+    #about-section .stats-box .stat-number {
+        font-size: 2rem !important; /* Smaller numbers for better fit */
+    }
+    #about-section .stats-box .stat-label {
+        font-size: 0.75rem; /* Smaller label text */
     }
     .core-values-grid .value-card {
         padding: 10px; /* Smaller padding on mobile */
@@ -266,11 +414,27 @@
         width: 100%;
         margin-top: 10px;
     }
-    #resources-section .resource-card {
+    #articles .resource-card { /* Changed from #resources-section to #articles */
         min-height: auto;
     }
-    #resources-section .resource-img-wrapper {
-        height: 180px;
+    #articles .resource-img-wrapper { /* Changed from #resources-section to #articles */
+        height: 180px; /* Fixed height for image wrappers on mobile */
+        overflow: hidden;
+    }
+    #articles .resource-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .core-values-grid .value-card {
+        padding: 10px; /* Smaller padding on mobile */
+        margin-bottom: 10px; /* Space between value cards */
+    }
+    .core-values-grid .value-card i {
+        font-size: 1.2rem; /* Smaller icons on mobile */
+    }
+    .core-values-grid .value-card span {
+        font-size: 0.8rem; /* Smaller text on mobile */
     }
 }
 

@@ -78,16 +78,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle preloader (initial state is handled in inline script in index.html)
-    // This part is mainly for if the preloader logic was entirely external
-    // const preloader = document.querySelector('.preloader');
-    // if (preloader) {
-    //     window.addEventListener('load', () => {
-    //         preloader.classList.add('hidden'); // Fade out
-    //         setTimeout(() => {
-    //             preloader.style.display = 'none'; // Remove from DOM after fade
-    //         }, 500); // Match CSS transition duration
-    //     });
-    // }
+    // --- New: Scroll-triggered Animations for Sections ---
+    // Select all sections (excluding the hero section as it animates on load)
+    const animatableSections = document.querySelectorAll('section');
 
+    // Create an Intersection Observer instance
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // If the section is intersecting (in view)
+            if (entry.isIntersecting) {
+                // Add the animation class
+                // Assumes Animate.css classes like animate__fadeIn, animate__fadeInUp are directly on the sections
+                // or their immediate children within the animate__animated container.
+                // We'll target elements with 'animate__animated' class within the section.
+                const animatedElements = entry.target.querySelectorAll('.animate__animated');
+                animatedElements.forEach(element => {
+                    element.classList.add('animate__active'); // Add a class to activate the animation
+                });
+
+                // Stop observing once the animation has been triggered to run only once
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null, // Observe against the viewport
+        rootMargin: '0px', // No margin around the root
+        threshold: 0.1 // Trigger when 10% of the section is visible
+    });
+
+    // Observe each section
+    animatableSections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Initial check for elements already in view on page load
+    // This is important for sections that might be visible without scrolling
+    animatableSections.forEach(section => {
+        const animatedElements = section.querySelectorAll('.animate__animated');
+        if (section.getBoundingClientRect().top < window.innerHeight) {
+            animatedElements.forEach(element => {
+                element.classList.add('animate__active');
+            });
+            // Stop observing if already in view
+            observer.unobserve(section);
+        }
+    });
+
+    // We also need to ensure that animate__animated elements are initially invisible
+    // This styling should typically be handled in CSS, but for robustness,
+    // we can add a check or ensure classes are set correctly.
+    // The home.css already has `opacity: 0;` for `.hero-section .animate__animated`,
+    // and sections themselves are set to fade in from `home.css`.
+    // For elements within sections that have animate__animated, they should
+    // ideally start hidden as well. We'll add a CSS rule for general
+    // `.animate__animated` elements not yet activated.
 });

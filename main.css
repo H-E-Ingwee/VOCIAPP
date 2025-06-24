@@ -3,27 +3,50 @@
 /* Google Fonts - Montserrat (for headings) and Open Sans (for body) */
 body {
     font-family: 'Open Sans', sans-serif;
-    color: #333;
-    line-height: 1.7; /* Slightly increased line height for readability */
+    color: #333; /* Good contrast on white/light backgrounds */
+    line-height: 1.75; /* Slightly increased line height for readability */
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
-    color: var(--voci-dark-blue); /* Darker blue for headings */
+    color: var(--voci-dark-blue); /* Darker blue for headings - good contrast */
     font-weight: 700; /* Bold headings */
+    line-height: 1.2; /* Tighter line-height for headings */
+    letter-spacing: -0.5px; /* Subtle negative letter-spacing for large headings */
 }
+
+/* Paragraph spacing for better readability */
+p {
+    margin-bottom: 1.2em; /* Consistent spacing between paragraphs */
+}
+
+/* Small text refinement */
+small {
+    font-size: 0.875em; /* Ensuring small text is still legible */
+}
+
 
 /* Color Palette Variables */
 :root {
-    --voci-blue: #1E90FF; /* Primary Blue - Trust, Communication, Modernity */
-    --voci-red: #BF0000;   /* Primary Red - Passion, Urgency, Impact */
-    --voci-gold: #D4A017;  /* Primary Dark Gold - Excellence, Leadership, Prestige */
-    --voci-dark-blue: #1a2a44; /* Custom dark blue for text/elements */
-    --voci-light-blue: #f0f8ff; /* Light background for sections (very light blue) */
-    --voci-dark-gray: #343a40; /* Dark background for navbar */
-    --voci-gray-text: #6c757d; /* Muted text color */
-    --voci-bg-gradient: linear-gradient(135deg, #f0f8ff 0%, #e0f2ff 100%); /* Subtle gradient for backgrounds */
+    /* Original values */
+    /* --voci-blue: #1E90FF; */
+    /* --voci-red: #BF0000; */
+    /* --voci-gold: #D4A017; */
+    /* --voci-dark-blue: #1a2a44; */
+    /* --voci-light-blue: #f0f8ff; */
+    /* --voci-dark-gray: #343a40; */
+    /* --voci-gray-text: #6c757d; */
+
+    /* Adjusted for better contrast (WCAG AA minimums) */
+    --voci-blue: #007bff;   /* Slightly darker blue for better contrast */
+    --voci-red: #B00000;    /* Slightly darker red for better contrast */
+    --voci-gold: #C28B00;   /* Darker gold for better contrast with dark text */
+    --voci-dark-blue: #14213d; /* Very dark blue, almost black, for excellent contrast */
+    --voci-light-blue: #e6f2ff; /* Slightly less washed out light blue */
+    --voci-dark-gray: #212529; /* Standard dark background, good for navbar */
+    --voci-gray-text: #5a6268; /* Darker gray for muted text, ensuring readability */
+    --voci-bg-gradient: linear-gradient(135deg, #e6f2ff 0%, #d9ecff 100%); /* Subtle gradient for backgrounds */
 }
 
 /* Utility Background Colors */
@@ -32,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 .bg-voci-gold { background-color: var(--voci-gold) !important; }
 .bg-voci-dark-blue { background-color: var(--voci-dark-blue) !important; }
 .bg-light-blue { background-color: var(--voci-light-blue) !important; }
-.bg-voci-dark-blue-light { background-color: rgba(26, 42, 68, 0.9) !important; } /* For footer bottom */
+.bg-voci-dark-blue-light { background-color: rgba(20, 33, 61, 0.9) !important; } /* Adjusted to new dark-blue */
 
 /* Utility Text Colors */
 .text-voci-blue { color: var(--voci-blue) !important; }
@@ -48,10 +71,18 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     border-radius: 50px; /* Fully rounded buttons */
     padding: 12px 35px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.2s ease-out; /* Added transform and box-shadow to transition */
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Subtle initial shadow */
 }
+
+/* Default hover for all .btn elements (subtle pop-out) */
+.btn:hover {
+    transform: translateY(-2px) scale(1.02); /* Slightly lift and scale */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
+}
+
 
 .btn-voci-blue {
     background-color: var(--voci-blue);
@@ -59,10 +90,9 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid var(--voci-blue);
 }
 .btn-voci-blue:hover {
-    background-color: #167DE1; /* Slightly darker blue */
-    border-color: #167DE1;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #0069d9; /* Slightly darker blue */
+    border-color: #0062cc;
+    /* Keeping the universal .btn:hover for transform and box-shadow */
 }
 
 .btn-voci-red {
@@ -71,22 +101,20 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid var(--voci-red);
 }
 .btn-voci-red:hover {
-    background-color: #A60000; /* Slightly darker red */
-    border-color: #A60000;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #920000; /* Slightly darker red */
+    border-color: #820000;
+    /* Keeping the universal .btn:hover for transform and box-shadow */
 }
 
 .btn-voci-gold {
     background-color: var(--voci-gold);
-    color: var(--voci-dark-blue); /* Gold button text usually dark */
+    color: var(--voci-dark-blue); /* Gold button text usually dark, improved contrast */
     border: 2px solid var(--voci-gold);
 }
 .btn-voci-gold:hover {
-    background-color: #B88B12; /* Slightly darker gold */
-    border-color: #B88B12;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #A67C00; /* Slightly darker gold */
+    border-color: #967000;
+    /* Keeping the universal .btn:hover for transform and box-shadow */
 }
 
 .btn-voci-dark-blue {
@@ -95,10 +123,9 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid var(--voci-dark-blue);
 }
 .btn-voci-dark-blue:hover {
-    background-color: #121f33; /* Slightly darker dark blue */
-    border-color: #121f33;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #0d1a33; /* Slightly darker dark blue */
+    border-color: #0a1529;
+    /* Keeping the universal .btn:hover for transform and box-shadow */
 }
 
 /* Global Outline Buttons */
@@ -107,11 +134,14 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--voci-blue);
     border-radius: 50px;
     padding: 10px 30px;
+    /* Ensuring outline buttons also have the pop effect */
+    transition: all 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 .btn-outline-voci-blue:hover {
     background-color: var(--voci-blue);
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1.02); /* Apply pop effect here too */
 }
 
 .btn-outline-voci-red {
@@ -119,11 +149,13 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--voci-red);
     border-radius: 50px;
     padding: 10px 30px;
+    transition: all 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 .btn-outline-voci-red:hover {
     background-color: var(--voci-red);
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1.02); /* Apply pop effect here too */
 }
 
 .btn-outline-voci-gold {
@@ -131,12 +163,67 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--voci-gold);
     border-radius: 50px;
     padding: 10px 30px;
+    transition: all 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 .btn-outline-voci-gold:hover {
     background-color: var(--voci-gold);
-    color: white;
+    color: white; /* Ensure good contrast on hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1.02); /* Apply pop effect here too */
 }
+
+/* --- Accessibility: Enhanced Focus States --- */
+/* Universal focus style for interactive elements */
+*:focus:not(:focus-visible) {
+    outline: none; /* Hide default outline for mouse users, maintain for keyboard */
+}
+
+*:focus {
+    outline: 3px solid var(--voci-blue); /* Stronger outline with VOCI blue */
+    outline-offset: 2px; /* Add some space between element and outline */
+    border-radius: 5px; /* Match general rounding */
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4); /* Add a subtle shadow glow for more visibility */
+    transition: outline-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Specific adjustments for certain elements if needed */
+.navbar-toggler:focus {
+    outline: 3px solid white; /* White outline for the dark toggler */
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+/* Override Bootstrap's focus-ring for form controls */
+.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
+    border-color: var(--voci-blue);
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Bootstrap's shadow but with VOCI blue */
+    outline: none; /* Remove additional outline if Bootstrap adds one */
+}
+
+.btn:focus {
+    outline: 3px solid var(--voci-gold); /* Gold outline for buttons */
+    box-shadow: 0 0 0 4px rgba(194, 139, 0, 0.4); /* Gold glow */
+}
+
+/* End of Accessibility: Enhanced Focus States */
+
+
+/* --- New: Scroll Animation Base Styles --- */
+/* Elements with animate__animated should be hidden initially unless marked as active */
+.animate__animated:not(.animate__active) {
+    opacity: 0;
+    /* You can also set initial transform for slide-in effects like translateY(20px) */
+    /* transform: translateY(20px); */
+}
+
+/* When the element becomes active, apply the transition */
+.animate__animated.animate__active {
+    opacity: 1;
+    /* transform: translateY(0); */ /* Reset transform if initial transform was set */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition for reveal */
+}
+/* End of New: Scroll Animation Base Styles */
 
 
 /* Navbar Customizations */
@@ -151,7 +238,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1.7rem;
-    color: white !important;
+    color: white !important; /* Excellent contrast */
 }
 
 .navbar-brand img {
@@ -165,7 +252,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     margin: 0 12px; /* Increased spacing */
     transition: all 0.3s ease;
-    color: rgba(255, 255, 255, 0.85) !important; /* Default link color */
+    color: rgba(255, 255, 255, 0.9) !important; /* Slightly increased opacity for better contrast */
     position: relative;
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -176,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-dark .navbar-nav .nav-link.active {
-    color: var(--voci-gold) !important; /* Active link color */
+    color: var(--voci-gold) !important; /* Active link color, good contrast */
 }
 
 /* Underline effect for active/hover nav links */
@@ -205,7 +292,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     font-weight: 700;
-    color: var(--voci-red); /* Default subtitle color */
+    color: var(--voci-red); /* Default subtitle color, improved contrast */
     text-transform: uppercase;
     letter-spacing: 2px;
     display: block;
@@ -235,7 +322,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-description {
     font-size: 1.1rem;
-    color: var(--voci-gray-text);
+    color: var(--voci-gray-text); /* Improved contrast */
     max-width: 700px;
     margin: 0 auto;
 }
@@ -266,7 +353,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-text {
     font-size: 1rem;
-    color: var(--voci-gray-text);
+    color: var(--voci-gray-text); /* Improved contrast */
 }
 
 /* Preloader */
@@ -358,14 +445,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-about p {
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.85); /* Increased opacity for better contrast */
 }
 
 .footer-links h5, .footer-contact h5 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1.3rem;
-    color: var(--voci-gold); /* Gold title for footer sections */
+    color: var(--voci-gold); /* Gold title for footer sections, good contrast */
     margin-bottom: 25px;
 }
 
@@ -376,7 +463,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-links ul li a, .footer-contact ul li span {
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.8); /* Increased opacity for better contrast */
     transition: color 0.3s ease;
 }
 
@@ -392,11 +479,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more visible border */
 }
 
 .footer-legal a {
-    color: rgba(255, 255, 255, 0.5) !important;
+    color: rgba(255, 255, 255, 0.7); /* Increased opacity for better contrast */
     margin: 0 10px;
     font-size: 0.85rem;
 }
@@ -414,7 +501,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-items: center;
     font-size: 1.1rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Slightly more visible border */
     color: white;
     transition: all 0.3s ease;
 }
@@ -451,23 +538,29 @@ h1, h2, h3, h4, h5, h6 {
 .form-control.rounded-pill, .form-select.rounded-pill {
     border-radius: 50px !important;
     padding: 12px 20px;
-    border-color: #ddd;
+    border-color: #bbb; /* Darker border for better visibility */
     transition: border-color 0.3s ease;
 }
 
 .form-control.rounded-pill:focus, .form-select.rounded-pill:focus {
     border-color: var(--voci-blue);
-    box-shadow: 0 0 0 0.25rem rgba(30, 144, 255, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Adjusted to new blue */
+    outline: none; /* Ensure no double outline with new focus styles */
 }
 
 textarea.form-control.rounded-3 {
     border-radius: 15px !important; /* Slightly less rounded for text area */
     padding: 15px 20px;
+    border-color: #bbb; /* Darker border */
 }
 
 .form-check-input:checked {
     background-color: var(--voci-blue);
     border-color: var(--voci-blue);
+}
+
+.form-check-label.small.text-muted {
+    color: var(--voci-gray-text) !important; /* Ensuring good contrast */
 }
 
 #formMessage {
