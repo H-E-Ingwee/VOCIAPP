@@ -2,7 +2,7 @@
 
 /* Page Header / Hero Section */
 .page-header {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center / cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('VOCI\ GOLD\ LOGO.png') no-repeat center center / cover;
     background-position: center;
     background-size: cover;
     min-height: 50vh; /* Shorter than home hero */
