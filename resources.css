@@ -2,25 +2,23 @@
 
 /* Page Header / Hero Section */
 .resources-hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/3762804/pexels-photo-3762804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center / cover;
-    background-position: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('VOCI OBJECTIVES.png') no-repeat center center; /* Updated hero image */
     background-size: cover;
-    min-height: 50vh;
-    padding-top: 90px;
+    min-height: 50vh; /* Shorter than home hero */
+    padding-top: 90px; /* Adjust for fixed navbar */
     position: relative;
     overflow: hidden;
     color: white;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; /* Use flex to center content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
 }
 
 .resources-hero-section h1 {
     font-size: 3.2rem;
     font-weight: 700;
-        color: white !important;
-
+    color: white;
 }
 
 .resources-hero-section p.lead {
@@ -30,173 +28,131 @@
     margin-right: auto;
 }
 
-/* Resource Categories Section */
-#resource-categories {
-    background-color: var(--voci-light-blue);
+/* Resource Card Styles (for flyers) */
+.resource-card {
+    border: 1px solid #eee;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    overflow: hidden; /* Ensures image corners are rounded */
+}
+.resource-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+}
+.resource-card .resource-card-img {
+    width: 100%;
+    height: 250px; /* Fixed height for consistency */
+    object-fit: cover; /* Cover ensures the image fills the space */
+    object-position: top; /* Show top of flyers */
+    border-bottom: 1px solid #eee;
+}
+.resource-card .resource-card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* For flex alignment if needed */
+}
+.resource-card .resource-card-body h5 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.resource-card .resource-card-body p {
+    font-size: 0.9rem;
+    flex-grow: 1; /* Pushes button to bottom */
+    margin-bottom: 1rem;
 }
 
-.category-card {
-    background-color: white;
+/* Concept Card Styles (for links) */
+#key-concepts .concept-card {
     border: 1px solid #eee;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
-.category-card:hover {
-    transform: translateY(-5px);
+#key-concepts .concept-card:hover {
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
     border-color: var(--voci-blue);
 }
-
-.category-icon {
-    width: 90px;
-    height: 90px;
-    font-size: 2.8rem;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+#key-concepts .concept-card .concept-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2.2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
-.category-card:hover .category-icon {
-    transform: rotateY(15deg) scale(1.05); /* Slight rotation on hover */
+#key-concepts .concept-card h4 {
+    font-size: 1.4rem;
 }
-
-.category-card h3 {
-    font-size: 1.7rem;
-}
-.category-card p.small {
-    font-size: 0.9rem;
-    line-height: 1.5;
+#key-concepts .concept-card p {
+    flex-grow: 1; /* Pushes button to bottom */
 }
 
-
-/* Articles, Podcasts, Videos Sections (share .resource-card styling from main.css) */
-/* Specific overrides for resources on this page */
-
-#articles, #podcasts, #videos {
-    background-color: var(--voci-white); /* White background for these sections */
-}
-#podcasts {
-    background-color: var(--voci-light-blue); /* Alternate background for podcasts section */
-}
-
-.resource-card .resource-img-wrapper {
-    height: 220px; /* Consistent height for all resource images */
-    overflow: hidden;
-}
-.resource-card .resource-img-wrapper img {
+/* Application Banner Styles */
+.application-banner {
+    background-color: var(--voci-red);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    top: 70px; 
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    z-index: 1029; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-.resource-card:hover .resource-img-wrapper img {
-    transform: scale(1.05);
+.application-banner p {
+    margin-bottom: 0.25rem;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
-
-.resource-card .resource-category {
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.application-banner a {
+    font-weight: 700;
+    text-decoration: underline;
+    color: var(--voci-gold) !important;
 }
-
-.resource-card .resource-meta {
-    font-size: 0.85rem;
-    color: var(--voci-gray-text);
+.application-banner a:hover {
+    color: #ffffff !important;
 }
-.resource-card .resource-meta i {
-    color: var(--voci-blue); /* Consistent icon color */
+.application-banner .countdown {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fffc;
 }
-
-.resource-card h3 {
-    font-size: 1.35rem;
-    min-height: 50px; /* Ensure consistent title height */
-    margin-bottom: 10px;
+/* Adjust main content padding */
+body {
+    padding-top: 140px; 
 }
-.resource-card h3 a {
-    color: var(--voci-dark-blue);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.resource-card h3 a:hover {
-    color: var(--voci-blue);
+.navbar.fixed-top {
+    top: 0; 
 }
 
-.resource-card p.small {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    color: var(--voci-gray-text);
-}
-
-.resource-card .resource-link {
-    font-size: 0.9rem;
-    text-decoration: none;
-    color: var(--voci-blue); /* Link color matches text-voci-blue from main.css */
-}
-.resource-card .resource-link:hover {
-    color: var(--voci-red); /* Hover color matches text-voci-red */
-}
-
-
-/* Responsive Adjustments */
+/* Responsive */
 @media (max-width: 991.98px) {
-    .resources-hero-section h1 {
+    .application-banner {
+        top: 60px; /* Adjust for smaller navbar */
+    }
+    body {
+        padding-top: 130px; /* Adjust for smaller navbar + banner (approx) */
+    }
+}
+@media (max-width: 767.98px) {
+    .page-header h1 {
         font-size: 2.5rem;
     }
-    .resources-hero-section p.lead {
+    .page-header p.lead {
         font-size: 1rem;
     }
-    .category-card {
-        padding: 30px;
+    .application-banner {
+        padding: 0.75rem;
     }
-    .category-icon {
-        width: 70px;
-        height: 70px;
-        font-size: 2.2rem;
-    }
-    .category-card h3 {
-        font-size: 1.5rem;
-    }
-    .resource-card .resource-img-wrapper {
-        height: 180px;
-    }
-    .resource-card h3 {
-        min-height: auto; /* Allow height to adjust */
-        font-size: 1.25rem;
-    }
-    .resource-card p.small {
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 767.98px) {
-    .resources-hero-section h1 {
-        font-size: 2rem;
-    }
-    .resources-hero-section p.lead {
+    .application-banner p {
         font-size: 0.9rem;
     }
-    .category-card {
-        padding: 20px;
+    .application-banner .countdown {
+        font-size: 0.9rem;
     }
-    .category-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 2rem;
-    }
-    .category-card h3 {
-        font-size: 1.3rem;
-    }
-    .resource-card .resource-img-wrapper {
-        height: 150px;
-    }
-    .resource-card h3 {
-        font-size: 1.1rem;
-    }
-    .resource-card p.small {
-        font-size: 0.75rem;
-    }
-    .resource-card .resource-meta, .resource-card .resource-link {
-        font-size: 0.8rem;
+    body {
+        padding-top: 120px; /* Adjust for smaller navbar + banner */
     }
 }

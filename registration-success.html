@@ -3,60 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Success! | VOCI</title>
+    <title>Application Submitted | Voice of Change Initiative (VOCI)</title>
+    <meta name="description" content="Thank you for applying to the Voice of Change Initiative (VOCI).">
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Google Fonts - Montserrat and Open Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
     <!-- Custom Global CSS -->
     <link rel="stylesheet" href="main.css">
-    <style>
-        body {
-            background-color: var(--voci-light-blue);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        .success-container {
-            background-color: white;
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 20px;
-            animation: fadeIn 1s ease-out;
-        }
-        .success-container .icon {
-            color: var(--voci-gold);
-            font-size: 5rem;
-            margin-bottom: 20px;
-            animation: bounceIn 1s ease-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes bounceIn {
-            0% { transform: scale(0.1); opacity: 0; }
-            60% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); }
-        }
-    </style>
+    <!-- Utility Page Specific CSS -->
+    <link rel="stylesheet" href="utility-pages.css">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
 </head>
 <body>
-    <div class="success-container">
-        <div class="icon"><i class="fas fa-check-circle"></i></div>
-        <h1 class="text-voci-dark-blue fw-bold mb-3">Registration Successful!</h1>
-        <p class="lead text-muted mb-4">Thank you for registering for our event. You will receive a confirmation email with all the details shortly.</p>
-        <a href="events.html" class="btn btn-voci-blue px-4 me-3">Back to Events <i class="fas fa-calendar-alt ms-2"></i></a>
-        <a href="index.html" class="btn btn-outline-voci-dark-blue px-4">Return to Homepage <i class="fas fa-home ms-2"></i></a>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner"></div>
     </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="VOCI OFFICIAL LOGO.png" alt="Voice of Change Initiative Official Logo" height="40" class="rounded-circle border border-2 border-white">
+                <span class="ms-2">VOCI</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="programs.html">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resources.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-voci-gold text-dark" href="https://bit.ly/VOCIAPP" target="_blank">Apply Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Application Banner -->
+    <div class="application-banner shadow-sm">
+        <p class="mb-0">Applications for our 2026 Q1 Cohort (MUT Focus) are NOW OPEN! <a href="https://bit.ly/VOCIAPP" target="_blank">Apply Here!</a></p>
+        <span class="countdown" id="countdown-timer"></span>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header utility-header-section d-flex align-items-center text-center text-white">
+        <div class="hero-overlay"></div>
+        <div class="container position-relative z-1">
+            <h1 class="display-4 fw-bold mb-4">Application Received</h1>
+            <p class="lead">Thank you for your interest in VOCI.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="utility-content-section py-5 bg-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="utility-content-box text-center p-4 p-md-5 bg-white rounded-3 shadow-sm border">
+                        <div class="success-icon text-voci-gold mb-4">
+                            <i class="fas fa-check-circle fa-5x"></i>
+                        </div>
+                        <h2 class="h3 text-voci-dark-blue fw-bold mt-4">Thank You for Applying!</h2>
+                        <p class="lead text-muted">Your application to join the Voice of Change Initiative 2026 Q1 Cohort has been successfully submitted.</p>
+                        <p>We are thrilled to see your interest in becoming a transformative leader. Our team will review your application carefully. Due to the high volume of applications, please allow us some time to get back to you.</p>
+                        <p class="fw-bold mt-4">What's Next?</p>
+                        <p>Keep an eye on your email for further communication from our team regarding the next steps. In the meantime, feel free to explore our website or join us at our upcoming Vision Launch!</p>
+                        
+                        <div class="mt-5">
+                            <a href="index.html" class="btn btn-voci-blue btn-lg me-2">Back to Home</a>
+                            <a href="events.html" class="btn btn-outline-voci-red btn-lg">See Upcoming Events</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- CTA Section (Hidden on this page as it's redundant) -->
+    
+    <!-- Footer -->
+    <footer class="footer bg-dark-blue text-white py-5 mt-auto">
+        <div class="container">
+            <!-- Footer content remains the same as other pages -->
+             <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="footer-about">
+                        <img src="VOCI OFFICIAL LOGO.png" alt="Voice of Change Initiative Official Logo" height="80" class="footer-logo mb-3 rounded-circle border border-2 border-white">
+                        <p>The Voice of Change Initiative (VOCI) is a transformative movement dedicated to empowering individuals through exceptional communication, authentic personal branding, and principled leadership.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-2 mb-5 mb-sm-0">
+                    <div class="footer-links">
+                        <h5 class="footer-title fw-bold text-voci-gold mb-3">Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="index.html" class="text-white text-decoration-none py-1 d-block">Home</a></li>
+                            <li><a href="about.html" class="text-white text-decoration-none py-1 d-block">About Us</a></li>
+                            <li><a href="programs.html" class="text-white text-decoration-none py-1 d-block">Programs</a></li>
+                            <li><a href="events.html" class="text-white text-decoration-none py-1 d-block">Events</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 mb-5 mb-sm-0">
+                    <div class="footer-links">
+                        <h5 class="footer-title fw-bold text-voci-gold mb-3">Our Pillars</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="programs.html#communication" class="text-white text-decoration-none py-1 d-block">Effective Communication</a></li>
+                            <li><a href="programs.html#branding" class="text-white text-decoration-none py-1 d-block">Personal Branding</a></li>
+                            <li><a href="programs.html#leadership" class="text-white text-decoration-none py-1 d-block">Principled Leadership</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-contact">
+                        <h5 class="footer-title fw-bold text-voci-gold mb-3">Get in Touch</h5>
+                        <ul class="list-unstyled">
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-map-marker-alt text-voci-blue me-3 mt-1"></i>
+                                <span>Murang'a University of Technology, Murang'a, Kenya</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-2">
+                                <i class="fas fa-phone-alt text-voci-blue me-3"></i>
+                                <span>+254 707 897 640</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-2">
+                                <i class="fas fa-envelope text-voci-blue me-3"></i>
+                                <span>vociglobal@gmail.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom bg-voci-dark-blue-light py-3 mt-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0 small text-white-50">&copy; 2025 Voice of Change Initiative (VOCI). All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-legal small">
+                            <a href="privacy-policy.html" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                            <a href="terms-of-service.html" class="text-white-50 text-decoration-none">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top (Global) -->
+    <a href="#" class="back-to-top btn btn-voci-gold">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <!-- Bootstrap JS Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Custom JavaScript Files (Global) -->
+    <script src="js/main.js"></script>
+    
+    <!-- Countdown Timer Script -->
+    <script>
+        $(document).ready(function() {
+            // Preloader fade out
+            setTimeout(function() {
+                $('.preloader').fadeOut('slow');
+            }, 500);
+
+            // Countdown Timer Logic
+            function updateCountdown() {
+                const countdownElement = document.getElementById('countdown-timer');
+                if (!countdownElement) return;
+
+                const deadline = new Date("2025-11-22T23:59:59+03:00").getTime();
+                const now = new Date().getTime();
+                const diff = deadline - now;
+
+                if (diff <= 0) {
+                    countdownElement.innerHTML = "Applications are closed.";
+                    $('.application-banner p').html('Applications are now closed. Stay tuned for future opportunities!');
+                    $('.application-banner a').hide();
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                countdownElement.innerHTML = `Time remaining: <strong>${days}d ${hours}h ${minutes}m</strong>`;
+            }
+            updateCountdown();
+            setInterval(updateCountdown, 60000);
+        });
+    </script>
 </body>
 </html>

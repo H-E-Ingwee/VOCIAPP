@@ -15,38 +15,198 @@
     <!-- Animate.css for animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
-    <!-- Slick Slider CSS (not strictly needed for about.html, but included in main.css dependency) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
-    
     <!-- Google Fonts - Montserrat and Open Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Custom Global CSS -->
     <link rel="stylesheet" href="main.css">
     <!-- About Page Specific CSS -->
     <link rel="stylesheet" href="about.css">
+    <!-- Styles from homepage for consistency -->
+    <link rel="stylesheet" href="home.css"> 
     
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Voice of Change Initiative (VOCI)">
-    <meta property="og:description" content="Empowering individuals with exceptional communication skills, authentic personal branding, and principled leadership to create meaningful impact.">
-    <meta property="og:image" content="VOCI OFFICIAL LOGO.png"> <!-- Updated for Open Graph -->
-    <meta property="og:url" content="https://voci.org">
+    <meta property="og:title" content="About VOCI | Voice of Change Initiative">
+    <meta property="og:description" content="Learn about the Voice of Change Initiative (VOCI), our vision, mission, and the team empowering transformative leaders.">
+    <meta property="og:image" content="VOCI purpose.png"> 
+    <meta property="og:url" content="https://vociglobal.site/about.html">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Voice of Change Initiative (VOCI)">
-    <meta name="twitter:description" content="Empowering individuals with exceptional communication skills, authentic personal branding, and principled leadership to create meaningful impact.">
-    <meta name="twitter:image" content="VOCI OFFICIAL LOGO.png"> <!-- Updated for Twitter Card -->
+    <meta name="twitter:title" content="About VOCI | Voice of Change Initiative">
+    <meta name="twitter:description" content="Learn about the Voice of Change Initiative (VOCI), our vision, mission, and the team empowering transformative leaders.">
+    <meta name="twitter:image" content="VOCI purpose.png">
+
+    <style>
+        /* Application Banner Styles (from home.css) */
+        .application-banner {
+            background-color: var(--voci-red);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: fixed;
+            top: 70px; /* Assuming navbar height is 70px */
+            width: 100%;
+            z-index: 1029; /* Just below the navbar */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .application-banner p {
+            margin-bottom: 0.25rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .application-banner a {
+            font-weight: 700;
+            text-decoration: underline;
+            color: var(--voci-gold) !important;
+        }
+        .application-banner a:hover {
+            color: #ffffff !important;
+        }
+        .application-banner .countdown {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #fffc;
+        }
+
+        /* Adjust main content padding to account for banner */
+        body {
+            padding-top: 140px; /* Navbar height + Banner height (approx) */
+        }
+        .navbar.fixed-top {
+            top: 0; /* Reset navbar to top */
+        }
+
+        /* Sphere & Initiative Card Styles (from home.css) */
+        .sphere-card, .initiative-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid #eee;
+        }
+        .sphere-card:hover, .initiative-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .sphere-icon, .initiative-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--voci-blue);
+        }
+        .initiative-icon {
+             color: var(--voci-red);
+        }
+        .sphere-card h4, .initiative-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--voci-dark-blue);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        .sphere-card p, .initiative-card p {
+            font-size: 0.9rem;
+            color: var(--voci-gray-text);
+            line-height: 1.4;
+        }
+
+        /* Event Calendar Section (from home.css) */
+        .event-calendar-item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        .event-calendar-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .event-calendar-date {
+            flex: 0 0 100px;
+            text-align: center;
+            border-right: 2px solid var(--voci-gold);
+            padding-right: 1.5rem;
+        }
+        .event-calendar-date .day {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--voci-red);
+            line-height: 1.2;
+        }
+        .event-calendar-date .month {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--voci-gray-text);
+            text-transform: uppercase;
+        }
+        .event-calendar-details {
+            padding-left: 1.5rem;
+        }
+        .event-calendar-details h5 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--voci-dark-blue);
+            margin-bottom: 0.25rem;
+        }
+        .event-calendar-details p {
+            font-size: 0.9rem;
+            color: var(--voci-gray-text);
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 991.98px) {
+            .application-banner {
+                top: 60px; /* Adjust for smaller navbar */
+            }
+            body {
+                padding-top: 130px; /* Adjust for smaller navbar + banner (approx) */
+            }
+        }
+        @media (max-width: 767.98px) {
+            .application-banner {
+                padding: 0.75rem;
+            }
+            .application-banner p {
+                font-size: 0.9rem;
+            }
+            .application-banner .countdown {
+                font-size: 0.9rem;
+            }
+            body {
+                padding-top: 120px; /* Adjust for smaller navbar + banner */
+            }
+            .event-calendar-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .event-calendar-date {
+                border-right: none;
+                border-bottom: 2px solid var(--voci-gold);
+                padding-right: 0;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+            }
+            .event-calendar-details {
+                padding-left: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Preloader -->
@@ -54,7 +214,7 @@
         <div class="spinner"></div>
     </div>
 
-    <!-- Navigation -->
+     <!-- Navigation (Global) -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -67,10 +227,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="about.html">About Us</a>
+                        <a class="nav-link" href="about.html">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="programs.html">Programs</a>
@@ -85,12 +245,19 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                     <li class="nav-item ms-lg-3">
-                        <a class="btn btn-voci-red text-white" href="https://bit.ly/VOCIAPP" target="_blank">Apply Now</a>
+                        <a class="btn btn-voci-gold text-dark" href="https://bit.ly/VOCIAPP" target="_blank">Apply Now</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    
+    <!-- Application Banner -->
+    <div class="application-banner shadow-sm">
+        <p class="mb-0">Applications for our 2026 Q1 Cohort (MUT Focus) are NOW OPEN! <a href="https://bit.ly/VOCIAPP" target="_blank">Apply Here!</a></p>
+        <span class="countdown" id="countdown-timer"></span>
+    </div>
+
 
     <!-- Page Header / Hero Section for About Page -->
     <header class="page-header about-hero-section d-flex align-items-center text-center text-white">
@@ -109,24 +276,21 @@
         <div class="container">
             <div class="section-header text-center mb-5 animate__animated animate__fadeInDown">
                 <span class="section-subtitle text-voci-gold">OUR JOURNEY</span> <!-- Changed to gold -->
-                <h2 class="section-title text-voci-dark-blue">The Story Behind VOCI's Transformative Impact</h2>
-                <p class="section-description text-muted">From a bold vision to a global movement, discover how VOCI is becoming a catalyst for change, empowering voices to influence meaningful impact in the society.</p>
+                <h2 class="section-title text-voci-dark-blue">The Story Behind VOCI</h2>
+                <p class="section-description text-muted">From a bold vision to a growing movement, discover how VOCI is becoming a catalyst for change.</p>
             </div>
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0 animate__animated animate__fadeInLeft">
                     <div class="story-img-wrapper position-relative rounded-3 shadow-lg">
-                        <img src="VOCI purpose.png" alt="VOCI team collaborating in a dynamic setting" class="img-fluid rounded-3">
+                        <img src="VOCI purpose.png" alt="VOCI team collaborating" class="img-fluid rounded-3">
                         <div class="img-overlay rounded-3"></div>
-                        <div class="story-quote text-white rounded-3 p-4 animate__animated animate__fadeInUp animate__delay-1s">
-                            <i class="fas fa-quote-left fa-2x text-voci-gold mb-3"></i>
-                            <p class="lead mb-0">"In the beginning was the Word, and the Word was with God, and the Word was God... We believe words carry the power to create, enlighten, and lead."</p>
-                            <span class="d-block text-end mt-2 small fw-bold">― Inspired by John 1:1, 5 & Genesis 1:3</span>
-                        </div>
+                        <!-- Stats box removed as requested -->
                     </div>
                 </div>
                 <div class="col-lg-6 animate__animated animate__fadeInRight">
                   <p class="lead text-voci-dark-blue mb-4">Founded in 2025 at Murang’a University of Technology, The Voice of Change Initiative (VOCI) emerged from a profound vision: 
-                        to have a platform that can help people grow in their oratory skills. We had the passion for seeing people communicate and express themselves boldly and in clarity.We sat down a number of times trying to see where could we begin from. At first in 2024 we wanted to come up with a club and call it &quot;The Great Orators Club&quot;. We were determined to see it running back then but for some reasons we were never able to make it happen. With time Brian Ingwee, the founder, continued to have the burden to help people in their communication skills but he had not found the best way to do so. It is until when they started having deep conversations with Hopewin Adams that a new fire was re-inginted. VOCI came as a vision so bold and clear on the 12th of March 2025. Ingwee first shared the concept with Hopewin and that is when the journey of re-writing the vision of VOCI began. Coming up together with the founding team the jounery of VOCI officially kicked off with a renewed spirit and a more clear strategy of bringing the vision to life. We are now no longer just interested in growing in public speaking but raising and building a network of transformative leaders in the major spheres of life. We continue to expand our reach, believing that by equipping one leader, we create a ripple effect that transforms many. </p>
+                        to have a platform that can help people grow in their oratory skills.</p>
+                  <p class="text-muted">We had the passion for seeing people communicate and express themselves boldly and in clarity.We sat down a number of times trying to see where could we begin from. At first in 2024 we wanted to come up with a club and call it "The Great Orators Club". We were determined to see it running back then but for some reasons we were never able to make it happen. With time Brian Ingwee, the founder, continued to have the burden to help people in their communication skills but he had not found the best way to do so. It is until when they started having deep conversations with Hopewin Adams that a new fire was re-ignited. VOCI came as a vision so bold and clear on the 12th of March 2025. Ingwee first shared the concept with Hopewin and that is when the journey of re-writing the vision of VOCI began. Coming up together with the founding team the journey of VOCI officially kicked off with a renewed spirit and a more clear strategy of bringing the vision to life. We are now no longer just interested in growing in public speaking but raising and building a network of transformative leaders in the major spheres of life. We continue to expand our reach, believing that by equipping one leader, we create a ripple effect that transforms many. </p>
                     <a href="programs.html" class="btn btn-voci-blue mt-3 shadow-sm">Explore Our Programs <i class="fas fa-arrow-right ms-2"></i></a>
                 </div>
             </div>
@@ -138,24 +302,22 @@
         <div class="container">
             <div class="section-header text-center mb-5 animate__animated animate__fadeInDown">
                 <span class="section-subtitle text-voci-blue">OUR CORE BELIEFS</span>
-                <h2 class="section-title text-voci-dark-blue">Our Vision & Mission: Guiding Our Purpose</h2>
-                <p class="section-description text-muted">These statements encapsulate the very essence of VOCI, defining our aspirations and our commitment to empowering transformative leaders globally.</p>
+                <h2 class="section-title text-voci-dark-blue">Our Vision & Mission</h2>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 animate__animated animate__fadeInLeft">
                     <div class="vision-mission-card bg-white p-4 rounded-3 shadow-sm h-100">
-                        <div class="icon-box bg-voci-gold text-white mb-4 d-inline-flex justify-content-center align-items-center rectangle">
+                        <div class="icon-box bg-voci-gold text-white mb-4 d-inline-flex justify-content-center align-items-center rounded-circle">
                             <i class="fas fa-eye fa-2x"></i>
                         </div>
                         <h3 class="fw-bold text-voci-dark-blue mb-3">Our Vision</h3>
                         <p class="lead text-voci-gray">
-To empower individuals, especially leaders, in identifying their full potential and sphere of influence and equipping them with exceptional 
-communication skills, authentic personal branding, and principled leadership skills enabling them to create meaningful impact across all the spheres of life.                        </p>
+To empower individuals, especially leaders, in identifying their full potential and sphere of influence and equipping them with exceptional communication skills, authentic personal branding, and principled leadership skills enabling them to create meaningful impact across all the spheres of life.                        </p>
                     </div>
                 </div>
                 <div class="col-md-6 animate__animated animate__fadeInRight">
                     <div class="vision-mission-card bg-white p-4 rounded-3 shadow-sm h-100">
-                        <div class="icon-box bg-voci-red text-white mb-4 d-inline-flex justify-content-center align-items-center rectangle">
+                        <div class="icon-box bg-voci-red text-white mb-4 d-inline-flex justify-content-center align-items-center rounded-circle">
                             <i class="fas fa-bullseye fa-2x"></i>
                         </div>
                         <h3 class="fw-bold text-voci-dark-blue mb-3">Our Mission</h3>
@@ -168,8 +330,161 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
         </div>
     </section>
 
+    <!-- Core Objectives Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle text-voci-blue">OUR OBJECTIVES</span>
+                <h2 class="section-title text-voci-dark-blue">What We Aim to Achieve</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center animate__animated animate__fadeInUp">
+                    <img src="VOCI OBJECTIVES.png" alt="VOCI Core Objectives" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spheres of Influence Section -->
+    <section id="spheres" class="py-5 bg-light-blue">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle text-voci-gold">OUR FOCUS</span>
+                <h2 class="section-title text-voci-dark-blue">The 8 Spheres of Influence</h2>
+                <p class="section-description text-muted">We empower leaders to apply their skills in the specific areas they are called to transform. We aim to identify and nurture leaders in these key spheres to ensure VOCI’s influence extends beyond our immediate network and creates a lasting, multi-generational ripple effect in society.</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Sphere 1: Government -->
+                <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-landmark"></i></div>
+                        <h4 class="mb-2">Government</h4>
+                        <p>Seeking those with a heart for public service, law, or policy to lead with integrity and advocate for justice.</p>
+                    </div>
+                </div>
+                <!-- Sphere 2: Economics -->
+                <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-chart-line"></i></div>
+                        <h4 class="mb-2">Economics</h4>
+                        <p>Identifying entrepreneurs and business leaders called to ethical practices and wealth creation.</p>
+                    </div>
+                </div>
+                <!-- Sphere 3: Science & Technology -->
+                <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-flask"></i></div>
+                        <h4 class="mb-2">Science & Technology</h4>
+                        <p>Connecting with innovators and thinkers in research and technology to bring creative, ethical solutions.</p>
+                    </div>
+                </div>
+                <!-- Sphere 4: Church -->
+                <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp" data-wow-delay="0.3s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-church"></i></div>
+                        <h4 class="mb-2">Church</h4>
+                        <p>Partnering with those in ministry, theology, and spiritual leadership to deliver messages with clarity and impact.</p>
+                    </div>
+                </div>
+                <!-- Sphere 5: Family -->
+                <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-home"></i></div>
+                        <h4 class="mb-2">Family</h4>
+                        <p>Equipping parents, counsellors, and community advocates to build strong family units and mentor the next generation.</p>
+                    </div>
+                </div>
+                <!-- Sphere 6: Education -->
+                <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h4 class="mb-2">Education</h4>
+                        <p>Engaging with teachers, students, and administrators to inspire learning and shape educational systems.</p>
+                    </div>
+                </div>
+                <!-- Sphere 7: Communication -->
+                <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-bullhorn"></i></div>
+                        <h4 class="mb-2">Communication</h4>
+                        <p>Nurturing journalists, artists, marketers, and PR professionals to be truth-tellers and storytellers.</p>
+                    </div>
+                </div>
+                <!-- Sphere 8: Arts & Entertainment -->
+                <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp" data-wow-delay="0.3s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-film"></i></div>
+                        <h4 class="mb-2">Arts & Entertainment</h4>
+                        <p>Seeking out artists, musicians, and performers to use their creative gifts to inspire hope and transform culture.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image from flyer -->
+            <div class="text-center mt-5 animate__animated animate__fadeInUp">
+                <img src="VOCI SPHERES.png" alt="VOCI Spheres of Influence Diagram" class="img-fluid rounded-3 shadow-lg" style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Initiatives Section -->
+    <section id="initiatives" class="py-5 bg-white">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle text-voci-red">HOW WE DO IT</span>
+                <h2 class="section-title text-voci-dark-blue">Our Key Initiatives</h2>
+                <p class="section-description text-muted">VOCI achieves its mission through a structured blend of training, mentorship, and real-world application.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp">
+                    <div class="initiative-card bg-light-blue">
+                        <div class="initiative-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <h4>Workshops & Training</h4>
+                        <p>Hands-on sessions (both virtual and in-person) covering our core pillars.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="initiative-card bg-light-blue">
+                        <div class="initiative-icon"><i class="fas fa-microphone-alt"></i></div>
+                        <h4>VOCI Speaker Series</h4>
+                        <p>Inviting influential leaders and communicators to share their insights and journeys.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="initiative-card bg-light-blue">
+                        <div class="initiative-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h4>VOCI Impact Projects</h4>
+                        <p>Community outreach where members apply their skills to real-world challenges.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp">
+                    <div class="initiative-card bg-light-blue">
+                        <div class="initiative-icon"><i class="fas fa-user-friends"></i></div>
+                        <h4>Mentorship Program</h4>
+                        <p>Pairing experienced leaders with mentees and peers for personalized guidance.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="initiative-card bg-light-blue">
+                        <div class="initiative-icon"><i class="fas fa-trophy"></i></div>
+                        <h4>Annual Competitions</h4>
+                        <p>Campus-wide public speaking and pitching events to showcase talent.</p>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="initiative-card bg-light-blue">
+                        <div class="initiative-icon"><i class="fas fa-globe"></i></div>
+                        <h4>Digital Platform</h4>
+                        <p>Sharing knowledge through our website, blog, podcast, and YouTube channel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Values Section -->
-    <section id="values-section" class="py-5 bg-white animate__animated animate__fadeIn">
+    <section id="values-section" class="py-5 bg-light-blue animate__animated animate__fadeIn">
         <div class="container">
             <div class="section-header text-center mb-5 animate__animated animate__fadeInDown">
                 <span class="section-subtitle text-voci-gold">OUR PRINCIPLES</span>
@@ -179,34 +494,34 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
             <div class="row g-4 justify-content-center">
                 <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp">
                     <div class="value-card text-center p-4 rounded-3 shadow-sm h-100">
-                        <div class="value-icon bg-voci-blue text-white rectangle d-flex align-items-center justify-content-center mx-auto mb-3">
+                        <div class="value-icon bg-voci-blue text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
                             <i class="fas fa-handshake fa-2x"></i>
                         </div>
                         <h4 class="fw-bold text-voci-dark-blue mb-2">Integrity</h4>
                         <p class="small text-muted">Upholding honesty and authenticity in all actions and communications.</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp animate__delay-1s">
+                <div classs="col-md-4 col-lg-3 animate__animated animate__fadeInUp" data-wow-delay="0.1s">
                     <div class="value-card text-center p-4 rounded-3 shadow-sm h-100">
-                        <div class="value-icon bg-voci-red text-white rectangle d-flex align-items-center justify-content-center mx-auto mb-3">
+                        <div class="value-icon bg-voci-red text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
                             <i class="fas fa-star fa-2x"></i>
                         </div>
                         <h4 class="fw-bold text-voci-dark-blue mb-2">Excellence</h4>
                         <p class="small text-muted">Striving for the highest standards in communication and leadership development.</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp" data-wow-delay="0.2s">
                     <div class="value-card text-center p-4 rounded-3 shadow-sm h-100">
-                        <div class="value-icon bg-voci-gold text-white rectangle d-flex align-items-center justify-content-center mx-auto mb-3">
+                        <div class="value-icon bg-voci-gold text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
                             <i class="fas fa-users-rays fa-2x"></i>
                         </div>
                         <h4 class="fw-bold text-voci-dark-blue mb-2">Empowerment</h4>
                         <p class="small text-muted">Unlocking individual potentials for personal, professional, and societal growth.</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp animate__delay-3s">
+                <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp" data-wow-delay="0.3s">
                     <div class="value-card text-center p-4 rounded-3 shadow-sm h-100">
-                        <div class="value-icon bg-voci-dark-blue text-white rectangle d-flex align-items-center justify-content-center mx-auto mb-3">
+                        <div class="value-icon bg-voci-dark-blue text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
                             <i class="fas fa-chart-line fa-2x"></i>
                         </div>
                         <h4 class="fw-bold text-voci-dark-blue mb-2">Impact</h4>
@@ -215,22 +530,77 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
                 </div>
                 <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp">
                     <div class="value-card text-center p-4 rounded-3 shadow-sm h-100">
-                        <div class="value-icon bg-voci-blue text-white rectangle d-flex align-items-center justify-content-center mx-auto mb-3">
+                        <div class="value-icon bg-voci-blue text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
                             <i class="fas fa-people-group fa-2x"></i>
                         </div>
                         <h4 class="fw-bold text-voci-dark-blue mb-2">Collaboration</h4>
                         <p class="small text-muted">Building a supportive and collaborative network of diverse leaders and partners.</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp" data-wow-delay="0.1s">
                     <div class="value-card text-center p-4 rounded-3 shadow-sm h-100">
-                        <div class="value-icon bg-voci-red text-white rectangle d-flex align-items-center justify-content-center mx-auto mb-3">
+                        <div class="value-icon bg-voci-red text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
                             <i class="fas fa-lightbulb fa-2x"></i>
                         </div>
                         <h4 class="fw-bold text-voci-dark-blue mb-2">Creativity</h4>
                         <p class="small text-muted">Equipping individuals with skills to communicate creatively and craft innovative solutions.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Calendar Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle text-voci-gold">CALENDAR</span>
+                <h2 class="section-title text-voci-dark-blue">What's Next?</h2>
+                <p class="section-description text-muted">Stay informed about our key dates and upcoming events. We'd love for you to join us!</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Event 1 -->
+                <div class="col-lg-10 col-xl-8 animate__animated animate__fadeInUp">
+                    <div class="event-calendar-item">
+                        <div class="event-calendar-date">
+                            <div class="day">13-22</div>
+                            <div class="month">November</div>
+                        </div>
+                        <div class="event-calendar-details">
+                            <h5>Application Window: 2026 Q1 Cohort (MUT)</h5>
+                            <p>Applications are open for our first cohort, focusing on students at Murang'a University of Technology.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event 2 -->
+                <div class="col-lg-10 col-xl-8 animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="event-calendar-item">
+                        <div class="event-calendar-date">
+                            <div class="day">26</div>
+                            <div class="month">November</div>
+                        </div>
+                        <div class="event-calendar-details">
+                            <h5>VOCI Vision Launch</h5>
+                            <p>Our official launch event! Join us at MUT, TB2 F1.2 from 5:00 PM - 6:30 PM to hear the vision.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event 3 -->
+                <div class="col-lg-10 col-xl-8 animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="event-calendar-item">
+                        <div class="event-calendar-date">
+                            <div class="day">TBA</div>
+                            <div class="month">December</div>
+                        </div>
+                        <div class="event-calendar-details">
+                            <h5>Annual Vision Board Workshop</h5>
+                            <p>An upcoming session dedicated to helping our new members and community plan and visualize their goals for the new year.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-5">
+                <a href="events.html" class="btn btn-voci-blue btn-lg">See Full Events Page <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
         </div>
     </section>
@@ -247,11 +617,11 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
                 <!-- President/Chairperson -->
                 <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp">
                     <div class="team-member-card text-center bg-white p-4 rounded-3 shadow-sm h-100">
-                        <img src="Ingwee2.JPG" alt="Brian Ingwee, President" class="img-fluid rectangle mb-3 border border-3 border-voci-blue">
+                        <img src="Ingwee2.JPG" alt="Brian Ingwee, President" class="img-fluid rounded-circle mb-3 border border-3 border-voci-blue" style="width: 150px; height: 150px; object-fit: cover;">
                         <h4 class="fw-bold text-voci-dark-blue mb-1">Brian Ingwee</h4>
                         <p class="text-voci-red small fw-bold mb-3">President & Founder</p>
                         <p class="text-muted small">Sets the strategic vision, acts as primary spokesperson, and oversees all operations, ensuring alignment with VOCI’s core values and objectives.</p>
-                        <div class="social-links mt-3">
+                        <div class="social-links mt-auto">
                             <a href="#" class="btn btn-outline-voci-blue btn-sm btn-social-square me-2"><i class="fab fa-linkedin-in"></i></a>
                             <a href="#" class="btn btn-outline-voci-blue btn-sm btn-social-square"><i class="fab fa-twitter"></i></a>
                         </div>
@@ -260,11 +630,11 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
                 <!-- Vice President/Deputy -->
                 <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp animate__delay-1s">
                     <div class="team-member-card text-center bg-white p-4 rounded-3 shadow-sm h-100">
-                        <img src="Hope.jpg" alt="Hopewin, Vice President" class="img-fluid rectangle mb-3 border border-3 border-voci-red">
+                        <img src="Hope.jpg" alt="Hopewin, Vice President" class="img-fluid rounded-circle mb-3 border border-3 border-voci-red" style="width: 150px; height: 150px; object-fit: cover;">
                         <h4 class="fw-bold text-voci-dark-blue mb-1">Hopewin Adams</h4>
                         <p class="text-voci-blue small fw-bold mb-3">Vice President</p>
                         <p class="text-muted small">Supports the President in strategic planning and operational execution, coordinating cross-functional teams to ensure seamless program delivery.</p>
-                        <div class="social-links mt-3">
+                        <div class="social-links mt-auto">
                             <a href="#" class="btn btn-outline-voci-red btn-sm btn-social-square me-2"><i class="fab fa-linkedin-in"></i></a>
                             <a href="#" class="btn btn-outline-voci-red btn-sm btn-social-square"><i class="fab fa-twitter"></i></a>
                         </div>
@@ -273,11 +643,11 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
                 <!-- Secretariat -->
                 <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp animate__delay-2s">
                     <div class="team-member-card text-center bg-white p-4 rounded-3 shadow-sm h-100">
-                        <img src="Ezzy.jpg" alt="Ezekiel, Secretariat" class="img-fluid rectangle mb-3 border border-3 border-voci-gold">
+                        <img src="Ezzy.jpg" alt="Ezekiel, Secretariat" class="img-fluid rounded-circle mb-3 border border-3 border-voci-gold" style="width: 150px; height: 150px; object-fit: cover;">
                         <h4 class="fw-bold text-voci-dark-blue mb-1">Ezekiel Thaara</h4>
                         <p class="text-voci-gold small fw-bold mb-3">Secretariat</p>
-                        <p class="text-muted small">Manages all administrative support, documentation, and internal communications, ensuring transparency and efficient record-keeping for the organization.</p>
-                        <div class="social-links mt-3">
+                        <p class="text-muted small">Manages all administrative support, documentation, and internal communications, ensuring transparency and efficient record-keeping.</p>
+                        <div class="social-links mt-auto">
                             <a href="#" class="btn btn-outline-voci-gold btn-sm btn-social-square me-2"><i class="fab fa-linkedin-in"></i></a>
                             <a href="#" class="btn btn-outline-voci-gold btn-sm btn-social-square"><i class="fab fa-twitter"></i></a>
                         </div>
@@ -286,13 +656,13 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
                 <!-- Treasury & Financial Management Head -->
                 <div class="col-md-6 col-lg-3 animate__animated animate__fadeInUp animate__delay-3s">
                     <div class="team-member-card text-center bg-white p-4 rounded-3 shadow-sm h-100">
-                        <img src="JOY.jpg" alt="JOY, Treasury Head" class="img-fluid rectangle mb-3 border border-3 border-voci-dark-blue">
+                        <img src="JOY.jpg" alt="JOY, Treasury Head" class="img-fluid rounded-circle mb-3 border border-3 border-voci-dark-blue" style="width: 150px; height: 150px; object-fit: cover;">
                         <h4 class="fw-bold text-voci-dark-blue mb-1">Joy Karimi</h4>
                         <p class="text-voci-blue small fw-bold mb-3">Treasury & Financial Head</p>
-                        <p class="text-muted small">Oversees budgeting, financial planning, and resource allocation, ensuring transparency and accountability in all financial matters for VOCI's sustainable growth.</p>
-                        <div class="social-links mt-3">
+                        <p class="text-muted small">Oversees budgeting, financial planning, and resource allocation, ensuring fiscal responsibility and sustainable growth.</p>
+                        <div class="social-links mt-auto">
                             <a href="#" class="btn btn-outline-voci-blue btn-sm btn-social-square me-2"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="btn btn-outline-voci-blue btn-sm btn-social-square"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-outline-voci-blue btn-sm btn-social-square"><i classs="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
@@ -308,8 +678,8 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8 mb-4 mb-lg-0 text-center text-lg-start animate__animated animate__fadeInLeft">
-                    <h2 class="mb-3 display-5 fw-bold text-white">Ready to Transform Your Communication and Leadership Skills?</h2>
-                    <p class="lead mb-0">Join a global community of change-makers and unlock your full potential to inspire and lead with purpose.</p>
+                    <h2 class="mb-3 display-5 fw-bold text-white">Applications for 2026 Q1 Cohort (MUT) are Open!</h2>
+                    <p class="lead mb-0">Join a global community of change-makers. Applications close November 22nd, 2025.</p>
                 </div>
                 <div class="col-lg-4 text-center text-lg-end animate__animated animate__fadeInRight">
                     <a href="https://bit.ly/VOCIAPP" target="_blank" class="btn btn-voci-gold btn-lg px-4 me-3 shadow-lg">Apply Now! <i class="fas fa-edit ms-2"></i></a>
@@ -328,13 +698,12 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
                         <img src="VOCI OFFICIAL LOGO.png" alt="Voice of Change Initiative Official Logo" height="80" class="footer-logo mb-3 rounded-circle border border-2 border-white">
                         <p>The Voice of Change Initiative (VOCI) is a transformative movement dedicated to empowering individuals through exceptional communication, authentic personal branding, and principled leadership. We are committed to fostering positive change globally.</p>
                         <div class="social-links mt-4">
-  <a href="https://www.tiktok.com/@vociglobal" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-    
-<a href="https://x.com/VociGlobal" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-  <a href="https://www.instagram.com/vociglobal/" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-  <a href="https://www.linkedin.com/in/voci-global-3034b5361/" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-  <a href="https://www.youtube.com/@VociGlobal" class="btn btn-outline-light btn-social-square" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-</div>
+                            <a href="https://www.tiktok.com/@vociglobal" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://x.com/VociGlobal" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/vociglobal/" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/voci-global-3034b5361/" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.youtube.com/@VociGlobal" class="btn btn-outline-light btn-social-square" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2 mb-5 mb-sm-0">
@@ -342,7 +711,7 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
                         <h5 class="footer-title fw-bold text-voci-gold mb-3">Quick Links</h5>
                         <ul class="list-unstyled">
                             <li><a href="index.html" class="text-white text-decoration-none py-1 d-block">Home</a></li>
-                            <li><a href="about.html" class="text-white text-decoration-none py-1 d-block">About Us</a></li>
+                            <li><a href="about.html" classVOCIAPP/="text-white text-decoration-none py-1 d-block">About Us</a></li>
                             <li><a href="programs.html" class="text-white text-decoration-none py-1 d-block">Programs</a></li>
                             <li><a href="events.html" class="text-white text-decoration-none py-1 d-block">Events</a></li>
                             <li><a href="resources.html" class="text-white text-decoration-none py-1 d-block">Resources</a></li>
@@ -357,9 +726,8 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
                             <li><a href="programs.html#communication" class="text-white text-decoration-none py-1 d-block">Effective Communication</a></li>
                             <li><a href="programs.html#branding" class="text-white text-decoration-none py-1 d-block">Personal Branding</a></li>
                             <li><a href="programs.html#leadership" class="text-white text-decoration-none py-1 d-block">Principled Leadership</a></li>
-                            <li><a href="programs.html#mentorship" class="text-white text-decoration-none py-1 d-block">Mentorship Program</a></li>
-                            <li><a href="programs.html#competitions" class="text-white text-decoration-none py-1 d-block">Public Speaking Competitions</a></li>
-                            <li><a href="programs.html#community" class="text-white text-decoration-none py-1 d-block">Community Impact Projects</a></li>
+                            <!-- Added Spheres link -->
+                            <li><a href="#spheres" class="text-white text-decoration-none py-1 d-block">Spheres of Influence</a></li>
                         </ul>
                     </div>
                 </div>
@@ -405,25 +773,25 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
         </div>
     </footer>
 
-    <!-- Back to Top -->
-    <a href="#" class="back-to-top btn btn-voci-gold animate__animated animate__fadeInUp animate__faster">
+    <!-- Back to Top (Global) -->
+    <a href="#" classs="back-to-top btn btn-voci-gold animate__animated animate__fadeInUp animate__faster">
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- jQuery (Needed for Slick Slider) -->
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-    <!-- Slick Slider JS (if used) -->
+    <!-- Slick Slider JS -->
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     
-    <!-- Custom JavaScript Files -->
+    <!-- Custom JavaScript Files (Global) -->
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
-    <!-- form-handler.js is removed as the modal is no longer used for application -->
-    
+    <script src="js/form-handler.js"></script> <!-- Keep for modal -->
+
     <!-- Initialize scripts specific to this page -->
     <script>
         $(document).ready(function() {
@@ -431,6 +799,36 @@ VOCI is dedicated to empowering students, emerging leaders, and society with the
             setTimeout(function() {
                 $('.preloader').fadeOut('slow');
             }, 500); // Adjust time as needed
+
+             // Countdown Timer Logic
+             function updateCountdown() {
+                const countdownElement = document.getElementById('countdown-timer');
+                if (!countdownElement) return;
+
+                // Set deadline to November 22, 2025, 23:59:59 EAT (East Africa Time, UTC+3)
+                const deadline = new Date("2025-11-22T23:59:59+03:00").getTime();
+                const now = new Date().getTime();
+                const diff = deadline - now;
+
+                if (diff <= 0) {
+                    countdownElement.innerHTML = "Applications are closed.";
+                    // Also update banners and buttons
+                    $('.application-banner p').html('Applications for the 2026 Q1 Cohort are now closed. Stay tuned for future opportunities!');
+                    $('.application-banner a').hide();
+                    $('.cta-section .btn-voci-gold').text('Applications Closed').addClass('disabled').attr('href', '#');
+                    $('.cta-section p.lead').text('Stay tuned for our next cohort announcement.');
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                countdownElement.innerHTML = `Time remaining: <strong>${days}d ${hours}h ${minutes}m</strong>`;
+            }
+
+            updateCountdown(); // Initial call
+            setInterval(updateCountdown, 60000); // Update every minute
         });
     </script>
 </body>

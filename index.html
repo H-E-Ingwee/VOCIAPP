@@ -3,81 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice of Change Initiative (VOCI) | Transformative Communication & Leadership</title>
-    <meta name="description" content="Join the Voice of Change Initiative (VOCI). We are empowering transformative leaders across 8 spheres of influence through training in communication, branding, and principled leadership. Applications for 2025-2026 are now open!">
-    
+    <title>Home | Voice of Change Initiative (VOCI)</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Animate.css for animations -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
-    <!-- Slick Slider CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
-    
     <!-- Google Fonts - Montserrat and Open Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- Custom Global CSS -->
     <link rel="stylesheet" href="main.css">
     <!-- Home Page Specific CSS -->
     <link rel="stylesheet" href="home.css">
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Voice of Change Initiative (VOCI)">
-    <meta property="og:description" content="Empowering individuals with exceptional communication skills, authentic personal branding, and principled leadership to create meaningful impact.">
-    <meta property="og:image" content="VOCI OFFICIAL LOGO.png"> <!-- Updated for Open Graph -->
-    <meta property="og:url" content="https://vociglobal.site">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Voice of Change Initiative (VOCI)">
-    <meta name="twitter:description" content="Empowering individuals with exceptional communication skills, authentic personal branding, and principled leadership to create meaningful impact.">
-    <meta name="twitter:image" content="VOCI OFFICIAL LOGO.png"> <!-- Updated for Twitter Card -->
-
     <style>
-        /* Adding a style for the application banner */
+        /* Make Application Banner more prominent */
         .application-banner {
-            background-color: var(--voci-gold);
-            color: var(--voci-dark-blue);
+            background-color: var(--voci-red); /* Changed to red */
+            color: white;
             padding: 1rem;
             text-align: center;
+            position: fixed;
+            top: 70px; /* Assuming navbar height is 70px */
+            width: 100%;
+            z-index: 1029; /* Just below the navbar */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .application-banner p {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
         .application-banner a {
             font-weight: 700;
             text-decoration: underline;
+            color: var(--voci-gold) !important; /* Make link stand out */
+        }
+        .application-banner a:hover {
+            color: #ffffff !important;
         }
         .application-banner .countdown {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
+            color: #fffc;
+        }
+
+        /* Adjust main content padding to account for banner */
+        body {
+            padding-top: 140px; /* Navbar height + Banner height (approx) */
+        }
+        .navbar.fixed-top {
+            top: 0; /* Reset navbar to top */
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url no-repeat center center;
+            background-size: cover;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px; /* Adjusted padding */
+            padding-bottom: 60px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .hero-section p.lead {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 20px auto 30px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Core Pillars Section - Module List */
+        .pillar-card {
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--voci-blue);
+        }
+        .pillar-card .icon-box {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        .pillar-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .pillar-card p {
+            font-size: 0.95rem;
+            color: var(--voci-gray-text);
+            flex-grow: 1; /* Make p tag grow to push list down */
+        }
+        .pillar-card .modules-list {
+            font-size: 0.9rem;
+            text-align: left;
+            padding-left: 1.2rem;
+            margin-top: 1rem;
+            color: var(--voci-gray-text);
+        }
+        .pillar-card .modules-list li {
+            margin-bottom: 0.25rem;
+            position: relative;
+        }
+        .pillar-card .modules-list li i {
+            position: absolute;
+            left: -1.2rem;
+            top: 5px;
+            font-size: 0.8rem;
+        }
+        
+        /* Specific Pillar Colors */
+        #pillar-comm .icon-box { background-color: var(--voci-blue); }
+        #pillar-comm:hover { border-left-color: var(--voci-blue); }
+        #pillar-comm .modules-list li i { color: var(--voci-blue); }
+
+        #pillar-brand .icon-box { background-color: var(--voci-red); }
+        #pillar-brand:hover { border-left-color: var(--voci-red); }
+        #pillar-brand .modules-list li i { color: var(--voci-red); }
+        
+        #pillar-lead .icon-box { background-color: var(--voci-gold); }
+        #pillar-lead:hover { border-left-color: var(--voci-gold); }
+        #pillar-lead .modules-list li i { color: var(--voci-gold); }
+
+
+        /* Key Initiatives Section */
+        .initiative-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .initiative-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .initiative-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--voci-red);
+        }
+        .initiative-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--voci-dark-blue);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .initiative-card p {
+            font-size: 0.95rem;
+            color: var(--voci-gray-text);
+        }
+
+        /* Event Highlight Section */
+        .event-highlight-section {
+            background-color: var(--voci-white);
+        }
+        .event-highlight-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* About Section */
+        .about-teaser {
+            background-color: var(--voci-dark-blue);
+            color: white;
+        }
+        .about-teaser h2 {
+            color: white;
+        }
+        .about-teaser .section-subtitle {
+            color: var(--voci-gold);
+        }
+        .about-teaser p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Spheres of Influence Section */
+        .sphere-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 1.5rem; /* Smaller padding */
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .sphere-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .sphere-icon {
+            font-size: 2.5rem; /* Smaller icon */
+            margin-bottom: 1rem;
+            color: var(--voci-blue);
+        }
+        .sphere-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--voci-dark-blue);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem; /* Smaller font */
+        }
+        .sphere-card p {
+            font-size: 0.9rem; /* Smaller font */
+            color: var(--voci-gray-text);
+            line-height: 1.4;
+        }
+
+        /* Event Calendar Section */
+        .event-calendar-item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        .event-calendar-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .event-calendar-date {
+            flex: 0 0 100px;
+            text-align: center;
+            border-right: 2px solid var(--voci-gold);
+            padding-right: 1.5rem;
+        }
+        .event-calendar-date .day {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--voci-red);
+            line-height: 1.2;
+        }
+        .event-calendar-date .month {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--voci-gray-text);
+            text-transform: uppercase;
+        }
+        .event-calendar-details {
+            padding-left: 1.5rem;
+        }
+        .event-calendar-details h5 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--voci-dark-blue);
+            margin-bottom: 0.25rem;
+        }
+        .event-calendar-details p {
+            font-size: 0.9rem;
+            color: var(--voci-gray-text);
+            margin-bottom: 0;
+        }
+
+
+        @media (max-width: 991.98px) {
+            .hero-section {
+                padding-top: 150px; /* Adjust for navbar + banner */
+            }
+            .application-banner {
+                top: 60px; /* Adjust for smaller navbar */
+            }
+            body {
+                padding-top: 130px; /* Adjust for smaller navbar + banner (approx) */
+            }
+            .pillar-card {
+                padding: 1.5rem;
+            }
+            .pillar-card .modules-list {
+                font-size: 0.85rem;
+            }
+        }
+        @media (max-width: 767.98px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section p.lead {
+                font-size: 1.2rem;
+            }
+            .application-banner {
+                padding: 0.75rem;
+            }
+            .application-banner p {
+                font-size: 0.9rem;
+            }
+            .application-banner .countdown {
+                font-size: 0.9rem;
+            }
+            body {
+                padding-top: 120px; /* Adjust for smaller navbar + banner */
+            }
+            .event-calendar-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .event-calendar-date {
+                border-right: none;
+                border-bottom: 2px solid var(--voci-gold);
+                padding-right: 0;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+            }
+            .event-calendar-details {
+                padding-left: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="spinner"></div>
-    </div>
-
-    <!-- Navigation -->
+    <!-- Navigation (Global) -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -108,425 +376,351 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                     <li class="nav-item ms-lg-3">
-                        <a class="btn btn-voci-red text-white" href="https://bit.ly/VOCIAPP" target="_blank">Apply Now</a>
+                        <a class="btn btn-voci-gold text-dark" href="https://bit.ly/VOCIAPP" target="_blank">Apply Now</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
+    
     <!-- Application Banner -->
-    <div class="application-banner" style="margin-top: 70px;"> <!-- Adjust margin-top based on your navbar height -->
-        <p>Applications for the 2025-2026 VOCI Cohort are NOW OPEN until November 22nd!</p>
-        <a href="https://bit.ly/VOCIAPP" target="_blank" class="btn btn-dark btn-sm">Apply Here <i class="fas fa-arrow-right ms-1"></i></a>
+    <div class="application-banner shadow-sm">
+        <p class="mb-0">Applications for our 2026 Q1 Cohort (MUT Focus) are NOW OPEN! <a href="https://bit.ly/VOCIAPP" target="_blank">Apply Here!</a></p>
+        <span class="countdown" id="countdown-timer"></span>
     </div>
 
     <!-- Hero Section -->
-    <header class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-lg-10 text-center">
-                    <h1 class="display-2 fw-bold text-white mb-4 animate__animated animate__fadeInDown">Your voice is your power. Use it to inspire, lead, and change the world.</h1>
-                    <p class="lead text-white mb-5 animate__animated animate__fadeInUp animate__delay-1s">
-                        The Voice of Change Initiative (VOCI) empowers transformative leaders to find their purpose and make an impact in their unique Spheres of Influence.
-                    </Ssection>
-                    <div class="d-flex justify-content-center gap-3 animate__animated animate__fadeInUp animate__delay-2s">
-                        <a href="programs.html" class="btn btn-voci-blue btn-lg px-5 shadow-lg">Explore Programs <i class="fas fa-arrow-right ms-2"></i></a>
-                        <a href="https://bit.ly/VOCIAPP" target="_blank" class="btn btn-voci-gold btn-lg px-5 shadow-lg">Apply Now (Closes Nov 22) <i class="fas fa-edit ms-2"></i></a>
-                    </div>
-                </div>
+    <header class="hero-section" id="hero-section">
+        <div class="container position-relative z-1">
+            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Applications Now Open!</h1>
+            <p class="lead mb-5 animate__animated animate__fadeInUp animate__delay-1s">
+                Join the 2026 1st Quarter Cohort at MUT. We're looking for transformative leaders to equip with skills in communication, branding, and principled leadership.
+            </p>
+            <div class="d-flex justify-content-center gap-3 animate__animated animate__fadeInUp animate__delay-2s">
+                <a href="https://bit.ly/VOCIAPP" target="_blank" class="btn btn-voci-gold btn-lg px-5 shadow-lg">Apply Now (Closes Nov 22) <i class="fas fa-edit ms-2"></i></a>
+                <a href="#about-section" class="btn btn-outline-light btn-lg px-5 shadow-lg">Learn More <i class="fas fa-arrow-down ms-2"></i></a>
             </div>
-        </div>
-        <div class="scroll-down">
-            <a href="#about-section" class="scroll-link">
-                <i class="fas fa-chevron-down animate__animated animate__bounce animate__infinite"></i>
-            </a>
         </div>
     </header>
 
-    <!-- About Section - Teaser -->
-    <section id="about-section" class="py-5 bg-light-blue animate__animated animate__fadeIn">
+    <!-- Upcoming Event Section -->
+    <section class="py-5 event-highlight-section bg-light-blue">
         <div class="container">
-            <div class="row align-items-center flex-column-reverse flex-lg-row">
-                <div class="col-lg-6 mt-5 mt-lg-0 animate__animated animate__fadeInLeft">
-                    <div class="section-header mb-4 text-center text-lg-start">
-                        <span class="section-subtitle text-voci-red">WHO WE ARE</span>
-                        <h2 class="section-title text-voci-dark-blue">A Movement for Transformative Leadership</h2>
-                    </div>
-                    <p class="lead text-voci-dark-blue mb-4">
-                        The Voice of Change Initiative (VOCI) is a transformative movement dedicated to developing a network of individuals who champion excellence, integrity, and empowerment.
-                    </p>
-                    <p class="mb-4">
-                        We identify emerging leaders, entrepreneurs, and advocates who are ready to transform their voices into a force for change. We empower them to identify their purpose and equip them to make a meaningful impact within their specific <b>Spheres of Influence.
-                    </p> </b>
-                    <div class="row g-3 core-values-grid mt-4">
-                        <div class="col-6 col-md-4">
-                            <div class="value-card p-3 rounded-lg shadow-sm d-flex align-items-center justify-content-center flex-column text-center">
-                                <i class="fas fa-handshake fa-2x text-voci-blue mb-2"></i>
-                                <span class="fw-bold">Integrity</span>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4">
-                            <div class="value-card p-3 rounded-lg shadow-sm d-flex align-items-center justify-content-center flex-column text-center">
-                                <i class="fas fa-graduation-cap fa-2x text-voci-red mb-2"></i>
-                                <span class="fw-bold">Excellence</span>
-                            </div>
-                        </div>
-                        <div class="6 col-md-4">
-                            <div class="value-card p-3 rounded-lg shadow-sm d-flex align-items-center justify-content-center flex-column text-center">
-                                <i class="fas fa-users-rays fa-2x text-voci-gold mb-2"></i>
-                                <span class="fw-bold">Empowerment</span>
-                            </div>
-                        </div>
-                        <div classs="col-6 col-md-4">
-                            <div class="value-card p-3 rounded-lg shadow-sm d-flex align-items-center justify-content-center flex-column text-center">
-                                <i class="fas fa-chart-line fa-2x text-voci-dark-blue mb-2"></i>
-                                <span class="fw-bold">Impact</span>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4">
-                            <div class="value-card p-3 rounded-lg shadow-sm d-flex align-items-center justify-content-center flex-column text-center">
-                                <i class="fas fa-people-group fa-2x text-voci-blue mb-2"></i>
-                                <span class="fw-bold">Collaboration</span>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4">
-                            <div class="value-card p-3 rounded-lg shadow-sm d-flex align-items-center justify-content-center flex-column text-center">
-                                <i class="fas fa-lightbulb fa-2x text-voci-red mb-2"></i>
-                                <span class="fw-bold">Creativity</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="about.html" class="btn btn-voci-gold mt-4 animate__animated animate__fadeInUp">Read More About Our Story <i class="fas fa-long-arrow-alt-right ms-2"></i></a>
-                </div>
-                <div class="col-lg-6 mb-5 mb-lg-0 animate__animated animate__fadeInRight">
-                    <div class="about-img position-relative shadow-lg rounded-3">
-                        <img src="VOCI purpose.png" alt="VOCI Purpose: Understand Your Purpose" class="img-fluid rounded-3">
-                        <div class="img-overlay rounded-3"></div>
-                        <div class="stats-box text-white p-3 rounded-lg border border-voci-gold animate__animated animate__fadeInUp animate__delay-1s">
-                            <div class="stat-item text-center">
-                                <h3 class="stat-number display-6 fw-bold text-voci-gold">50+</h3>
-                                <p class="stat-label mb-0">Active Members</p>
-                            </div>
-                            <div class="stat-item text-center">
-                                <h3 class="stat-number display-6 fw-bold text-voci-gold">8</h3>
-                                <p class="stat-label mb-0">Spheres of Influence</p>
-                            </div>
-                            <div class="stat-item text-center">
-                                <h3 class="stat-number display-6 fw-bold text-voci-gold">1+</h3>
-                                <p class="stat-label mb-0">Countries Reached</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle text-voci-red">MARK YOUR CALENDAR</span>
+                <h2 class="section-title text-voci-dark-blue">VOCI Vision Launch</h2>
+                <p class="section-description text-muted">Join us for our official launch event as we cast the vision for the Voice of Change Initiative.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Programs Section - Teaser -->
-    <section id="programs-section" class="py-5 bg-white animate__animated animate__fadeIn">
-        <div class="container">
-            <div class="section-header text-center mb-5 animate__animated animate__fadeInDown">
-                <span class="section-subtitle text-voci-blue">WHAT WE OFFER</span>
-                <h2 class="section-title text-voci-dark-blue">Three Pillars of Transformation</h2>
-                <p class="section-description text-muted">Our curriculum is built on three core pillars, tailored to help you make an impact in your specific Sphere of Influence.</p>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
-                    <div class="program-card h-100 shadow-lg rounded-3 border-0">
-                        <div class="program-icon-circle bg-voci-blue text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4">
-                            <i class="fas fa-comments fa-3x"></i>
-                        </div>
-                        <h3 class="text-center text-voci-dark-blue fw-bold mb-3">Empower Effective Communication</h3>
-                        <p class="text-center text-muted px-3">Master public speaking, storytelling, and persuasive pitching to inspire and influence others with clarity and impact.</p>
-                        <ul class="list-unstyled program-features px-3">
-                            <li><i class="fas fa-check-circle me-2 text-voci-red"></i> Vocal Dynamics & Delivery</li>
-                            <li><i class="fas fa-check-circle me-2 text-voci-red"></i> Audience Engagement Techniques</li>
-                            <li><i class="fas fa-check-circle me-2 text-voci-red"></i> Crisis Communication</li>
-                        </ul>
-                        <div class="text-center mt-4">
-                            <a href="programs.html#communication" class="btn btn-outline-voci-blue">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-1s">
-                    <div class="program-card h-100 shadow-lg rounded-3 border-0">
-                        <div class="program-icon-circle bg-voci-red text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4">
-                            <i class="fas fa-id-badge fa-3x"></i>
-                        </div>
-                        <h3 class="text-center text-voci-dark-blue fw-bold mb-3">Elevate Personal Branding</h3>
-                        <p class="text-center text-muted px-3">Build an authentic, value-driven identity that stands out, attracts opportunities, and amplifies your impact.</p>
-                        <ul class="list-unstyled program-features px-3">
-                            <li><i class="fas fa-check-circle me-2 text-voci-blue"></i> Unique Value Proposition</li>
-                            <li><i class="fas fa-check-circle me-2 text-voci-blue"></i> Digital Footprint Optimization</li>
-                            <li><i class="fas fa-check-circle me-2 text-voci-blue"></i> Networking & Relationship Building</li>
-                        </ul>
-                        <div class="text-center mt-4">
-                            <a href="programs.html#branding" class="btn btn-outline-voci-red">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-2s">
-                    <div class="program-card h-100 shadow-lg rounded-3 border-0">
-                        <div class="program-icon-circle bg-voci-gold text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4">
-                            <i class="fas fa-chess-queen fa-3x"></i>
-                        </div>
-                        <h3 classs="text-center text-voci-dark-blue fw-bold mb-3">Develop Principled Leadership</h3>
-                        <p class="text-center text-muted px-3">Grow as a leader grounded in strong ethics, resilience, and an unwavering commitment to societal transformation.</p>
-                        <ul class="list-unstyled program-features px-3">
-                            <li><i class="fas fa-check-circle me-2 text-voci-gold"></i> Ethical Decision-Making</li>
-                            <li><i class="fas fa-check-circle me-2 text-voci-gold"></i> Team Management & Delegation</li>
-                            <li><i class="fas fa-check-circle me-2 text-voci-gold"></i> Leading for Societal Good</li>
-                        </ul>
-                        <div class="text-center mt-4">
-                            <a href="programs.html#leadership" class="btn btn-outline-voci-gold">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-5 animate__animated animate__fadeInUp">
-                <a href="programs.html" class="btn btn-voci-dark-blue btn-lg shadow-lg">View All Programs & Spheres <i class="fas fa-graduation-cap ms-2"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Events Section - Teaser -->
-    <section id="events-section" class="py-5 bg-light-blue animate__animated animate__fadeIn">
-        <div class="container">
-            <div class="section-header text-center mb-5 animate__animated animate__fadeInDown">
-                <span class="section-subtitle text-voci-red">APPLICATIONS OPEN!</span>
-                <h2 class="section-title text-voci-dark-blue">Join the 2025-2026 VOCI Cohort</h2>
-                <p class="section-description text-muted">We are actively seeking the next generation of transformative leaders. Apply now to join our upcoming events and programs.</p>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-6 animate__animated animate__fadeInLeft">
-                    <div class="event-card featured shadow-lg rounded-3">
-                        <div class="event-img-wrapper rounded-top-3">
-                            <img src="VOCI SPHERES.jpg" alt="VOCI 2025-2026 Intake Applications" class="img-fluid rounded-top-3">
-                            <span class="event-badge bg-voci-red text-white rounded-pill px-3 py-1">Applications Open</span>
-                        </div>
-                        <div class="event-content p-4">
-                            <div class="event-date mb-3 text-voci-blue fw-bold">
-                                <i class="far fa-calendar-alt me-2"></i> November 13 - November 22, 2025
-                            </div>
-                            <h3 class="fw-bold text-voci-dark-blue mb-2">VOCI 2025-2026 Intake</h3>
-                            <p class="text-muted mb-3">We are looking for passionate individuals ready to make an impact in their sphere of influence. Apply now to be part of our next cohort!</p>
-                            <div class="event-meta-details row g-2 mb-3">
-                                <div class="col-md-6"><i class="fas fa-globe me-1"></i> <strong>Format:</strong> Online Application</div>
-                                <div class="col-md-6"><i class="fas fa-link me-1"></i> <strong>Link:</strong> bit.ly/VOCIAPP</div>
-                            </div>
-                            <div class="event-footer d-flex justify-content-between align-items-center">
-                                <a href="https://bit.ly/VOCIAPP" target="_blank" class="btn btn-voci-red btn-sm">Apply Now <i class="fas fa-external-link-alt ms-1"></i></a>
-                                <a href="events.html" class="event-link text-voci-blue text-decoration-none fw-bold">See All Events <i class="fas fa-arrow-right ms-1"></i></a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center animate__animated animate__fadeInLeft">
+                    <img src="VOCI VISION LAUNCH.png" alt="VOCI Vision Launch Poster" class="img-fluid rounded-3 shadow-lg mb-4 mb-lg-0" style="max-height: 500px;">
                 </div>
                 <div class="col-lg-6 animate__animated animate__fadeInRight">
-                    <div class="event-list">
-                        <!-- Event Item 1 -->
-                        <div class="event-item d-flex align-items-center p-3 mb-3 rounded-3 shadow-sm bg-white">
-                            <div class="event-date-sm text-center flex-shrink-0 me-3 bg-voci-gold text-voci-dark-blue rounded-3 p-2">
-                                <span class="d-block fw-bold fs-4">26</span>
-                                <small>Nov 2025</small>
-                            </div>
-                            <div class="event-info flex-grow-1">
-                                <h4 class="mb-1"><a href="events.html" class="text-voci-dark-blue text-decoration-none fw-bold">VOCI Vision Launch</a></h4>
-                                <div class="event-meta small text-muted">
-                                    <span><i class="far fa-clock me-1"></i> 5:00 PM - 6:30 PM EAT</span>
-                                    <span class="ms-3"><i class="fas fa-map-marker-alt me-1"></i> MUT, TB2 F12</span>
-                                </div>
-                            </div>
-                            <a href="events.html" class="event-action btn btn-outline-voci-gold btn-sm flex-shrink-0">Details</a>
-                        </div>
-                        <!-- Event Item 2 -->
-                        <div class="event-item d-flex align-items-center p-3 mb-3 rounded-3 shadow-sm bg-white">
-                            <div class="event-date-sm text-center flex-shrink-0 me-3 bg-voci-dark-blue text-white rounded-3 p-2">
-                                <span class="d-block fw-bold fs-4">02</span>
-                                <small>DEC 2025</small>
-                            </div>
-                            <div class="event-info flex-grow-1">
-                                <h4 class="mb-1"><a href="event-report.html" class="text-voci-dark-blue text-decoration-none fw-bold">Community Impact Project Launch</a></h4>
-                                <div class="event-meta small text-muted">
-                                    <span><i class="far fa-clock me-1"></i> 9:00 AM - 12:00 PM EAT</span>
-                                    <span class="ms-3"><i class="fas fa-map-marker-alt me-1"></i> Murang'a Community</span>
-                                </div>
-                            </div>
-                            <a href="event-report.html" class="event-action btn btn-outline-voci-blue btn-sm flex-shrink-0">Learn More</a>
-                        </div>
-                        <!-- Event Item 3 (Past) -->
-                        <div class="event-item d-flex align-items-center p-3 rounded-3 shadow-sm bg-white" style="opacity: 0.7;">
-                            <div class="event-date-sm text-center flex-shrink-0 me-3 bg-secondary text-white rounded-3 p-2">
-                                <span class="d-block fw-bold fs-4">25</span>
-                                <small>SEP 2025</small>
-                            </div>
-                            <div class="event-info flex-grow-1">
-                                <h4 class="mb-1"><a href="events.html" class="text-muted text-decoration-none fw-bold">Leadership in Business Training</a></h4>
-                                <div class="event-meta small text-muted">
-                                    <span><i class="far fa-clock me-1"></i> 4:30 PM - 6:00 PM EAT</span>
-                                    <span class="ms-3"><i class="fas fa-map-marker-alt me-1"></i> MUT, G5 LAB</span>
-                                </div>
-                            </div>
-                            <span class="event-action text-muted fst-italic flex-shrink-0">Concluded</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-5 animate__animated animate__fadeInUp">
-                <a href="events.html" class="btn btn-voci-red btn-lg shadow-lg">View Full Events Calendar <i class="fas fa-calendar-alt ms-2"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section - HIDING THIS FOR NOW -->
-    <section id="testimonials" class="py-5 bg-white animate__animated animate__fadeIn" style="display: none;">
-        <div class="container">
-            <div class="section-header text-center mb-5 animate__animated animate__fadeInDown">
-                <span class="section-subtitle text-voci-gold">SUCCESS STORIES</span>
-                <h2 class="section-title text-voci-dark-blue">What Our Transformed Members Say</h2>
-                <p class="section-description text-muted">Hear directly from individuals whose lives and careers have been profoundly impacted by the VOCI experience.</p>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="testimonial-slider animate__animated animate__fadeInUp">
-                        <!-- Testimonial 1 -->
-                        <div class="testimonial-item p-4 text-center rounded-3 shadow-sm">
-                            <div class="testimonial-content">
-                                <div class="testimonial-img mb-3">
-                                    <img src="https://placehold.co/100x100/007bff/FFFFFF?text=SM" alt="Sarah Mwangi, Entrepreneur" class="img-fluid rounded-circle border border-voci-blue border-3">
-                                </div>
-                                <div class="testimonial-text mb-3">
-                                    <i class="fas fa-quote-left fa-2x text-voci-red mb-3"></i>
-                                    <p class="lead text-voci-dark-blue">"VOCI transformed my communication skills and gave me the confidence to pitch my startup idea to investors. I secured funding within 3 months of completing the program! An absolute game-changer for my entrepreneurial journey."</p>
-                                    <i class="fas fa-quote-right fa-2x text-voci-red mt-3"></i>
-                                </div>
-                                <div class="testimonial-author">
-                                    <h5 class="fw-bold text-voci-blue">Sarah Mwangi</h5>
-                                    <span class="text-muted small">Entrepreneur & VOCI Certified Transformative Leader</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Testimonial 2 -->
-                        <div class="testimonial-item p-4 text-center rounded-3 shadow-sm">
-                            <div class="testimonial-content">
-                                <div class="testimonial-img mb-3">
-                                    <img src="https://placehold.co/100x100/b00000/FFFFFF?text=JO" alt="James Omondi, Community Leader" class="img-fluid rounded-circle border border-voci-red border-3">
-                                </div>
-                                <div class="testimonial-text mb-3">
-                                    <i class="fas fa-quote-left fa-2x text-voci-blue mb-3"></i>
-                                    <p class="lead text-voci-dark-blue">"The principled leadership training at VOCI helped me develop a clear vision and ethical framework for my community project. We've now impacted over 500 youth in our county through sustained initiatives, thanks to the skills I gained."</p>
-                                    <i class="fas fa-quote-right fa-2x text-voci-blue mt-3"></i>
-                                </div>
-                                <div class="testimonial-author">
-                                    <h5 class="fw-bold text-voci-red">James Omondi</h5>
-                                    <span class="text-muted small">Passionate Community Leader & VOCI Alumni</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Testimonial 3 -->
-                        <div class="testimonial-item p-4 text-center rounded-3 shadow-sm">
-                            <div class="testimonial-content">
-                                <div class="testimonial-img mb-3">
-                                    <img src="https://placehold.co/100x100/C28B00/FFFFFF?text=GW" alt="Grace Wambui, University Student" class="img-fluid rounded-circle border border-voci-gold border-3">
-                                </div>
-                                <div class="testimonial-text mb-3">
-                                    <i class="fas fa-quote-left fa-2x text-voci-gold mb-3"></i>
-                                    <p class="lead text-voci-dark-blue">"As an introvert, I never imagined I could speak confidently in public or truly brand myself. VOCI's supportive environment and practical techniques changed everything for me. I now present with confidence and purpose."</p>
-                                    <i class="fas fa-quote-right fa-2x text-voci-gold mt-3"></i>
-                                </div>
-                                <div class="testimonial-author">
-                                    <h5 class="fw-bold text-voci-gold">Grace Wambui</h5>
-                                    <span class="text-muted small">University Student & VOCI Certified Communicator</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="fw-bold text-voci-dark-blue">It's Just The Beginning</h3>
+                    <p class="text-muted">This is more than just an event; it's the start of a movement. Be there as we officially launch VOCI and outline our mission to empower the next generation of leaders.</p>
+                    <ul class="list-unstyled fs-5" style="line-height: 2;">
+                        <li><i class="fas fa-calendar-day fa-fw text-voci-blue me-2"></i> <strong>Date:</strong> Wednesday, November 26th, 2025</li>
+                        <li><i class="fas fa-clock fa-fw text-voci-blue me-2"></i> <strong>Time:</strong> 05:00 PM - 06:30 PM</li>
+                        <li><i class="fas fa-map-marker-alt fa-fw text-voci-blue me-2"></i> <strong>Location:</strong> MUT, TB2 F1.2</li>
+                    </ul>
+                    <h4 class="fw-bold text-voci-dark-blue mt-4">Meeting Agenda:</h4>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check-circle text-voci-red me-2"></i> Exploring The Vision & Foundation</li>
+                        <li><i class="fas fa-check-circle text-voci-red me-2"></i> The Personal Branding Pillar</li>
+                        <li><i class="fas fa-check-circle text-voci-red me-2"></i> The Effective Communication Pillar</li>
+                        <li><i class="fas fa-check-circle text-voci-red me-2"></i> The Principled Leadership Pillar</li>
+                    </ul>
+                    <a href="events.html" class="btn btn-voci-blue mt-3">More Event Details <i class="fas fa-arrow-right ms-2"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-     <!-- Articles Section - HIDING THIS FOR NOW -->
-    <section id="articles" class="py-5 bg-light-blue animate__animated animate__fadeIn" style="display: none;">
+    <!-- About Section Teaser -->
+    <section id="about-section" class="py-5 about-teaser">
         <div class="container">
-            <div class="section-header text-center mb-5 animate__animated animate__fadeInDown">
-                <span class="section-subtitle text-voci-blue">READ & LEARN</span>
-                <h2 class="section-title text-voci-dark-blue">Latest Articles & Blog Posts</h2>
-                <p class="section-description text-muted">Stay updated with the newest insights and strategies from VOCI experts and guest contributors.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <span class="section-subtitle">ABOUT VOCI</span>
+                    <h2 class="section-title mb-4">A Movement for Transformative Communication</h2>
+                    <p class="lead mb-4" style="color: rgba(255,255,255,0.9);">
+                        We believe that words carry the power to create, enlighten, and influence. VOCI is dedicated to developing a network of individuals who champion excellence, integrity, and empowerment. We identify and equip emerging leaders, entrepreneurs, and advocates to become a force for positive change.
+                    </p>
+                    <a href="about.html" class="btn btn-outline-light btn-lg">Learn More About Us <i class="fas fa-info-circle ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Core Objectives Section -->
+     <section class="py-5 bg-white">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle text-voci-blue">OUR OBJECTIVES</span>
+                <h2 class="section-title text-voci-dark-blue">What We Aim to Achieve</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <img src="VOCI OBJECTIVES.png" alt="VOCI Core Objectives" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Pillars Section -->
+    <section class="py-5 bg-light-blue">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle text-voci-red">OUR CURRICULUM</span>
+                <h2 class="section-title text-voci-dark-blue">The Three Pillars of VOCI</h2>
+                <p class="section-description text-muted">Our curriculum is built on three foundational pillars designed to create well-rounded, impactful leaders.</p>
             </div>
             <div class="row g-4">
-                <!-- Article 1 -->
-                <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
-                    <div class="resource-card h-100 shadow-sm rounded-3">
-                        <div class="resource-img-wrapper">
-                            <img src="httpsimg/blog/blog-1.jpg" alt="Blogging on laptop" class="img-fluid rounded-top-3" onerror="this.onerror=null;this.src='https://placehold.co/600x400/007BFF/FFFFFF?text=VOCI+Article';">
-                            <span class="resource-category bg-voci-red text-white rounded-pill px-3 py-1">Article</span>
+                <div class="col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp">
+                    <div class="pillar-card" id="pillar-comm">
+                        <div class="icon-box">
+                            <i class="fas fa-comments"></i>
                         </div>
-                        <div class="resource-content p-4">
-                            <div class="resource-meta small text-muted mb-2">
-                                <span><i class="far fa-calendar-alt me-1"></i> November 15, 2025</span>
-                                <span class="ms-3"><i class="fas fa-comment-dots me-1"></i> 5 Comments</span>
-                            </div>
-                            <h3 class="fw-bold mb-2"><a href="resources.html" class="text-voci-dark-blue text-decoration-none">5 Techniques to Overcome Public Speaking Anxiety</a></h3>
-                            <p class="text-muted small">Practical strategies to build confidence and deliver powerful presentations, even if you're terrified of speaking in public.</p>
-                            <a href="resources.html" class="resource-link text-voci-blue text-decoration-none fw-bold">Read More <i class="fas fa-arrow-right ms-1"></i></a>
-                        </div>
+                        <h3 class="fw-bold text-voci-dark-blue">Effective Communication</h3>
+                        <p>Develop mastery in public speaking, storytelling, and persuasive pitching to inspire and influence.</p>
+                        <ul class="list-unstyled modules-list">
+                            <li><i class="fas fa-check-circle"></i> Foundations of Communication</li>
+                            <li><i class="fas fa-check-circle"></i> Mastering Public Speaking</li>
+                            <li><i class="fas fa-check-circle"></i> Storytelling for Impact</li>
+                            <li><i class="fas fa-check-circle"></i> Idea Pitching & Persuasion</li>
+                        </ul>
                     </div>
                 </div>
-                <!-- Article 2 -->
-                <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-1s">
-                    <div class="resource-card h-100 shadow-sm rounded-3">
-                        <div class="resource-img-wrapper">
-                            <img src="httpsV://placehold.co/600x400/B00000/FFFFFF?text=VOCI+Leadership" alt="Leadership meeting" class="img-fluid rounded-top-3">
-                            <span class="resource-category bg-voci-blue text-white rounded-pill px-3 py-1">Article</span>
+                <div class="col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="pillar-card" id="pillar-brand">
+                        <div class="icon-box">
+                            <i class="fas fa-user-tie"></i>
                         </div>
-                        <div class="resource-content p-4">
-                            <div class="resource-meta small text-muted mb-2">
-                                <span><i class="far fa-calendar-alt me-1"></i> November 10, 2025</span>
-                                <span class="ms-3"><i class="fas fa-comment-dots me-1"></i> 8 Comments</span>
-                            </div>
-                            <h3 class="fw-bold mb-2"><a href="resources.html" class="text-voci-dark-blue text-decoration-none">Ethical Decision-Making for Emerging Leaders</a></h3>
-                            <p class="text-muted small">Navigate complex moral dilemmas with a principled approach. A guide for leaders facing tough choices in today's dynamic world.</p>
-                            <a href="resources.html" class="resource-link text-voci-red text-decoration-none fw-bold">Read More <i class="fas fa-arrow-right ms-1"></i></a>
-                        </div>
+                        <h3 class="fw-bold text-voci-dark-blue">Personal Branding</h3>
+                        <p>Equip individuals to build authentic, value-driven identities to enhance professional and societal influence.</p>
+                         <ul class="list-unstyled modules-list">
+                            <li><i class="fas fa-check-circle"></i> Your Unique Value Proposition</li>
+                            <li><i class="fas fa-check-circle"></i> Crafting Your Brand Identity</li>
+                            <li><i class="fas fa-check-circle"></i> Amplifying Your Brand Online</li>
+                            <li><i class="fas fa-check-circle"></i> Networking & Relationship Building</li>
+                        </ul>
                     </div>
                 </div>
-                <!-- Article 3 -->
-                <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-2s">
-                    <div class="resource-card h-100 shadow-sm rounded-3">
-                        <div class="resource-img-wrapper">
-                            <img src="https://placehold.co/600x400/C28B00/FFFFFF?text=VOCI+Branding" alt="Woman speaking confidently" class="img-fluid rounded-top-3" onerror="this.onerror=null;this.src='https://placehold.co/600x400/C28B00/FFFFFF?text=VOCI+Branding';">
-                            <span class="resource-category bg-voci-gold text-white rounded-pill px-3 py-1">Article</span>
+                <div class="col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="pillar-card" id="pillar-lead">
+                        <div class="icon-box">
+                            <i class="fas fa-compass"></i>
                         </div>
-                        <div class="resource-content p-4">
-                            <div class="resource-meta small text-muted mb-2">
-                                <span><i class="far fa-calendar-alt me-1"></i> November 1, 2025</span>
-                                <span class="ms-3"><i class="fas fa-comment-dots me-1"></i> 15 Comments</span>
-                            </div>
-                            <h3 class="fw-bold mb-2"><a href="resources.html" class="text-voci-dark-blue text-decoration-none">Crafting Your Authentic Personal Brand Online</a></h3>
-                            <p class="text-muted small">Tips and strategies to define and showcase your unique value proposition in the digital space for maximum impact.</p>
-                            <a href="resources.html" class="resource-link text-voci-gold text-decoration-none fw-bold">Read More <i class="fas fa-arrow-right ms-1"></i></a>
-                        </div>
+                        <h3 class="fw-bold text-voci-dark-blue">Principled Leadership</h3>
+                        <p>Raise leaders grounded in strong ethics, resilience, and a vision for societal transformation.</p>
+                         <ul class="list-unstyled modules-list">
+                            <li><i class="fas fa-check-circle"></i> Foundations of Leadership</li>
+                            <li><i class="fas fa-check-circle"></i> Ethical Decision-Making</li>
+                            <li><i class="fas fa-check-circle"></i> Team Management & Delegation</li>
+                            <li><i class="fas fa-check-circle"></i> Leading for Societal Good</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-5 animate__animated animate__fadeInUp">
-                <a href="resources.html" class="btn btn-voci-dark-blue btn-lg shadow-lg">View All Resources <i class="fas fa-book-reader ms-2"></i></a>
+            <div class="text-center mt-5">
+                <a href="programs.html" class="btn btn-voci-blue btn-lg">See Full Program Details <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
         </div>
     </section>
+
+    <!-- Spheres of Influence Section -->
+    <section id="spheres-section" class="py-5 bg-white">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle text-voci-gold">OUR FOCUS</span>
+                <h2 class="section-title text-voci-dark-blue">Spheres of Influence</h2>
+                <p class="section-description text-muted">We empower leaders to apply their skills in the specific areas they are called to transform. Find your sphere and start your journey.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch animate__animated animate__fadeInUp">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-landmark"></i></div>
+                        <h4>Government</h4>
+                        <p>Seeking those with a heart for public service, law, or policy.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-chart-line"></i></div>
+                        <h4>Economics</h4>
+                        <p>Identifying entrepreneurs and business leaders called to ethical practices.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-flask"></i></div>
+                        <h4>Science & Technology</h4>
+                        <p>Connecting with innovators and thinkers in research and technology.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.3s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-church"></i></div>
+                        <h4>Church</h4>
+                        <p>Partnering with those in ministry, theology, and spiritual leadership.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch animate__animated animate__fadeInUp">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-users"></i></div>
+                        <h4>Family</h4>
+                        <p>Equipping parents, counsellors, and community advocates.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h4>Education</h4>
+                        <p>Engaging with teachers, students, and school administrators.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-bullhorn"></i></div>
+                        <h4>Communication</h4>
+                        <p>Nurturing journalists, artists, marketers, and PR professionals.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.3s">
+                    <div class="sphere-card">
+                        <div class="sphere-icon"><i class="fas fa-film"></i></div>
+                        <h4>Arts & Entertainment</h4>
+                        <p>Seeking out artists, musicians, and performers to transform culture.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-5">
+                <a href="about.html#spheres" class="btn btn-voci-blue btn-lg">Learn More About the Spheres <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Initiatives Section -->
+    <section id="initiatives" class="py-5 bg-light-blue">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle text-voci-red">HOW WE DO IT</span>
+                <h2 class="section-title text-voci-dark-blue">Our Key Initiatives</h2>
+                <p class="section-description text-muted">VOCI achieves its mission through a structured blend of training, mentorship, and real-world application.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp">
+                    <div class="initiative-card">
+                        <div class="initiative-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <h4>Workshops & Training</h4>
+                        <p>Hands-on sessions (both virtual and in-person) covering our core pillars.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="initiative-card">
+                        <div class="initiative-icon"><i class="fas fa-microphone-alt"></i></div>
+                        <h4>VOCI Speaker Series</h4>
+                        <p>Inviting influential leaders and communicators to share their insights and journeys.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="initiative-card">
+                        <div class="initiative-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h4>VOCI Impact Projects</h4>
+                        <p>Community outreach where members apply their skills to real-world challenges.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp">
+                    <div class="initiative-card">
+                        <div class="initiative-icon"><i class="fas fa-user-friends"></i></div>
+                        <h4>Mentorship Program</h4>
+                        <p>Pairing experienced leaders with mentees and peers for personalized guidance.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="initiative-card">
+                        <div class="initiative-icon"><i class="fas fa-trophy"></i></div>
+                        <h4>Annual Competitions</h4>
+                        <p>Campus-wide public speaking and pitching events to showcase talent.</p>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4 d-flex align-items-stretch animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="initiative-card">
+                        <div class="initiative-icon"><i class="fas fa-globe"></i></div>
+                        <h4>Digital Platform</h4>
+                        <p>Sharing knowledge through our website, blog, podcast, and YouTube channel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Calendar Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-subtitle text-voci-gold">CALENDAR</span>
+                <h2 class="section-title text-voci-dark-blue">What's Next?</h2>
+                <p class="section-description text-muted">Stay informed about our key dates and upcoming events. We'd love for you to join us!</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Event 1 -->
+                <div class="col-lg-10 col-xl-8 animate__animated animate__fadeInUp">
+                    <div class="event-calendar-item">
+                        <div class="event-calendar-date">
+                            <div class="day">13-22</div>
+                            <div class="month">November</div>
+                        </div>
+                        <div class="event-calendar-details">
+                            <h5>Application Window: 2026 Q1 Cohort (MUT)</h5>
+                            <p>Applications are open for our first cohort, focusing on students at Murang'a University of Technology.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event 2 -->
+                <div class="col-lg-10 col-xl-8 animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="event-calendar-item">
+                        <div class="event-calendar-date">
+                            <div class="day">26</div>
+                            <div class="month">November</div>
+                        </div>
+                        <div class="event-calendar-details">
+                            <h5>VOCI Vision Launch</h5>
+                            <p>Our official launch event! Join us at MUT, TB2 F1.2 from 5:00 PM - 6:30 PM to hear the vision.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Event 3 -->
+                <div class="col-lg-10 col-xl-8 animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="event-calendar-item">
+                        <div class="event-calendar-date">
+                            <div class="day">TBA</div>
+                            <div class="month">December</div>
+                        </div>
+                        <div class="event-calendar-details">
+                            <h5>Annual Vision Board Workshop</h5>
+                            <p>An upcoming session dedicated to helping our new members and community plan and visualize their goals for the new year.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-5">
+                <a href="events.html" class="btn btn-voci-blue btn-lg">See Full Events Page <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+        </div>
+    </section>
+
 
     <!-- CTA Section -->
     <section class="cta-section py-5 text-white bg-voci-dark-blue animate__animated animate__fadeIn">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8 mb-4 mb-lg-0 text-center text-lg-start animate__animated animate__fadeInLeft">
-                    <h2 class="mb-3 display-5 fw-bold text-white">Applications for 2025/2026 are Open!</h2>
+                    <h2 class="mb-3 display-5 fw-bold text-white">Applications for 2026 Q1 Cohort (MUT) are Open!</h2>
                     <p class="lead mb-0">Join a global community of change-makers. Applications close November 22nd, 2025.</p>
                 </div>
                 <div class="col-lg-4 text-center text-lg-end animate__animated animate__fadeInRight">
-                    <a href="https://bit.ly/VOCIAPP" target="_blank" class="btn btn-voci-gold btn-lg px-4 me-3 shadow-lg">Apply Today! <i class="fas fa-edit ms-2"></i></a>
+                    <a href="https://bit.ly/VOCIAPP" target="_blank" class="btn btn-voci-gold btn-lg px-4 me-3 shadow-lg">Apply Now! <i class="fas fa-edit ms-2"></i></a>
                     <a href="contact.html" class="btn btn-outline-light btn-lg px-4 shadow-lg">Contact Us <i class="fas fa-envelope ms-2"></i></a>
                 </div>
             </div>
@@ -542,13 +736,12 @@
                         <img src="VOCI OFFICIAL LOGO.png" alt="Voice of Change Initiative Official Logo" height="80" class="footer-logo mb-3 rounded-circle border border-2 border-white">
                         <p>The Voice of Change Initiative (VOCI) is a transformative movement dedicated to empowering individuals through exceptional communication, authentic personal branding, and principled leadership. We are committed to fostering positive change globally.</p>
                         <div class="social-links mt-4">
-  <a href="https://www.tiktok.com/@vociglobal" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-    
-<a href="https://x.com/VociGlobal" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-  <a href="https://www.instagram.com/vociglobal/" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-  <a href="https://www.linkedin.com/in/voci-global-3034b5361/" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-  <a href="https://www.youtube.com/@VociGlobal" class="btn btn-outline-light btn-social-square" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-</div>
+                            <a href="https://www.tiktok.com/@vociglobal" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://x.com/VociGlobal" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/vociglobal/" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/voci-global-3034b5361/" class="btn btn-outline-light btn-social-square me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.youtube.com/@VociGlobal" class="btn btn-outline-light btn-social-square" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2 mb-5 mb-sm-0">
@@ -556,7 +749,7 @@
                         <h5 class="footer-title fw-bold text-voci-gold mb-3">Quick Links</h5>
                         <ul class="list-unstyled">
                             <li><a href="index.html" class="text-white text-decoration-none py-1 d-block">Home</a></li>
-                            <li><a href="about.html" class="text-white text-decoration-none py-1 d-block">About Us</a></li>
+                            <li><a href="about.html" classs="text-white text-decoration-none py-1 d-block">About Us</a></li>
                             <li><a href="programs.html" class="text-white text-decoration-none py-1 d-block">Programs</a></li>
                             <li><a href="events.html" class="text-white text-decoration-none py-1 d-block">Events</a></li>
                             <li><a href="resources.html" class="text-white text-decoration-none py-1 d-block">Resources</a></li>
@@ -585,13 +778,13 @@
                             </li>
                             <li class="d-flex align-items-center mb-2">
                                 <i class="fas fa-phone-alt text-voci-blue me-3"></i>
-                                <span>+254 707 897 640</span>
+                                D<span>+254 707 897 640</span>
                             </li>
                             <li class="d-flex align-items-center mb-2">
                                 <i class="fas fa-envelope text-voci-blue me-3"></i>
                                 <span>vociglobal@gmail.com</span>
                             </li>
-                            <li class="d-flex align-items-center">
+                            <li class="d-flex align-items: center;">
                                 <i class="fas fa-clock text-voci-blue me-3"></i>
                                 <span>Mon - Fri: 9:00 AM - 5:00 PM EAT</span>
                             </li>
@@ -617,12 +810,12 @@
         </div>
     </footer>
 
-    <!-- Back to Top -->
+    <!-- Back to Top (Global) -->
     <a href="#" class="back-to-top btn btn-voci-gold animate__animated animate__fadeInUp animate__faster">
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- jQuery -->
@@ -631,7 +824,7 @@
     <!-- Slick Slider JS -->
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     
-    <!-- Custom JavaScript Files -->
+    <!-- Custom JavaScript Files (Global) -->
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
     
@@ -641,7 +834,7 @@
             // Preloader fade out
             setTimeout(function() {
                 $('.preloader').fadeOut('slow');
-            }, 500);
+            }, 500); // Adjust time as needed
 
             // Initialize Slick Slider for testimonials
             $('.testimonial-slider').slick({
@@ -664,63 +857,42 @@
                 ]
             });
 
-            // Update application deadline countdown
+            // Countdown Timer Logic
             function updateCountdown() {
-                // Set the deadline date: November 22, 2025
-                // Note: JavaScript months are 0-indexed (0=Jan, 10=Nov)
-                const deadline = new Date(Date.UTC(2025, 10, 22, 23, 59, 59)); // Using UTC to be safe
-                const now = new Date();
+                const countdownElement = document.getElementById('countdown-timer');
+                if (!countdownElement) return;
+
+                // Set deadline to November 22, 2025, 23:59:59 EAT (East Africa Time, UTC+3)
+                const deadline = new Date("2025-11-22T23:59:59+03:00").getTime();
+                const now = new Date().getTime();
                 const diff = deadline - now;
 
                 if (diff <= 0) {
-                    $('.application-banner').html('<p class="mb-0">Applications for 2025-2026 are now closed. Stay tuned for future opportunities!</p>');
-                    // Also update hero button
-                    const heroApplyButton = document.querySelector('.hero-section .btn-voci-gold');
-                    if (heroApplyButton) {
-                        heroApplyButton.textContent = 'Applications Closed';
-                        heroApplyButton.href = '#';
-                        heroApplyButton.classList.add('disabled');
-                    }
-                    // Also update CTA button
-                     const ctaApplyButton = document.querySelector('.cta-section .btn-voci-gold');
-                    if (ctaApplyButton) {
-                        ctaApplyButton.textContent = 'Applications Closed';
-                        ctaApplyButton.href = '#';
-                        ctaApplyButton.classList.add('disabled');
-                    }
+                    countdownElement.innerHTML = "Applications are closed.";
+                    // Also update banners and buttons
+                    $('.application-banner p').html('Applications for the 2026 Q1 Cohort are now closed. Stay tuned for future opportunities!');
+                    $('.application-banner a').hide();
+                    $('.hero-section .btn-voci-gold').text('Applications Closed').addClass('disabled').attr('href', '#');
+                    $('.cta-section .btn-voci-gold').text('Applications Closed').addClass('disabled').attr('href', '#');
+                    $('.cta-section p.lead').text('Stay tuned for our next cohort announcement.');
                     return;
                 }
 
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-                const countdownElement = document.querySelector('.application-banner .countdown');
-                const bannerText = document.querySelector('.application-banner p');
                 
-                if (bannerText) {
-                     bannerText.innerHTML = `Applications for the 2025-2026 VOCI Cohort are NOW OPEN!`;
-                }
-
-                if (countdownElement) {
-                    countdownElement.innerHTML = `Time remaining: <strong>${days}d ${hours}h ${minutes}m</strong>`;
-                } else {
-                    const newCountdownElement = document.createElement('span');
-                    newCountdownElement.className = 'countdown';
-                    newCountdownElement.innerHTML = `Time remaining: <strong>${days}d ${hours}h ${minutes}m</strong>`;
-                    document.querySelector('.application-banner').appendChild(newCountdownElement);
-                }
+                countdownElement.innerHTML = `Time remaining: <strong>${days}d ${hours}h ${minutes}m</strong>`;
             }
 
-            updateCountdown();
+            updateCountdown(); // Initial call
             setInterval(updateCountdown, 60000); // Update every minute
-
         });
     </script>
-    <script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script src="/_vercel/speed-insights/script.js"></script>
-<script src="/_vercel/insights/script.js"></script>
 </body>
 </html>
+}
+
+{
+type: uploaded file
+fileName: VOCIAPP/VOCI OBJECTIVES.png

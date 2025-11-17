@@ -1,11 +1,10 @@
-/* utility-pages.css - Specific styles for Privacy Policy, Terms of Service, etc. */
+/* utility-pages.css - Specific styles for legal, success, and other sub-pages */
 
-/* Page Header / Hero Section for Utility Pages */
-.utility-hero-section {
-    background: linear-gradient(rgba(26, 42, 68, 0.8), rgba(26, 42, 68, 0.8)), url('https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center / cover;
-    background-position: center;
+/* Page Header / Hero Section */
+.utility-header-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('VOCI\ purpose.png') no-repeat center center;
     background-size: cover;
-    min-height: 40vh; /* Slightly shorter hero for utility pages */
+    min-height: 40vh; /* Shorter hero for utility pages */
     padding-top: 90px;
     position: relative;
     overflow: hidden;
@@ -16,98 +15,140 @@
     justify-content: center;
 }
 
-.utility-hero-section h1 {
-    font-size: 3rem;
+.utility-header-section h1 {
+    font-size: 2.8rem;
     font-weight: 700;
-    color: white; /* Add this line */
+    color: white;
 }
-.utility-hero-section p.lead {
+
+.utility-header-section p.lead {
     font-size: 1.1rem;
-    max-width: 700px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Content Section Styling */
-.content-block {
-    background-color: white; /* Content block background */
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    line-height: 1.8; /* Increased line height for readability */
-    color: var(--voci-gray-text);
+/* Main Content Box */
+.utility-content-section {
+    background-color: var(--voci-light-blue); /* Light blue background for the page */
 }
 
-.content-block h2 {
-    font-size: 2rem;
-    margin-bottom: 25px;
+.utility-content-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    line-height: 1.8;
+}
+
+.utility-content-box h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
     color: var(--voci-dark-blue);
+    border-bottom: 2px solid var(--voci-gold);
+    padding-bottom: 8px;
+    margin-bottom: 1rem;
 }
 
-.content-block h3 {
-    font-size: 1.6rem;
-    margin-top: 35px;
-    margin-bottom: 15px;
-    color: var(--voci-blue); /* Section headers within content */
-}
-
-.content-block p {
-    margin-bottom: 15px;
-}
-
-.content-block ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 25px;
-}
-
-.content-block ul.content-list li {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 8px;
+.utility-content-box p, 
+.utility-content-box li {
     color: var(--voci-gray-text);
-}
-.content-block ul.content-list li i {
-    font-size: 0.8rem;
-    margin-right: 10px;
+    font-size: 1rem;
 }
 
-/* Responsive Adjustments */
+.utility-content-box ul {
+    padding-left: 2rem;
+}
+
+.utility-content-box ul li {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.utility-content-box ul li::before {
+    content: '\f00c'; /* Font Awesome check icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--voci-blue);
+    position: absolute;
+    left: -1.8rem;
+    top: 5px;
+}
+
+/* Success Page Specific */
+.success-icon {
+    font-size: 5rem;
+    line-height: 1;
+}
+
+/* Application Banner Styles */
+.application-banner {
+    background-color: var(--voci-red);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    top: 70px; 
+    width: 100%;
+    z-index: 1029; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.application-banner p {
+    margin-bottom: 0.25rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.application-banner a {
+    font-weight: 700;
+    text-decoration: underline;
+    color: var(--voci-gold) !important;
+}
+.application-banner a:hover {
+    color: #ffffff !important;
+}
+.application-banner .countdown {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fffc;
+}
+/* Adjust main content padding */
+body {
+    padding-top: 140px; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex-grow: 1; /* Ensures main content pushes footer down */
+}
+.navbar.fixed-top {
+    top: 0; 
+}
+
+/* Responsive */
 @media (max-width: 991.98px) {
-    .utility-hero-section h1 {
-        font-size: 2.5rem;
+    .application-banner {
+        top: 60px; /* Adjust for smaller navbar */
     }
-    .utility-hero-section p.lead {
+    body {
+        padding-top: 130px; /* Adjust for smaller navbar + banner (approx) */
+    }
+}
+@media (max-width: 767.98px) {
+    .utility-header-section h1 {
+        font-size: 2.2rem;
+    }
+    .utility-header-section p.lead {
         font-size: 1rem;
     }
-    .content-block {
-        padding: 30px;
+    .application-banner {
+        padding: 0.75rem;
     }
-    .content-block h2 {
-        font-size: 1.8rem;
-    }
-    .content-block h3 {
-        font-size: 1.4rem;
-    }
-}
-
-@media (max-width: 767.98px) {
-    .utility-hero-section h1 {
-        font-size: 2rem;
-    }
-    .utility-hero-section p.lead {
+    .application-banner p {
         font-size: 0.9rem;
     }
-    .content-block {
-        padding: 20px;
-    }
-    .content-block h2 {
-        font-size: 1.5rem;
-    }
-    .content-block h3 {
-        font-size: 1.2rem;
-    }
-    .content-block p, .content-block ul.content-list li {
+    .application-banner .countdown {
         font-size: 0.9rem;
+    }
+    body {
+        padding-top: 120px; /* Adjust for smaller navbar + banner */
     }
 }
