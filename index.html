@@ -17,40 +17,9 @@
     <!-- Home Page Specific CSS -->
     <link rel="stylesheet" href="home.css">
     <style>
-        /* Make Application Banner more prominent */
-        .application-banner {
-            background-color: var(--voci-red); /* Changed to red */
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            position: fixed;
-            top: 70px; /* Assuming navbar height is 70px */
-            width: 100%;
-            z-index: 1029; /* Just below the navbar */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .application-banner p {
-            margin-bottom: 0.25rem;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-        .application-banner a {
-            font-weight: 700;
-            text-decoration: underline;
-            color: var(--voci-gold) !important; /* Make link stand out */
-        }
-        .application-banner a:hover {
-            color: #ffffff !important;
-        }
-        .application-banner .countdown {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #fffc;
-        }
-
-        /* Adjust main content padding to account for banner */
+        /* Main body padding */
         body {
-            padding-top: 140px; /* Navbar height + Banner height (approx) */
+            padding-top: 70px; /* Navbar height only */
         }
         .navbar.fixed-top {
             top: 0; /* Reset navbar to top */
@@ -66,7 +35,7 @@
             justify-content: center;
             text-align: center;
             color: white;
-            padding-top: 80px; /* Adjusted padding */
+            padding-top: 20px;
             padding-bottom: 60px;
         }
 
@@ -293,13 +262,10 @@
 
         @media (max-width: 991.98px) {
             .hero-section {
-                padding-top: 150px; /* Adjust for navbar + banner */
-            }
-            .application-banner {
-                top: 60px; /* Adjust for smaller navbar */
+                padding-top: 20px; /* Adjust for navbar only */
             }
             body {
-                padding-top: 130px; /* Adjust for smaller navbar + banner (approx) */
+                padding-top: 70px; /* Navbar height only */
             }
             .pillar-card {
                 padding: 1.5rem;
@@ -315,17 +281,8 @@
             .hero-section p.lead {
                 font-size: 1.2rem;
             }
-            .application-banner {
-                padding: 0.75rem;
-            }
-            .application-banner p {
-                font-size: 0.9rem;
-            }
-            .application-banner .countdown {
-                font-size: 0.9rem;
-            }
             body {
-                padding-top: 120px; /* Adjust for smaller navbar + banner */
+                padding-top: 70px; /* Navbar height only */
             }
             .event-calendar-item {
                 flex-direction: column;
@@ -375,19 +332,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
-                    <li class="nav-item ms-lg-3">
-                        <a class="btn btn-voci-gold text-dark" href="https://bit.ly/VOCIAPP" target="_blank">Apply Now</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
-    
-    <!-- Application Banner -->
-    <div class="application-banner shadow-sm">
-        <p class="mb-0">Join VOCI 2026! Applications are open for our upcoming cohorts. <a href="https://bit.ly/VOCIAPP" target="_blank">Apply Today!</a></p>
-        <span class="countdown" id="countdown-timer"></span>
-    </div>
 
     <!-- Hero Section -->
     <header class="hero-section" id="hero-section">
@@ -397,7 +346,6 @@
                 Join VOCI 2026 and develop exceptional communication skills, authentic personal branding, and principled leadership to create meaningful impact.
             </p>
             <div class="d-flex justify-content-center gap-3 animate__animated animate__fadeInUp animate__delay-2s">
-                <a href="https://bit.ly/VOCIAPP" target="_blank" class="btn btn-voci-gold btn-lg px-5 shadow-lg">Apply Now <i class="fas fa-edit ms-2"></i></a>
                 <a href="#about-section" class="btn btn-outline-light btn-lg px-5 shadow-lg">Learn More <i class="fas fa-arrow-down ms-2"></i></a>
             </div>
         </div>
