@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST - VOCI Cohort 1 | Voice of Change Initiative</title>
+    <meta name="description" content="VOCI Cohort 1 TO DO LIST - 59 actionable tasks across 3 strategic phases to drive growth and member engagement.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Global CSS -->
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="home.css">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+    <style>
+        body {
+            padding-top: 70px;
+        }
+
+        .todo-hero {
+            background: linear-gradient(135deg, var(--voci-red) 0%, var(--voci-dark-blue) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .todo-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .todo-hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .phase-container {
+            margin-bottom: 60px;
+        }
+
+        .phase-header {
+            background: linear-gradient(135deg, var(--voci-blue) 0%, #0056b3 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 0;
+        }
+
+        .phase-header h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .phase-header .phase-period {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .phase-emoji {
+            font-size: 2rem;
+        }
+
+        .todo-list-container {
+            background: white;
+            border: 2px solid var(--voci-blue);
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            padding: 30px;
+        }
+
+        .todo-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-left: 4px solid var(--voci-blue);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .todo-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+
+        .todo-item.urgent {
+            border-left-color: var(--voci-red);
+            background-color: #fff5f5;
+        }
+
+        .todo-item.high {
+            border-left-color: var(--voci-gold);
+            background-color: #fffaf0;
+        }
+
+        .todo-item.medium {
+            border-left-color: var(--voci-blue);
+            background-color: #f0f8ff;
+        }
+
+        .todo-header {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .todo-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--voci-dark-blue);
+            margin: 0;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .priority-urgent {
+            background-color: #ffcccc;
+            color: #c00;
+        }
+
+        .priority-high {
+            background-color: #ffe6cc;
+            color: #c65911;
+        }
+
+        .priority-medium {
+            background-color: #ccdfff;
+            color: #004d99;
+        }
+
+        .todo-description {
+            color: var(--voci-gray-text);
+            margin: 10px 0 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .owner-info {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .subtasks {
+            background: rgba(0,0,0,0.02);
+            padding: 12px 15px;
+            border-left: 2px solid #ccc;
+            border-radius: 4px;
+            margin: 12px 0;
+        }
+
+        .subtasks p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--voci-gray-text);
+            margin-bottom: 6px;
+        }
+
+        .subtasks p:last-child {
+            margin-bottom: 0;
+        }
+
+        .success-metrics {
+            background: #f0f8f0;
+            padding: 12px 15px;
+            border-left: 3px solid #27ae60;
+            border-radius: 4px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: var(--voci-gray-text);
+        }
+
+        .success-metrics strong {
+            color: #27ae60;
+        }
+
+        .summary-box {
+            background: white;
+            border: 2px solid var(--voci-blue);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 15px;
+            background: var(--voci-bg-gradient);
+            border-radius: 8px;
+        }
+
+        .stat .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--voci-blue);
+            line-height: 1;
+        }
+
+        .stat .label {
+            font-size: 0.85rem;
+            color: var(--voci-gray-text);
+            margin-top: 8px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--voci-dark-blue);
+            margin-top: 50px;
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--voci-blue);
+            display: inline-block;
+        }
+
+        .focus-area {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--voci-blue);
+        }
+
+        .focus-area h4 {
+            color: var(--voci-dark-blue);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .focus-area ul {
+            margin-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .focus-area li {
+            color: var(--voci-gray-text);
+            margin-bottom: 8px;
+        }
+
+        .role-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--voci-blue);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .role-card strong {
+            color: var(--voci-dark-blue);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .role-card p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: var(--voci-gray-text);
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--voci-blue) 0%, var(--voci-dark-blue) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+
+        .cta-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .todo-hero h1 {
+                font-size: 2rem;
+            }
+
+            .phase-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .summary-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="VOCI OFFICIAL LOGO.png" alt="VOCI Logo" height="40" class="rounded-circle border border-2 border-white">
+                <span class="ms-2">VOCI</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="progress-report.html">Progress Report</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="todo-list.html">TO DO LIST</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="join.html">Join VOCI</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="todo-hero">
+        <div class="container">
+            <h1>VOCI TO DO LIST</h1>
+            <p class="subtitle">Cohort 1 Growth & Member Engagement Strategy</p>
+            <p class="subtitle" style="font-size: 1rem; opacity: 0.85;">59 Tasks | 10 Urgent | 28 High Priority | January - March 2026</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <!-- Summary Box -->
+        <div class="summary-box">
+            <h3 style="color: var(--voci-dark-blue); margin-bottom: 20px;">Task Summary</h3>
+            <p>VOCI identified 7 major focus areas requiring systematic management. This TO DO LIST breaks down 59 specific, actionable tasks with clear ownership, deadlines, and success metrics.</p>
+            <div class="summary-stats">
+                <div class="stat">
+                    <div class="number">59</div>
+                    <div class="label">Total Tasks</div>
+                </div>
+                <div class="stat">
+                    <div class="number">10</div>
+                    <div class="label">Urgent</div>
+                </div>
+                <div class="stat">
+                    <div class="number">28</div>
+                    <div class="label">High Priority</div>
+                </div>
+                <div class="stat">
+                    <div class="number">3</div>
+                    <div class="label">Strategic Phases</div>
+                </div>
+            </div>
+        </div>
+
+        <section class="mb-5">
+            <h2 class="section-title">7 Core Focus Areas</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="focus-area">
+                        <h4><i class="fas fa-book"></i> Curriculum Sessions</h4>
+                        <p>Structured, quality session delivery and content management</p>
+                    </div>
+                    <div class="focus-area">
+                        <h4><i class="fas fa-handshake"></i> Peer Mentorship</h4>
+                        <p>Peer mentorship groups and buddy system development</p>
+                    </div>
+                    <div class="focus-area">
+                        <h4><i class="fas fa-clipboard-check"></i> Accountability</h4>
+                        <p>Tracking attendance, assignments, and engagement</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="focus-area">
+                        <h4><i class="fas fa-crown"></i> Leadership</h4>
+                        <p>ELT development and hub leadership structures</p>
+                    </div>
+                    <div class="focus-area">
+                        <h4><i class="fas fa-database"></i> Resources</h4>
+                        <p>Knowledge repository and learning materials</p>
+                    </div>
+                    <div class="focus-area">
+                        <h4><i class="fas fa-images"></i> Content</h4>
+                        <p>Social media, documentation, and communications</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="focus-area">
+                        <h4><i class="fas fa-poll"></i> Assessment Forms</h4>
+                        <p>Evaluation mechanisms and member feedback systems</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 1 -->
+        <section class="phase-container">
+            <div class="phase-header">
+                <h2><span class="phase-emoji">🔴</span> PHASE 1: IMMEDIATE ACTIONS</h2>
+                <div class="phase-period"><i class="fas fa-calendar"></i> January 28 - February 7, 2026</div>
+            </div>
+            <div class="todo-list-container">
+                <div class="todo-item urgent">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Conduct Member Audit & Categorization</h4>
+                        <span class="priority-badge priority-urgent">URGENT</span>
+                    </div>
+                    <p class="owner-info">Owner: VOCI Admin Lead + ELT</p>
+                    <p class="todo-description">Create comprehensive member database categorizing all Cohort 1 participants into 4 groups: (A) Committed, (B) Inconsistent, (C) Non-attending, (D) Not-yet-engaged</p>
+                    <div class="subtasks">
+                        <p>✓ Create member tracking spreadsheet (Name, Contact, Category, Attendance Count, Last Session Date)</p>
+                        <p>✓ Verify contact information accuracy</p>
+                        <p>✓ Mark attendance status for each member through Jan 27</p>
+                        <p>✓ Flag members who need immediate outreach</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> 100% of members categorized; spreadsheet accessible to ELT
+                    </div>
+                </div>
+
+                <div class="todo-item urgent">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Personal Outreach to Non-Attending Members</h4>
+                        <span class="priority-badge priority-urgent">URGENT</span>
+                    </div>
+                    <p class="owner-info">Owner: Assigned ELT Members (assign 2-3 per member)</p>
+                    <p class="todo-description">Personal phone calls and WhatsApp messages to members who haven't attended any sessions. Understand barriers and offer solutions.</p>
+                    <div class="subtasks">
+                        <p>✓ Create call/chat script (friendly, non-judgmental tone)</p>
+                        <p>✓ Schedule calls for Jan 28-Feb 2 (vary times for availability)</p>
+                        <p>✓ Document responses and barriers identified</p>
+                        <p>✓ Offer 3 options: (1) Makeup intro session, (2) Attend future sessions, (3) Join hub-only participation</p>
+                        <p>✓ Get commitment from each member or note graceful exit</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> 100% contact attempted; 80%+ responses; At least 50% willing to re-engage
+                    </div>
+                </div>
+
+                <div class="todo-item urgent">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Complete Active Listening & Feedback Assessment Form</h4>
+                        <span class="priority-badge priority-urgent">URGENT</span>
+                    </div>
+                    <p class="owner-info">Owner: Curriculum Lead</p>
+                    <p class="todo-description">Finalize and launch the assessment form for evaluating Active Listening and Feedback skills.</p>
+                    <div class="subtasks">
+                        <p>✓ Draft assessment form (10-15 questions, mix of self-assessment and practical scenarios)</p>
+                        <p>✓ Review with VOCI ELT for alignment</p>
+                        <p>✓ Digitize (Google Form or similar)</p>
+                        <p>✓ Share with members by Feb 5</p>
+                        <p>✓ Set response deadline (Feb 10)</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> Form created and shared; 80%+ member completion by Feb 10
+                    </div>
+                </div>
+
+                <div class="todo-item urgent">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Establish Content Creation Schedule</h4>
+                        <span class="priority-badge priority-urgent">URGENT</span>
+                    </div>
+                    <p class="owner-info">Owner: Content Lead</p>
+                    <p class="todo-description">Create a structured weekly content calendar to ensure consistent social media presence and engagement.</p>
+                    <div class="subtasks">
+                        <p>✓ Draft weekly content plan (Mon-Fri posts minimum)</p>
+                        <p>✓ Assign rotating content creators (members + ELT)</p>
+                        <p>✓ Content types: Session highlights, member spotlights, hub updates, motivational messages</p>
+                        <p>✓ Set posting schedule (specific times for optimal reach)</p>
+                        <p>✓ Create content planning template</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> Schedule created; Content calendar live by Jan 31; 3+ posts per week starting Feb 1
+                    </div>
+                </div>
+
+                <div class="todo-item high">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Check-in with Inconsistent Attendees</h4>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <p class="owner-info">Owner: Assigned Peer Mentors</p>
+                    <p class="todo-description">Reach out to members who attended some sessions but missed others. Offer support and clarify obstacles.</p>
+                    <div class="subtasks">
+                        <p>✓ Send supportive WhatsApp messages to each member</p>
+                        <p>✓ Ask: "What's been preventing your attendance? How can we help?"</p>
+                        <p>✓ Offer recorded sessions and makeup materials</p>
+                        <p>✓ Suggest peer mentoring buddy assignment</p>
+                        <p>✓ Document patterns and common barriers</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> Contact made with all inconsistent attendees; Support plan created for each
+                    </div>
+                </div>
+
+                <div class="todo-item high">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Establish Clear Attendance Expectations</h4>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <p class="owner-info">Owner: Founder + VOCI ELT</p>
+                    <p class="todo-description">Draft and communicate clear attendance, participation, and commitment expectations for Cohort 1.</p>
+                    <div class="subtasks">
+                        <p>✓ Define minimum attendance requirement (e.g., 80% of core sessions)</p>
+                        <p>✓ Create tiered participation levels: Core, Hub-focused, Flexible</p>
+                        <p>✓ Document expectations for each level</p>
+                        <p>✓ Draft communication email/WhatsApp</p>
+                        <p>✓ Share with all members by Feb 3</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> Clear document created and communicated; Member acknowledgment obtained
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 2 -->
+        <section class="phase-container">
+            <div class="phase-header">
+                <h2><span class="phase-emoji">🟠</span> PHASE 2: RE-ENGAGEMENT CAMPAIGN</h2>
+                <div class="phase-period"><i class="fas fa-calendar"></i> February 7-21, 2026</div>
+            </div>
+            <div class="todo-list-container">
+                <div class="todo-item high">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Create "Catch-Up" Packages for Missing Members</h4>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <p class="owner-info">Owner: Admin + Mentorship Lead</p>
+                    <p class="todo-description">Compile comprehensive "catch-up packages" for members who missed sessions, including recordings, notes, assignments, and deadlines.</p>
+                    <div class="subtasks">
+                        <p>✓ Create individual packages for each member based on missed sessions</p>
+                        <p>✓ Include: Recorded session link, written summary, assignment brief, deadline, mentor contact</p>
+                        <p>✓ Customize messaging (encouraging, supportive tone)</p>
+                        <p>✓ Share packages via WhatsApp by Feb 7</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> Personalized packages sent to all gap members; 60%+ engage with materials
+                    </div>
+                </div>
+
+                <div class="todo-item high">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Launch Low-Pressure Intro/Hub Events</h4>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <p class="owner-info">Owner: Hub Leads</p>
+                    <p class="todo-description">Host informal hub showcase/coffee meetups for non-attending members to reduce pressure and build connection.</p>
+                    <div class="subtasks">
+                        <p>✓ Plan 4 hub spotlight sessions (one per hub)</p>
+                        <p>✓ Casual format: coffee/tea, informal chat, no required participation</p>
+                        <p>✓ Hub leads to share their passion and what the hub offers</p>
+                        <p>✓ Schedule for Feb 9-12 (various times)</p>
+                        <p>✓ Send personalized invitations to non-attending members</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> All 4 hub events held; 40%+ non-attending members attend at least one
+                    </div>
+                </div>
+
+                <div class="todo-item high">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Finalize & Launch Peer Mentorship Groups</h4>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <p class="owner-info">Owner: Mentorship Lead</p>
+                    <p class="todo-description">Complete formation of peer mentorship groups with assigned mentors and create group chats.</p>
+                    <div class="subtasks">
+                        <p>✓ Finalize group composition (3-4 mentees per mentor)</p>
+                        <p>✓ Create WhatsApp groups for each mentorship team</p>
+                        <p>✓ Draft mentor guidelines/playbook</p>
+                        <p>✓ Hold mentor orientation (Feb 8, 1 hour)</p>
+                        <p>✓ Send group welcome messages with expectations</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> All groups created and active; 100% mentor participation
+                    </div>
+                </div>
+
+                <div class="todo-item high">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Launch "The Assignment" Book Club</h4>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <p class="owner-info">Owner: Mentorship Lead + Peer Mentors</p>
+                    <p class="todo-description">Activate the 31-day "The Assignment" by Mike Murdock reading challenge with daily chapter discussions in peer groups.</p>
+                    <div class="subtasks">
+                        <p>✓ Confirm all members have book (or digital access)</p>
+                        <p>✓ Create discussion prompts for each chapter</p>
+                        <p>✓ Send daily chapter reminder + discussion prompt (morning message)</p>
+                        <p>✓ Encourage daily reflections in group chat</p>
+                        <p>✓ Weekly reflection: Member shares key lesson from week's reading</p>
+                        <p>✓ Day 31 celebration: Share completed learnings</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> Book club launched by Feb 7; 70%+ daily engagement; 80%+ completion by Mar 7
+                    </div>
+                </div>
+
+                <div class="todo-item medium">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Compile Member Success Stories</h4>
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </div>
+                    <p class="owner-info">Owner: Content Lead</p>
+                    <p class="todo-description">Document and share inspiring stories of committed members' progress and breakthroughs.</p>
+                    <div class="subtasks">
+                        <p>✓ Interview 3-4 committed members on their VOCI journey</p>
+                        <p>✓ Capture their wins, lessons, and growth</p>
+                        <p>✓ Write 150-200 word testimonials with photos</p>
+                        <p>✓ Share on social media (1 per week, Feb 8, 15, 22)</p>
+                        <p>✓ Feature in weekly WhatsApp updates</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> 3+ success stories documented and shared publicly
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 3 -->
+        <section class="phase-container">
+            <div class="phase-header">
+                <h2><span class="phase-emoji">🟢</span> PHASE 3: SUSTAINABLE SYSTEMS</h2>
+                <div class="phase-period"><i class="fas fa-calendar"></i> February 22 - March 31, 2026</div>
+            </div>
+            <div class="todo-list-container">
+                <div class="todo-item high">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Appoint & Orient Hub Leads</h4>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <p class="owner-info">Owner: Founder</p>
+                    <p class="todo-description">Appoint passionate, committed members as leads for the 4 VOCI Hubs.</p>
+                    <div class="subtasks">
+                        <p>✓ Identify and invite hub lead candidates (1 per hub)</p>
+                        <p>✓ Brief on responsibilities and support available</p>
+                        <p>✓ Conduct hub lead orientation (1.5 hours)</p>
+                        <p>✓ Provide hub leadership toolkit</p>
+                        <p>✓ Establish weekly check-in cadence</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> All 4 hubs have appointed, trained leads by Feb 22
+                    </div>
+                </div>
+
+                <div class="todo-item high">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Implement Member Success Tracking Dashboard</h4>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <p class="owner-info">Owner: Admin Lead</p>
+                    <p class="todo-description">Create and maintain a dashboard tracking key member engagement and progress metrics.</p>
+                    <div class="subtasks">
+                        <p>✓ Metrics tracked: Session attendance %, Assignment submission %, Hub participation, Book club engagement, Peer group check-ins</p>
+                        <p>✓ Create dashboard in Google Sheets or similar (accessible to ELT)</p>
+                        <p>✓ Update weekly with latest data</p>
+                        <p>✓ Color-coding: Green (strong), Yellow (attention needed), Red (at risk)</p>
+                        <p>✓ Monthly review with ELT to identify support needs</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> Dashboard live by Feb 22; Accurate weekly updates; Data drives interventions
+                    </div>
+                </div>
+
+                <div class="todo-item high">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Execute Weekly Social Media Content Plan</h4>
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </div>
+                    <p class="owner-info">Owner: Content Team (rotating members)</p>
+                    <p class="todo-description">Consistent execution of weekly content calendar across all platforms.</p>
+                    <div class="subtasks">
+                        <p>✓ Post minimum 3x per week (WhatsApp Status, Instagram, LinkedIn)</p>
+                        <p>✓ Content mix: Session highlights (15%), member spotlights (15%), hub updates (15%), motivational/educational (40%), announcements (20%), behind-the-scenes (10%)</p>
+                        <p>✓ Create 1 Reel/video piece per week</p>
+                        <p>✓ Monthly newsletter with cohort updates, member highlights, upcoming events</p>
+                        <p>✓ Weekly WhatsApp status "week recap" every Friday</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> Zero weeks missed content; 3x+ weekly posts; 500+ social media reach per post
+                    </div>
+                </div>
+
+                <div class="todo-item medium">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Maintain Session Delivery Schedule</h4>
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </div>
+                    <p class="owner-info">Owner: Curriculum Lead + VOCI ELT</p>
+                    <p class="todo-description">Continue consistent delivery of weekly core sessions with high quality.</p>
+                    <div class="subtasks">
+                        <p>✓ Plan Sessions 6, 7, 8 curriculum topics and materials</p>
+                        <p>✓ Maintain Thursday-Saturday session schedule</p>
+                        <p>✓ Deliver with full preparation and engagement</p>
+                        <p>✓ Record all sessions for asynchronous access</p>
+                        <p>✓ Collect and address feedback each session</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> All sessions delivered on schedule; 75%+ average attendance
+                    </div>
+                </div>
+
+                <div class="todo-item medium">
+                    <div class="todo-header">
+                        <h4 class="todo-title">Conduct Monthly Cohort Progress Reviews</h4>
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </div>
+                    <p class="owner-info">Owner: Founder + VOCI ELT</p>
+                    <p class="todo-description">Monthly meetings to review cohort progress, celebrate wins, and address challenges.</p>
+                    <div class="subtasks">
+                        <p>✓ Schedule monthly ELT meeting (first Monday of month, 2 hours)</p>
+                        <p>✓ Agenda: Attendance review, assignment quality, member feedback, hub progress, content performance, challenges/blockers, next month planning</p>
+                        <p>✓ Document decisions and action items</p>
+                        <p>✓ Share cohort highlights with all members (celebrate progress)</p>
+                    </div>
+                    <div class="success-metrics">
+                        <strong>Success Metrics:</strong> All monthly meetings held; Action items tracked and completed
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supporting Infrastructure -->
+        <section class="mb-5">
+            <h2 class="section-title">Supporting Resources</h2>
+            
+            <h3 style="color: var(--voci-dark-blue); margin-top: 30px; margin-bottom: 20px;">Human Resources & Key Roles</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="role-card">
+                        <strong>Founder</strong>
+                        <p>Brian H.E Ingwee - Overall vision, strategy, major decisions, external relations</p>
+                    </div>
+                    <div class="role-card">
+                        <strong>Curriculum Lead</strong>
+                        <p>Session planning, assignment design, assessment forms</p>
+                    </div>
+                    <div class="role-card">
+                        <strong>Mentorship Lead</strong>
+                        <p>Peer group coordination, mentor training, book club facilitation</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="role-card">
+                        <strong>Content Lead</strong>
+                        <p>Social media, documentation, member spotlights, educational content</p>
+                    </div>
+                    <div class="role-card">
+                        <strong>Admin Lead</strong>
+                        <p>Tracking, reminders, data management, logistics</p>
+                    </div>
+                    <div class="role-card">
+                        <strong>Hub Leads (4)</strong>
+                        <p>Hub-specific activities, resource curation, member engagement</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Metrics -->
+        <section class="mb-5">
+            <h2 class="section-title">March 31 Success Targets</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 style="color: var(--voci-dark-blue); margin-bottom: 15px;">Member Engagement</h4>
+                    <div class="focus-area" style="border: none;">
+                        <ul style="margin-bottom: 0;">
+                            <li>75%+ average session attendance</li>
+                            <li>80%+ assignment submission rate</li>
+                            <li>80%+ book club completion</li>
+                            <li>85%+ hub participation</li>
+                            <li>90%+ member retention</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4 style="color: var(--voci-dark-blue); margin-bottom: 15px;">Program Quality</h4>
+                    <div class="focus-area" style="border: none;">
+                        <ul style="margin-bottom: 0;">
+                            <li>4.2/5 average session quality rating</li>
+                            <li>4.0/5+ mentor satisfaction</li>
+                            <li>80%+ find curriculum useful</li>
+                            <li>85%+ feel part of community</li>
+                            <li>1000+ social media followers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h3>Ready to Drive Change?</h3>
+            <p style="margin-bottom: 25px;">Download the complete VOCI Progress Report for comprehensive analysis and strategic recommendations.</p>
+            <a href="VOCI-Progress-Report-Cohort-1.html" class="btn btn-light" style="color: var(--voci-blue); font-weight: 700; margin-right: 15px;">
+                <i class="fas fa-file-pdf"></i> View Full Report
+            </a>
+            <a href="join.html" class="btn btn-light" style="color: var(--voci-blue); font-weight: 700;">
+                <i class="fas fa-user-plus"></i> Join VOCI
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>About VOCI</h5>
+                    <p>Voice of Change Initiative - Empowering the next generation of leaders through authentic communication and principled leadership.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-white-50">Home</a></li>
+                        <li><a href="progress-report.html" class="text-decoration-none text-white-50">Progress Report</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-white-50">About Us</a></li>
+                        <li><a href="join.html" class="text-decoration-none text-white-50">Join VOCI</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p class="text-white-50">Email: info@voci.com<br>Location: MUT Campus</p>
+                </div>
+            </div>
+            <hr class="bg-white-50">
+            <div class="text-center">
+                <p class="text-white-50 mb-0">&copy; 2026 Voice of Change Initiative. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Preloader Hide -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const preloader = document.querySelector('.preloader');
+            if (preloader) {
+                preloader.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

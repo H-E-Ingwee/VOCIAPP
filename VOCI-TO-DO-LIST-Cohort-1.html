@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOCI TO DO LIST - Cohort 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .report-meta {
+            font-size: 0.95em;
+            color: #666;
+            font-style: italic;
+        }
+        
+        h2 {
+            color: white;
+            background-color: #e74c3c;
+            padding: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        .phase {
+            background-color: #f9f9f9;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        .phase h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .phase-period {
+            background-color: #e3f2fd;
+            padding: 10px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #1976d2;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .todo-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .todo-item.urgent {
+            border-left-color: #e74c3c;
+            background-color: #ffe8e8;
+        }
+        
+        .todo-item.high {
+            border-left-color: #f39c12;
+            background-color: #fff8e8;
+        }
+        
+        .todo-item.medium {
+            border-left-color: #3498db;
+            background-color: #e3f2fd;
+        }
+        
+        .todo-item h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .priority-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        
+        .priority-urgent {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .priority-high {
+            background-color: #f39c12;
+            color: white;
+        }
+        
+        .priority-medium {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .priority-low {
+            background-color: #95a5a6;
+            color: white;
+        }
+        
+        .owner {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .todo-item p {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        
+        .subtask {
+            background-color: rgba(0,0,0,0.02);
+            margin-left: 20px;
+            padding: 10px;
+            border-left: 2px solid #999;
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+        
+        .subtask p {
+            margin-bottom: 5px;
+        }
+        
+        .checkbox {
+            margin-right: 8px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-not-started {
+            background-color: #95a5a6;
+        }
+        
+        .status-in-progress {
+            background-color: #f39c12;
+        }
+        
+        .status-completed {
+            background-color: #27ae60;
+        }
+        
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .summary-table th {
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .summary-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .summary-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .key-area {
+            background-color: #ecf0f1;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 5px solid #34495e;
+        }
+        
+        .key-area h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
+        
+        .key-area ul {
+            margin-left: 20px;
+        }
+        
+        .key-area li {
+            margin-bottom: 8px;
+        }
+        
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .print-friendly {
+            display: none;
+        }
+        
+        @media print {
+            .print-friendly {
+                display: block;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>VOCI OFFICIAL TO DO LIST</h1>
+            <p class="report-meta">Cohort 1 Growth & Member Engagement Strategy | January - March 2026</p>
+        </header>
+
+        <!-- OVERVIEW -->
+        <section>
+            <h2>📋 OVERVIEW & STRATEGIC AREAS</h2>
+            
+            <p style="font-size: 1.1em; margin-bottom: 20px;">As outlined in the progress report, VOCI identified 7 major focus areas requiring systematic management. This TO DO LIST breaks down each area into specific, actionable tasks with clear ownership, deadlines, and success metrics.</p>
+            
+            <div class="key-area">
+                <h3>The 7 Core Focus Areas</h3>
+                <ol style="margin-left: 20px;">
+                    <li><strong>Curriculum Sessions</strong> - Structured, quality session delivery</li>
+                    <li><strong>Peer Mentorship</strong> - Peer mentorship groups and buddy system</li>
+                    <li><strong>Accountability</strong> - Tracking attendance, assignments, engagement</li>
+                    <li><strong>Leadership</strong> - ELT development and hub leadership</li>
+                    <li><strong>Resources</strong> - Knowledge repository and learning materials</li>
+                    <li><strong>Content</strong> - Social media, documentation, and public communication</li>
+                    <li><strong>Assessment Forms & Assignment Feedback</strong> - Evaluation mechanisms and member feedback</li>
+                </ol>
+            </div>
+            
+            <!-- SUMMARY TABLE -->
+            <h3 style="margin-top: 30px;">Task Summary Matrix</h3>
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Area</th>
+                        <th>Total Tasks</th>
+                        <th>Urgent</th>
+                        <th>High Priority</th>
+                        <th>Owner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Curriculum Sessions</td>
+                        <td>8</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>VOCI ELT</td>
+                    </tr>
+                    <tr>
+                        <td>Peer Mentorship</td>
+                        <td>10</td>
+                        <td>1</td>
+                        <td>5</td>
+                        <td>Mentorship Lead</td>
+                    </tr>
+                    <tr>
+                        <td>Accountability</td>
+                        <td>9</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>Admin/ELT</td>
+                    </tr>
+                    <tr>
+                        <td>Leadership</td>
+                        <td>7</td>
+                        <td>1</td>
+                        <td>4</td>
+                        <td>Founder/ELT</td>
+                    </tr>
+                    <tr>
+                        <td>Resources</td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>3</td>
+                        <td>Resource Lead</td>
+                    </tr>
+                    <tr>
+                        <td>Content</td>
+                        <td>9</td>
+                        <td>2</td>
+                        <td>5</td>
+                        <td>Content Team</td>
+                    </tr>
+                    <tr>
+                        <td>Assessment Forms</td>
+                        <td>8</td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>Curriculum Lead</td>
+                    </tr>
+                    <tr style="font-weight: bold; background-color: #e3f2fd;">
+                        <td>TOTAL</td>
+                        <td>59</td>
+                        <td>10</td>
+                        <td>28</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- PHASE 1: IMMEDIATE ACTIONS -->
+        <section>
+            <h2>🔴 PHASE 1: IMMEDIATE ACTIONS (By February 7, 2026)</h2>
+            
+            <div class="phase">
+                <h3>MEMBER ENGAGEMENT & TRIAGE</h3>
+                <div class="phase-period">January 28 - February 7, 2026</div>
+                
+                <div class="todo-item urgent">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        CONDUCT MEMBER AUDIT & CATEGORIZATION
+                        <span class="priority-badge priority-urgent">URGENT</span>
+                    </h4>
+                    <p class="owner">Owner: VOCI Admin Lead + ELT</p>
+                    <p><strong>Description:</strong> Create comprehensive member database categorizing all Cohort 1 participants into 4 groups: (A) Committed, (B) Inconsistent, (C) Non-attending, (D) Not-yet-engaged</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Create member tracking spreadsheet (Name, Contact, Category, Attendance Count, Last Session Date)</p>
+                        <p><input type="checkbox" disabled> Verify contact information accuracy</p>
+                        <p><input type="checkbox" disabled> Mark attendance status for each member through Jan 27</p>
+                        <p><input type="checkbox" disabled> Flag members who need immediate outreach</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> 100% of members categorized; spreadsheet accessible to ELT</p>
+                </div>
+                
+                <div class="todo-item urgent">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        PERSONAL OUTREACH TO NON-ATTENDING MEMBERS
+                        <span class="priority-badge priority-urgent">URGENT</span>
+                    </h4>
+                    <p class="owner">Owner: Assigned ELT Members (assign 2-3 per member)</p>
+                    <p><strong>Description:</strong> Personal phone calls and WhatsApp messages to members who haven't attended any sessions. Understand barriers and offer solutions.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Create call/chat script (friendly, non-judgmental tone)</p>
+                        <p><input type="checkbox" disabled> Schedule calls for Jan 28-Feb 2 (vary times for availability)</p>
+                        <p><input type="checkbox" disabled> Document responses and barriers identified</p>
+                        <p><input type="checkbox" disabled> Offer 3 options: (1) Makeup intro session, (2) Attend future sessions, (3) Join hub-only participation</p>
+                        <p><input type="checkbox" disabled> Get commitment from each member or note graceful exit</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> 100% contact attempted; 80%+ responses; At least 50% willing to re-engage</p>
+                </div>
+                
+                <div class="todo-item urgent">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        CHECK-IN WITH INCONSISTENT ATTENDEES
+                        <span class="priority-badge priority-urgent">URGENT</span>
+                    </h4>
+                    <p class="owner">Owner: Assigned Peer Mentors</p>
+                    <p><strong>Description:</strong> Reach out to members who attended some sessions but missed others. Offer support and clarify obstacles.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Send supportive WhatsApp messages to each member</p>
+                        <p><input type="checkbox" disabled> Ask: "What's been preventing your attendance? How can we help?"</p>
+                        <p><input type="checkbox" disabled> Offer recorded sessions and makeup materials</p>
+                        <p><input type="checkbox" disabled> Suggest peer mentoring buddy assignment</p>
+                        <p><input type="checkbox" disabled> Document patterns and common barriers</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Contact made with all inconsistent attendees; Support plan created for each</p>
+                </div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        ESTABLISH CLEAR ATTENDANCE EXPECTATIONS
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Founder + VOCI ELT</p>
+                    <p><strong>Description:</strong> Draft and communicate clear attendance, participation, and commitment expectations for Cohort 1.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Define minimum attendance requirement (e.g., 80% of core sessions)</p>
+                        <p><input type="checkbox" disabled> Create tiered participation levels: Core, Hub-focused, Flexible</p>
+                        <p><input type="checkbox" disabled> Document expectations for each level</p>
+                        <p><input type="checkbox" disabled> Draft communication email/WhatsApp</p>
+                        <p><input type="checkbox" disabled> Share with all members by Feb 3</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Clear document created and communicated; Member acknowledgment obtained</p>
+                </div>
+            </div>
+
+            <div class="phase">
+                <h3>ASSESSMENT FORMS & CURRICULUM ALIGNMENT</h3>
+                <div class="phase-period">January 28 - February 7, 2026</div>
+                
+                <div class="todo-item urgent">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        COMPLETE ACTIVE LISTENING & FEEDBACK ASSESSMENT FORM
+                        <span class="priority-badge priority-urgent">URGENT</span>
+                    </h4>
+                    <p class="owner">Owner: Curriculum Lead</p>
+                    <p><strong>Description:</strong> Finalize and launch the assessment form for evaluating Active Listening and Feedback skills.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Draft assessment form (10-15 questions, mix of self-assessment and practical scenarios)</p>
+                        <p><input type="checkbox" disabled> Review with VOCI ELT for alignment</p>
+                        <p><input type="checkbox" disabled> Digitize (Google Form or similar)</p>
+                        <p><input type="checkbox" disabled> Share with members by Feb 5</p>
+                        <p><input type="checkbox" disabled> Set response deadline (Feb 10)</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Form created and shared; 80%+ member completion by Feb 10</p>
+                </div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        ASSIGN & REVIEW SESSION 1-2 ASSIGNMENTS
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Admin + Curriculum Lead</p>
+                    <p><strong>Description:</strong> Collect, review, and provide feedback on assignments from Sessions 1 & 2 (Personal Vision, Power of Words presentations).</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Send reminder to members to submit via WhatsApp (if not already done)</p>
+                        <p><input type="checkbox" disabled> Collect all submissions by Feb 2</p>
+                        <p><input type="checkbox" disabled> Assign reviewers (mix of ELT and experienced members)</p>
+                        <p><input type="checkbox" disabled> Provide individual written feedback to each member</p>
+                        <p><input type="checkbox" disabled> Share feedback by Feb 7</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> 75%+ submissions collected; Personalized feedback provided to all</p>
+                </div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        PREPARE SESSION 4 MAKEUP MATERIALS
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Curriculum Lead</p>
+                    <p><strong>Description:</strong> Create recorded session materials and written summary for members who may miss Session 4 (Structuring a Powerful Speech).</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Record Session 4 session in full</p>
+                        <p><input type="checkbox" disabled> Create written summary/notes (2-3 pages)</p>
+                        <p><input type="checkbox" disabled> Develop 2-3 practical exercises for independent completion</p>
+                        <p><input type="checkbox" disabled> Prepare makeup session schedule (by Feb 9 for those who need it)</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> All materials created and accessible by Feb 7</p>
+                </div>
+            </div>
+
+            <div class="phase">
+                <h3>CONTENT & SOCIAL MEDIA RECOVERY</h3>
+                <div class="phase-period">January 28 - February 7, 2026</div>
+                
+                <div class="todo-item urgent">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        ESTABLISH CONTENT CREATION SCHEDULE
+                        <span class="priority-badge priority-urgent">URGENT</span>
+                    </h4>
+                    <p class="owner">Owner: Content Lead</p>
+                    <p><strong>Description:</strong> Create a structured weekly content calendar to ensure consistent social media presence and engagement.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Draft weekly content plan (Mon-Fri posts minimum)</p>
+                        <p><input type="checkbox" disabled> Assign rotating content creators (members + ELT)</p>
+                        <p><input type="checkbox" disabled> Content types: Session highlights, member spotlights, hub updates, motivational quotes, event announcements</p>
+                        <p><input type="checkbox" disabled> Set posting schedule (specific times for optimal reach)</p>
+                        <p><input type="checkbox" disabled> Create content planning template</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Schedule created; Content calendar live by Jan 31; 3+ posts per week starting Feb 1</p>
+                </div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        CAPTURE & POST SESSION 4 MOMENTS
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Content Creator (assigned member)</p>
+                    <p><strong>Description:</strong> Professional capture, curation, and posting of Session 4 (Structuring a Powerful Speech) on all social platforms.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Designate photo/video recorder for Session 4 (Jan 31)</p>
+                        <p><input type="checkbox" disabled> Capture key moments and member quotes</p>
+                        <p><input type="checkbox" disabled> Edit and curate content same day</p>
+                        <p><input type="checkbox" disabled> Post 5+ pieces on WhatsApp Status, Instagram, LinkedIn by Feb 1</p>
+                        <p><input type="checkbox" disabled> Create 1-2 Reels with session highlights</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Minimum 10 pieces of content from Session 4; Posted within 24 hours</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 2: RE-ENGAGEMENT CAMPAIGN -->
+        <section>
+            <h2>🟠 PHASE 2: RE-ENGAGEMENT CAMPAIGN (February 7-21, 2026)</h2>
+            
+            <div class="phase">
+                <h3>MEMBER WELCOME BACK INITIATIVE</h3>
+                <div class="phase-period">February 7-21, 2026</div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        CREATE "CATCH-UP" PACKAGES FOR MISSING MEMBERS
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Admin + Mentorship Lead</p>
+                    <p><strong>Description:</strong> Compile comprehensive "catch-up packages" for members who missed sessions, including recordings, notes, assignments, and deadlines.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Create individual packages for each member based on missed sessions</p>
+                        <p><input type="checkbox" disabled> Include: Recorded session link, written summary, assignment brief, deadline, mentor contact</p>
+                        <p><input type="checkbox" disabled> Customize messaging (encouraging, supportive tone)</p>
+                        <p><input type="checkbox" disabled> Share packages via WhatsApp by Feb 7</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Personalized packages sent to all gap members; 60%+ engage with materials</p>
+                </div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        LAUNCH LOW-PRESSURE INTRO/HUB EVENTS
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Hub Leads</p>
+                    <p><strong>Description:</strong> Host informal hub showcase/coffee meetups for non-attending members to reduce pressure and build connection.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Plan 4 hub spotlight sessions (one per hub)</p>
+                        <p><input type="checkbox" disabled> Casual format: coffee/tea, informal chat, no required participation</p>
+                        <p><input type="checkbox" disabled> Hub leads to share their passion and what the hub offers</p>
+                        <p><input type="checkbox" disabled> Schedule for Feb 9-12 (various times)</p>
+                        <p><input type="checkbox" disabled> Send personalized invitations to non-attending members</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> All 4 hub events held; 40%+ non-attending members attend at least one</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        COMPILE MEMBER SUCCESS STORIES
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Content Lead</p>
+                    <p><strong>Description:</strong> Document and share inspiring stories of committed members' progress and breakthroughs.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Interview 3-4 committed members on their VOCI journey</p>
+                        <p><input type="checkbox" disabled> Capture their wins, lessons, and growth</p>
+                        <p><input type="checkbox" disabled> Write 150-200 word testimonials with photos</p>
+                        <p><input type="checkbox" disabled> Share on social media (1 per week, Feb 8, 15, 22)</p>
+                        <p><input type="checkbox" disabled> Feature in weekly WhatsApp updates</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> 3+ success stories documented and shared publicly</p>
+                </div>
+            </div>
+
+            <div class="phase">
+                <h3>PEER MENTORSHIP ACTIVATION</h3>
+                <div class="phase-period">February 7-21, 2026</div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        FINALIZE & LAUNCH PEER MENTORSHIP GROUPS
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Mentorship Lead</p>
+                    <p><strong>Description:</strong> Complete formation of peer mentorship groups with assigned mentors and create group chats.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Finalize group composition (3-4 mentees per mentor)</p>
+                        <p><input type="checkbox" disabled> Create WhatsApp groups for each mentorship team</p>
+                        <p><input type="checkbox" disabled> Draft mentor guidelines/playbook</p>
+                        <p><input type="checkbox" disabled> Hold mentor orientation (Feb 8, 1 hour)</p>
+                        <p><input type="checkbox" disabled> Send group welcome messages with expectations</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> All groups created and active; 100% mentor participation</p>
+                </div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        LAUNCH "THE ASSIGNMENT" BOOK CLUB
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Mentorship Lead + Peer Mentors</p>
+                    <p><strong>Description:</strong> Activate the 31-day "The Assignment" by Mike Murdock reading challenge with daily chapter discussions in peer groups.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Confirm all members have book (or digital access)</p>
+                        <p><input type="checkbox" disabled> Create discussion prompts for each chapter</p>
+                        <p><input type="checkbox" disabled> Send daily chapter reminder + discussion prompt (morning message)</p>
+                        <p><input type="checkbox" disabled> Encourage daily reflections in group chat</p>
+                        <p><input type="checkbox" disabled> Weekly reflection: Member shares key lesson from week's reading</p>
+                        <p><input type="checkbox" disabled> Day 31 celebration: Share completed learnings</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Book club launched by Feb 7; 70%+ daily engagement; 80%+ completion by Mar 7</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        CREATE MENTOR-MENTEE ACCOUNTABILITY CHECKPOINTS
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Mentorship Lead</p>
+                    <p><strong>Description:</strong> Establish structured check-in points and accountability mechanisms for mentor-mentee relationships.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Define checkpoint schedule: Weekly brief check-in, Bi-weekly deeper conversation</p>
+                        <p><input type="checkbox" disabled> Create accountability conversation guide</p>
+                        <p><input type="checkbox" disabled> Topics: Attendance, assignments, personal progress, obstacles, support needed</p>
+                        <p><input type="checkbox" disabled> Weekly mentor reports to Mentorship Lead</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Checkpoints scheduled; 100% mentor compliance with reporting</p>
+                </div>
+            </div>
+
+            <div class="phase">
+                <h3>CURRICULUM CONTINUATION</h3>
+                <div class="phase-period">February 7-21, 2026</div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        PLAN & DELIVER SESSION 5 (TBD TOPIC)
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Curriculum Lead + VOCI ELT</p>
+                    <p><strong>Description:</strong> Design and deliver Session 5, building on previous sessions with consistent quality and engagement.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Finalize Session 5 curriculum topic and structure</p>
+                        <p><input type="checkbox" disabled> Prepare session materials, slides, exercises</p>
+                        <p><input type="checkbox" disabled> Schedule Thursday & Saturday sessions (Feb 17 & 22 suggested)</p>
+                        <p><input type="checkbox" disabled> Send advance notice to members (with recorded option)</p>
+                        <p><input type="checkbox" disabled> Deliver high-quality session with full participation</p>
+                        <p><input type="checkbox" disabled> Assign new assignment with clear deadline</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Session delivered; 75%+ member participation; Assignments submitted</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        CONDUCT SESSION 4 FEEDBACK COLLECTION
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Admin</p>
+                    <p><strong>Description:</strong> Gather member feedback on Session 4 to inform curriculum improvements.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Create quick feedback form (5-7 questions)</p>
+                        <p><input type="checkbox" disabled> Distribute via Google Form (by Feb 1)</p>
+                        <p><input type="checkbox" disabled> Collect responses (deadline Feb 5)</p>
+                        <p><input type="checkbox" disabled> Analyze feedback with ELT</p>
+                        <p><input type="checkbox" disabled> Implement improvements for Session 5</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> 60%+ feedback response rate; Actionable insights documented</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 3: SUSTAINABLE SYSTEMS -->
+        <section>
+            <h2>🟢 PHASE 3: SUSTAINABLE SYSTEMS (February 22 - March 31, 2026)</h2>
+            
+            <div class="phase">
+                <h3>HUB DEVELOPMENT & LEADERSHIP</h3>
+                <div class="phase-period">February 22 - March 31, 2026</div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        APPOINT & ORIENT HUB LEADS
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Founder</p>
+                    <p><strong>Description:</strong> Appoint passionate, committed members as leads for the 4 VOCI Hubs.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Identify and invite hub lead candidates (1 per hub)</p>
+                        <p><input type="checkbox" disabled> Brief on responsibilities and support available</p>
+                        <p><input type="checkbox" disabled> Conduct hub lead orientation (1.5 hours)</p>
+                        <p><input type="checkbox" disabled> Provide hub leadership toolkit</p>
+                        <p><input type="checkbox" disabled> Establish weekly check-in cadence</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> All 4 hubs have appointed, trained leads by Feb 22</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        CREATE HUB-SPECIFIC MEETING SCHEDULES & THEMES
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Hub Leads</p>
+                    <p><strong>Description:</strong> Establish regular meeting schedules and thematic focus for each hub.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Hub Business & Entrepreneurship: Monthly business model workshops, case studies</p>
+                        <p><input type="checkbox" disabled> Hub Creative & Innovation: Bi-weekly creative showcases, ideation sessions</p>
+                        <p><input type="checkbox" disabled> Hub Community Advocacy: Monthly community project discussions, impact planning</p>
+                        <p><input type="checkbox" disabled> Hub Governance & Policy: Bi-weekly policy briefings, leadership discussions</p>
+                        <p><input type="checkbox" disabled> Create calendar and share with members</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> All hub schedules finalized by Feb 24; First meetings held by Mar 1</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        DEVELOP HUB RESOURCE LIBRARIES
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Resource Lead + Hub Leads</p>
+                    <p><strong>Description:</strong> Create curated resource repositories for each hub (articles, tools, contacts, templates).</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Identify 20-30 key resources per hub (mix of articles, videos, tools, contacts)</p>
+                        <p><input type="checkbox" disabled> Organize in shared drive or Notion database</p>
+                        <p><input type="checkbox" disabled> Create brief resource descriptions and relevance tags</p>
+                        <p><input type="checkbox" disabled> Share resource list with hub members</p>
+                        <p><input type="checkbox" disabled> Commit to adding 1-2 new resources per month</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Resource libraries live by Mar 7; 80%+ member access and usage</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        PLAN MONTHLY HUB SHOWCASE EVENTS
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Hub Leads + Content Team</p>
+                    <p><strong>Description:</strong> Host monthly events where each hub showcases work and learnings to the broader VOCI community.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Schedule monthly hub showcase (1st Friday each month)</p>
+                        <p><input type="checkbox" disabled> Each hub presents 1-2 projects, insights, or guest speaker</p>
+                        <p><input type="checkbox" disabled> Format: 1-hour virtual or in-person event</p>
+                        <p><input type="checkbox" disabled> Create marketing materials and send invitations</p>
+                        <p><input type="checkbox" disabled> Document and share recordings</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> First showcase held Mar 7; 80%+ cohort attendance</p>
+                </div>
+            </div>
+
+            <div class="phase">
+                <h3>ONGOING CURRICULUM & SESSIONS</h3>
+                <div class="phase-period">Through March 31, 2026</div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        MAINTAIN SESSION DELIVERY SCHEDULE
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Curriculum Lead + VOCI ELT</p>
+                    <p><strong>Description:</strong> Continue consistent delivery of weekly core sessions with high quality.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Plan Sessions 6, 7, 8 curriculum topics and materials</p>
+                        <p><input type="checkbox" disabled> Maintain Thursday-Saturday session schedule</p>
+                        <p><input type="checkbox" disabled> Deliver with full preparation and engagement</p>
+                        <p><input type="checkbox" disabled> Record all sessions for asynchronous access</p>
+                        <p><input type="checkbox" disabled> Collect and address feedback each session</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> All sessions delivered on schedule; 75%+ average attendance</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        ONGOING ASSIGNMENT FEEDBACK CYCLE
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Admin + Curriculum Reviewers</p>
+                    <p><strong>Description:</strong> Maintain systematic assignment collection, review, and feedback process for all curriculum assignments.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Within 24 hours of session: Remind members of assignment</p>
+                        <p><input type="checkbox" disabled> Assignment deadline: 1 week from session</p>
+                        <p><input type="checkbox" disabled> Collection: Admin collects submissions</p>
+                        <p><input type="checkbox" disabled> Review: Assigned reviewers provide written feedback</p>
+                        <p><input type="checkbox" disabled> Return: Feedback shared with members within 3 days of deadline</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> 80%+ submission rate per assignment; Feedback turnaround <3 days</p>
+                </div>
+                
+                <div class="todo-item low">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        PLAN COHORT MILESTONE CELEBRATIONS
+                        <span class="priority-badge priority-low">LOW</span>
+                    </h4>
+                    <p class="owner">Owner: VOCI ELT</p>
+                    <p><strong>Description:</strong> Plan celebrations for cohort milestones (30-day mark, book club completion, first assignment round completion).</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Feb 10: Celebrate 30 days of VOCI (recognition, reflection)</p>
+                        <p><input type="checkbox" disabled> Mar 7: Celebrate book club completion</p>
+                        <p><input type="checkbox" disabled> Mar 15: Celebrate first curriculum round completion</p>
+                        <p><input type="checkbox" disabled> Create celebratory content and share widely</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> All celebrations executed with high participation and morale</p>
+                </div>
+            </div>
+
+            <div class="phase">
+                <h3>CONTENT, COMMUNICATION & COMMUNITY</h3>
+                <div class="phase-period">Through March 31, 2026</div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        EXECUTE WEEKLY SOCIAL MEDIA CONTENT PLAN
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Content Team (rotating members)</p>
+                    <p><strong>Description:</strong> Consistent execution of weekly content calendar across all platforms.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Post minimum 3x per week (WhatsApp Status, Instagram, LinkedIn)</p>
+                        <p><input type="checkbox" disabled> Content mix: Session highlights, member spotlights (15%), hub updates (15%), motivational/educational (40%), announcements (20%), behind-the-scenes (10%)</p>
+                        <p><input type="checkbox" disabled> Create 1 Reel/video piece per week</p>
+                        <p><input type="checkbox" disabled> Monthly newsletter with cohort updates, member highlights, upcoming events</p>
+                        <p><input type="checkbox" disabled> Weekly WhatsApp status "week recap" every Friday</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Zero weeks missed content; 3x+ weekly posts; 500+ social media reach per post</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        PRODUCE EDUCATIONAL CONTENT SERIES
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Content Lead + ELT Members</p>
+                    <p><strong>Description:</strong> Create and share 1-2 educational content pieces per week in VOCI's focus areas.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Content types: Short video tips (2-3 min), written articles/insights (500-800 words), interview clips with experts/leaders</p>
+                        <p><input type="checkbox" disabled> Topics: Leadership, communication, entrepreneurship, innovation, community impact, personal development</p>
+                        <p><input type="checkbox" disabled> Share on all platforms with consistent branding</p>
+                        <p><input type="checkbox" disabled> Encourage member sharing and engagement</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> 2+ educational pieces per week; 50%+ engagement rate on posts</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        LAUNCH MEMBER INTERVIEW/SPOTLIGHT SERIES
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Content Lead</p>
+                    <p><strong>Description:</strong> Feature member stories, journeys, and insights through interview series.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Weekly member spotlight (1 member featured)</p>
+                        <p><input type="checkbox" disabled> Interview format: Background, why VOCI, key insights so far, goals, advice to others</p>
+                        <p><input type="checkbox" disabled> Share as written feature + short video clips</p>
+                        <p><input type="checkbox" disabled> Celebrate diverse member backgrounds and interests</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> All members featured by Mar 31; High engagement and sharing</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        CREATE WEEKLY SUMMARY & UPDATES DOCUMENT
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Admin</p>
+                    <p><strong>Description:</strong> Document and share weekly summaries of VOCI activities, learnings, and upcoming events.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Weekly summary template (created by Feb 22)</p>
+                        <p><input type="checkbox" disabled> Include: Sessions held, key learnings, member wins, upcoming events, resource highlights</p>
+                        <p><input type="checkbox" disabled> Share every Friday via WhatsApp and email</p>
+                        <p><input type="checkbox" disabled> Archive all summaries for future reference</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Summary shared every Friday; Consistent format and quality</p>
+                </div>
+            </div>
+
+            <div class="phase">
+                <h3>TRACKING, EVALUATION & CONTINUOUS IMPROVEMENT</h3>
+                <div class="phase-period">Through March 31, 2026</div>
+                
+                <div class="todo-item high">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        IMPLEMENT MEMBER SUCCESS TRACKING DASHBOARD
+                        <span class="priority-badge priority-high">HIGH</span>
+                    </h4>
+                    <p class="owner">Owner: Admin Lead</p>
+                    <p><strong>Description:</strong> Create and maintain a dashboard tracking key member engagement and progress metrics.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Metrics tracked: Session attendance %, Assignment submission %, Hub participation, Book club engagement, Peer group check-ins</p>
+                        <p><input type="checkbox" disabled> Create dashboard in Google Sheets or similar (accessible to ELT)</p>
+                        <p><input type="checkbox" disabled> Update weekly with latest data</p>
+                        <p><input type="checkbox" disabled> Color-coding: Green (strong), Yellow (attention needed), Red (at risk)</p>
+                        <p><input type="checkbox" disabled> Monthly review with ELT to identify support needs</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Dashboard live by Feb 22; Accurate weekly updates; Data drives interventions</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        CONDUCT MONTHLY COHORT PROGRESS REVIEWS
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Founder + VOCI ELT</p>
+                    <p><strong>Description:</strong> Monthly meetings to review cohort progress, celebrate wins, and address challenges.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Schedule monthly ELT meeting (first Monday of month, 2 hours)</p>
+                        <p><input type="checkbox" disabled> Agenda: Attendance review, assignment quality, member feedback, hub progress, content performance, challenges/blockers, next month planning</p>
+                        <p><input type="checkbox" disabled> Document decisions and action items</p>
+                        <p><input type="checkbox" disabled> Share cohort highlights with all members (celebrate progress)</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> All monthly meetings held; Action items tracked and completed</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        GATHER ONGOING MEMBER FEEDBACK
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Admin</p>
+                    <p><strong>Description:</strong> Regular feedback collection from members to inform program improvements.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Post-session feedback form (1 week after each session)</p>
+                        <p><input type="checkbox" disabled> Monthly pulse survey (5 quick questions)</p>
+                        <p><input type="checkbox" disabled> Quarterly deep feedback session (15-20 minute interviews with select members)</p>
+                        <p><input type="checkbox" disabled> Open feedback channel (WhatsApp, email, anonymous form)</p>
+                        <p><input type="checkbox" disabled> Implement feedback-driven improvements each month</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> 60%+ feedback response rate per survey; Visible improvements implemented</p>
+                </div>
+                
+                <div class="todo-item medium">
+                    <h4>
+                        <span class="status-indicator status-not-started"></span>
+                        <input type="checkbox" class="checkbox" disabled>
+                        CONDUCT MID-COHORT ASSESSMENT & PLANNING
+                        <span class="priority-badge priority-medium">MEDIUM</span>
+                    </h4>
+                    <p class="owner">Owner: Founder + Curriculum Lead</p>
+                    <p><strong>Description:</strong> Comprehensive mid-point assessment (March 15) of member progress and curriculum effectiveness.</p>
+                    <div class="subtask">
+                        <p><input type="checkbox" disabled> Review personal vision statements: Members share refined versions</p>
+                        <p><input type="checkbox" disabled> Assess curriculum: What's working well? What needs adjustment?</p>
+                        <p><input type="checkbox" disabled> Member progress check: Growth in communication, confidence, skills</p>
+                        <p><input type="checkbox" disabled> Gather suggestions for second half of cohort</p>
+                        <p><input type="checkbox" disabled> Plan next 6-8 weeks of curriculum</p>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Success Metrics:</strong> Assessment completed with all members; Insights documented; Curriculum adjustments planned</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESOURCES & SUPPORT -->
+        <section>
+            <h2>📚 SUPPORTING RESOURCES & INFRASTRUCTURE</h2>
+            
+            <div class="key-area">
+                <h3>Technology & Tools Needed</h3>
+                <ul>
+                    <li><strong>Google Forms</strong> - For assessments, feedback forms, surveys</li>
+                    <li><strong>Google Drive/Sheets</strong> - For resource libraries, tracking dashboards, shared documents</li>
+                    <li><strong>WhatsApp Groups</strong> - For peer groups, hubs, main cohort communication</li>
+                    <li><strong>Social Media Accounts</strong> - Instagram, LinkedIn, WhatsApp Status for consistent content</li>
+                    <li><strong>Video Recording Tools</strong> - OBS, Zoom for session recording</li>
+                    <li><strong>Design Tool</strong> - Canva for creating social media graphics and materials</li>
+                    <li><strong>Email Service</strong> - For newsletter and formal communications</li>
+                </ul>
+            </div>
+            
+            <div class="key-area">
+                <h3>Human Resources & Roles</h3>
+                <ul>
+                    <li><strong>Founder (Brian H.E Ingwee)</strong> - Overall vision, strategy, major decisions, external relations</li>
+                    <li><strong>VOCI ELT</strong> - Curriculum delivery, leadership modeling, mentor oversight, session facilitation</li>
+                    <li><strong>Curriculum Lead</strong> - Session planning, assignment design, assessment forms</li>
+                    <li><strong>Mentorship Lead</strong> - Peer group coordination, mentor training, book club facilitation</li>
+                    <li><strong>Content Lead</strong> - Social media, documentation, member spotlights, educational content</li>
+                    <li><strong>Admin Lead</strong> - Tracking, reminders, data management, logistics</li>
+                    <li><strong>Hub Leads (4)</strong> - Hub-specific activities, resource curation, member engagement</li>
+                    <li><strong>Peer Mentors</strong> - Direct mentee support, accountability, feedback</li>
+                </ul>
+            </div>
+            
+            <div class="key-area">
+                <h3>Communication Channels</h3>
+                <ul>
+                    <li><strong>Main Cohort WhatsApp Group</strong> - Announcements, general updates, resource sharing</li>
+                    <li><strong>Peer Mentorship Groups (4)</strong> - Book club, accountability, mentee support</li>
+                    <li><strong>VOCI Hub Groups (4)</strong> - Hub-specific discussions, resource sharing, events</li>
+                    <li><strong>ELT Group</strong> - Leadership coordination, decision-making, planning</li>
+                    <li><strong>Email</strong> - Formal communications, newsletters, personalized feedback</li>
+                    <li><strong>Social Media</strong> - Public sharing, community building, content distribution</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SUCCESS METRICS -->
+        <section>
+            <h2>🎯 KEY SUCCESS METRICS (March 31, 2026 Target)</h2>
+            
+            <div class="key-area">
+                <h3>Member Engagement Targets</h3>
+                <ul>
+                    <li><strong>Core Session Attendance:</strong> 75%+ average attendance</li>
+                    <li><strong>Assignment Completion:</strong> 80%+ submission rate</li>
+                    <li><strong>Book Club Completion:</strong> 80%+ members complete "The Assignment" 31-day challenge</li>
+                    <li><strong>Hub Participation:</strong> 85%+ members actively engaged in at least one hub</li>
+                    <li><strong>Member Retention:</strong> 90%+ of members who started remain active in some form</li>
+                </ul>
+            </div>
+            
+            <div class="key-area">
+                <h3>Program Quality Targets</h3>
+                <ul>
+                    <li><strong>Session Quality Rating:</strong> 4.2/5 average (from feedback forms)</li>
+                    <li><strong>Mentor Satisfaction:</strong> 4.0/5 or higher (mentor feedback)</li>
+                    <li><strong>Content Usefulness:</strong> 80%+ rate curriculum content as useful/relevant</li>
+                    <li><strong>Community Feeling:</strong> 85%+ feel part of supportive VOCI community</li>
+                </ul>
+            </div>
+            
+            <div class="key-area">
+                <h3>Communication & Visibility Targets</h3>
+                <ul>
+                    <li><strong>Social Media Reach:</strong> 1000+ followers across platforms</li>
+                    <li><strong>Content Consistency:</strong> 3+ posts per week, zero weeks missed</li>
+                    <li><strong>Newsletter Subscribers:</strong> 100% of active members subscribed</li>
+                    <li><strong>Member Awareness:</strong> 90%+ of members know about all available resources and opportunities</li>
+                </ul>
+            </div>
+            
+            <div class="key-area">
+                <h3>Growth & Development Targets</h3>
+                <ul>
+                    <li><strong>Personal Vision Statements:</strong> 100% of members have drafted and refined personal vision</li>
+                    <li><strong>Skill Development:</strong> Members demonstrate measurable improvement in communication, leadership, specific skills</li>
+                    <li><strong>Hub Leadership:</strong> 4 hubs fully operational with active member participation</li>
+                    <li><strong>Peer Mentoring Effectiveness:</strong> 80%+ of mentees report valuable support from mentors</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CONTINGENCY -->
+        <section>
+            <h2>⚠️ CONTINGENCY PLANS</h2>
+            
+            <div class="key-area">
+                <h3>If Attendance Drops Below Target</h3>
+                <ul>
+                    <li>Investigate root causes through member surveys</li>
+                    <li>Offer flexible participation options (recorded sessions, hub-only engagement)</li>
+                    <li>Increase mentorship touchpoints and support</li>
+                    <li>Revisit session timing/location if applicable</li>
+                    <li>Create re-engagement campaign with incentives/recognition</li>
+                </ul>
+            </div>
+            
+            <div class="key-area">
+                <h3>If Members Consistently Miss Assignments</h3>
+                <ul>
+                    <li>Reassess assignment complexity and time requirements</li>
+                    <li>Provide assignment writing support/office hours</li>
+                    <li>Extend deadlines for struggling members</li>
+                    <li>Simplify initial assignments to build confidence</li>
+                    <li>Create assignment buddy system for peer support</li>
+                </ul>
+            </div>
+            
+            <div class="key-area">
+                <h3>If Peer Mentoring Relationships Struggle</h3>
+                <ul>
+                    <li>Provide additional mentor training and resources</li>
+                    <li>Offer mentor coaching sessions</li>
+                    <li>Facilitate mentee-mentor matching adjustments if needed</li>
+                    <li>Create structured mentorship conversation guides</li>
+                    <li>Establish more frequent check-ins and accountability</li>
+                </ul>
+            </div>
+            
+            <div class="key-area">
+                <h3>If Content Creation Falls Behind</h3>
+                <ul>
+                    <li>Share the responsibility across more team members</li>
+                    <li>Pre-plan and batch content creation</li>
+                    <li>Simplify content formats (text + photo vs. complex videos)</li>
+                    <li>Invite members to contribute guest content</li>
+                    <li>Use content templates to speed up creation process</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p style="font-size: 1.1em;"><strong>VOCI OFFICIAL TO DO LIST</strong></p>
+            <p>Cohort 1 | January - March 2026 | 59 Total Tasks | 10 Urgent | 28 High Priority</p>
+            <p style="margin-top: 20px; color: #333;">Prepared by: Brian H.E Ingwee, Founder of VOCI</p>
+            <p>Last Updated: January 28, 2026</p>
+            <p style="margin-top: 20px; font-style: italic;">This TO DO LIST should be reviewed and updated monthly. All deadlines are targets and should be adjusted based on progress and feedback. Team flexibility and communication are essential to success.</p>
+        </footer>
+    </div>
+</body>
+</html>

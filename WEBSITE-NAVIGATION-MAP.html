@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOCI Website Structure | Updated Navigation Map</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #e6f2ff 0%, #fff0e6 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #14213d;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        
+        .section-title {
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        
+        .nav-map {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .nav-item {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f2ff 100%);
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,123,255,0.2);
+            border-color: #0056b3;
+        }
+        
+        .nav-item h3 {
+            color: #007bff;
+            margin-bottom: 8px;
+        }
+        
+        .nav-item p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .nav-item .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .badge-new {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .badge-updated {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .content-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .content-box {
+            background: #f9f9f9;
+            border-left: 5px solid #007bff;
+            padding: 25px;
+            border-radius: 8px;
+        }
+        
+        .content-box h3 {
+            color: #14213d;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #666;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fff0e6 0%, #ffe6d5 100%);
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .highlight-box h3 {
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin: 30px 0;
+        }
+        
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+            align-items: start;
+        }
+        
+        .timeline-date {
+            background: #f0f8ff;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            font-weight: bold;
+            color: #007bff;
+            font-size: 0.9em;
+        }
+        
+        .timeline-content {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .timeline-content h4 {
+            color: #14213d;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content p {
+            color: #666;
+            font-size: 0.95em;
+            margin: 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .content-sections {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-map {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 VOCI Website Navigation Map</h1>
+        <p class="subtitle">Complete website structure with Cohort 1 integration | January 28, 2026</p>
+
+        <!-- Navigation Map -->
+        <h2 class="section-title">Website Navigation Structure</h2>
+        <div class="nav-map">
+            <div class="nav-item">
+                <h3>🏠 Home</h3>
+                <p>index.html</p>
+                <p style="font-size: 0.85em; color: #999;">+ New Cohort 1 section</p>
+                <span class="badge badge-updated">UPDATED</span>
+            </div>
+
+            <div class="nav-item">
+                <h3>👥 About Us</h3>
+                <p>about.html</p>
+                <p style="font-size: 0.85em; color: #999;">Vision, mission, story</p>
+                <span class="badge badge-updated">UPDATED</span>
+            </div>
+
+            <div class="nav-item">
+                <h3>📚 Programs</h3>
+                <p>programs.html</p>
+                <p style="font-size: 0.85em; color: #999;">Core pillars & training</p>
+                <span class="badge badge-updated">UPDATED</span>
+            </div>
+
+            <div class="nav-item">
+                <h3>📅 Events</h3>
+                <p>events.html</p>
+                <p style="font-size: 0.85em; color: #999;">Upcoming activities</p>
+                <span class="badge badge-updated">UPDATED</span>
+            </div>
+
+            <div class="nav-item">
+                <h3>📖 Resources</h3>
+                <p>resources.html</p>
+                <p style="font-size: 0.85em; color: #999;">Learning materials</p>
+                <span class="badge badge-updated">UPDATED</span>
+            </div>
+
+            <div class="nav-item">
+                <h3>📊 Progress Report</h3>
+                <p>progress-report.html</p>
+                <p style="font-size: 0.85em; color: #999;">Cohort 1 achievements</p>
+                <span class="badge badge-new">NEW</span>
+            </div>
+
+            <div class="nav-item">
+                <h3>✅ TO DO LIST</h3>
+                <p>todo-list.html</p>
+                <p style="font-size: 0.85em; color: #999;">59 strategic tasks</p>
+                <span class="badge badge-new">NEW</span>
+            </div>
+
+            <div class="nav-item">
+                <h3>📞 Contact</h3>
+                <p>contact.html</p>
+                <p style="font-size: 0.85em; color: #999;">Get in touch</p>
+                <span class="badge badge-updated">UPDATED</span>
+            </div>
+
+            <div class="nav-item">
+                <h3>🎯 Join VOCI</h3>
+                <p>join.html</p>
+                <p style="font-size: 0.85em; color: #999;">Registration</p>
+                <span class="badge badge-updated">UPDATED</span>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <h2 class="section-title">Quick Statistics</h2>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number">9</div>
+                <div class="label">Total Pages</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">2</div>
+                <div class="label">New Pages</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">7</div>
+                <div class="label">Updated Pages</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">59</div>
+                <div class="label">Action Items</div>
+            </div>
+        </div>
+
+        <!-- New Pages Details -->
+        <h2 class="section-title">New Pages Details</h2>
+        
+        <div class="content-sections">
+            <div class="content-box">
+                <h3>📊 Progress Report</h3>
+                <ul class="feature-list">
+                    <li>Founder information display</li>
+                    <li>9-point timeline (Jan 10-31)</li>
+                    <li>4 VOCI Hubs showcase</li>
+                    <li>Member category assessment</li>
+                    <li>Key accomplishments (7)</li>
+                    <li>Challenges identified (4)</li>
+                    <li>Professional styling</li>
+                    <li>Responsive design</li>
+                </ul>
+            </div>
+
+            <div class="content-box">
+                <h3>✅ TO DO LIST</h3>
+                <ul class="feature-list">
+                    <li>59 total action items</li>
+                    <li>3 strategic phases</li>
+                    <li>7 focus areas</li>
+                    <li>Priority classifications</li>
+                    <li>Task ownership details</li>
+                    <li>Success metrics</li>
+                    <li>Supporting resources</li>
+                    <li>Interactive design</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Cohort 1 Highlights -->
+        <div class="highlight-box">
+            <h3>🎓 Cohort 1 Program Overview</h3>
+            <p><strong>Founder:</strong> Brian H.E Ingwee</p>
+            <p><strong>Location:</strong> Murang'a University of Technology (MUT Campus)</p>
+            <p><strong>Timeline:</strong> January 10 - March 31, 2026</p>
+            <p><strong>Key Components:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>4 core curriculum sessions delivered (+ more planned)</li>
+                <li>4 VOCI Hubs (Business, Creative, Community, Governance)</li>
+                <li>31-day "The Assignment" book club</li>
+                <li>Peer mentorship program with dedicated mentors</li>
+                <li>Personal vision statement development</li>
+                <li>Active listening & feedback assessment</li>
+            </ul>
+        </div>
+
+        <!-- Implementation Timeline -->
+        <h2 class="section-title">Implementation Timeline</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">Jan 10-11</div>
+                <div class="timeline-content">
+                    <h4>Cohort 1 Orientation</h4>
+                    <p>Hand-on sessions with all registered members</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jan 15</div>
+                <div class="timeline-content">
+                    <h4>Session 1: Personal Vision</h4>
+                    <p>Members identified abilities, potentials, interests</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jan 17</div>
+                <div class="timeline-content">
+                    <h4>Session 2: Power of Words</h4>
+                    <p>Communication skills and presentation assignments</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jan 22</div>
+                <div class="timeline-content">
+                    <h4>Session 3: Active Listening</h4>
+                    <p>Feedback mechanisms and relationship building</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jan 24</div>
+                <div class="timeline-content">
+                    <h4>VOCI Hubs Formation</h4>
+                    <p>4 specialized hubs created for targeted learning</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jan 25-31</div>
+                <div class="timeline-content">
+                    <h4>Book Club Launch</h4>
+                    <p>31-day "The Assignment" reading challenge begins</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jan 31</div>
+                <div class="timeline-content">
+                    <h4>Session 4: Powerful Speech</h4>
+                    <p>Structuring and delivering impactful speeches</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Feb - Mar</div>
+                <div class="timeline-content">
+                    <h4>Ongoing Sessions & Mentorship</h4>
+                    <p>Continue core curriculum and specialized hub activities</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Items by Category -->
+        <h2 class="section-title">Key Strategic Focus Areas</h2>
+        
+        <div class="content-sections" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="content-box">
+                <h3>🎓 Curriculum Sessions</h3>
+                <p>Structured quality delivery with 8 tasks</p>
+            </div>
+            <div class="content-box">
+                <h3>🤝 Peer Mentorship</h3>
+                <p>Group coordination and guidance with 10 tasks</p>
+            </div>
+            <div class="content-box">
+                <h3>📋 Accountability</h3>
+                <p>Tracking and member engagement with 9 tasks</p>
+            </div>
+            <div class="content-box">
+                <h3>👑 Leadership</h3>
+                <p>ELT development and hub leadership with 7 tasks</p>
+            </div>
+            <div class="content-box">
+                <h3>📚 Resources</h3>
+                <p>Knowledge repository and materials with 8 tasks</p>
+            </div>
+            <div class="content-box">
+                <h3>📱 Content & Social</h3>
+                <p>Media presence and documentation with 9 tasks</p>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="highlight-box" style="background: linear-gradient(135deg, #e6f2ff 0%, #dde9ff 100%); border-color: #007bff;">
+            <h3 style="color: #007bff;">🚀 Ready to Explore?</h3>
+            <p style="margin-bottom: 15px;">Visit the new pages to see the complete Cohort 1 analysis and strategic growth plan:</p>
+            <ul style="margin-left: 20px;">
+                <li><strong>Progress Report:</strong> Comprehensive analysis of achievements and challenges</li>
+                <li><strong>TO DO LIST:</strong> 59 actionable items to drive growth</li>
+                <li><strong>Updated Home Page:</strong> New "Cohort 1 Progress" section</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>Website Update Status: ✅ COMPLETE</strong></p>
+            <p>All pages are styled, integrated, and ready for deployment</p>
+            <p>Contact development team for customizations or updates</p>
+            <p style="margin-top: 15px; color: #999;">Last Updated: January 28, 2026</p>
+        </div>
+    </div>
+</body>
+</html>

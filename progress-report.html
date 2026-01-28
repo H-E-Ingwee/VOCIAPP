@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Report - VOCI Cohort 1 | Voice of Change Initiative</title>
+    <meta name="description" content="VOCI Cohort 1 Progress Report - January 2026. Review our achievements, member engagement, and strategic growth plans.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Global CSS -->
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="home.css">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <style>
+        body {
+            padding-top: 70px;
+        }
+
+        .progress-hero {
+            background: linear-gradient(135deg, var(--voci-blue) 0%, var(--voci-dark-blue) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .progress-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .progress-hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 30px;
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 10px;
+            border-left: 5px solid var(--voci-blue);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background: var(--voci-blue);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item h3 {
+            color: var(--voci-dark-blue);
+            margin: 10px 0;
+            font-size: 1.4rem;
+        }
+
+        .timeline-item p {
+            color: var(--voci-gray-text);
+            margin-bottom: 15px;
+        }
+
+        .timeline-item ul {
+            margin-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .timeline-item li {
+            margin-bottom: 8px;
+            color: var(--voci-gray-text);
+        }
+
+        .member-category-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--voci-gold);
+        }
+
+        .member-category-card.elite {
+            border-top-color: #27ae60;
+        }
+
+        .member-category-card.engaged {
+            border-top-color: #3498db;
+        }
+
+        .member-category-card.atrisk {
+            border-top-color: var(--voci-red);
+        }
+
+        .member-category-card.support {
+            border-top-color: #f39c12;
+        }
+
+        .category-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--voci-dark-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-elite {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .badge-engaged {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .badge-atrisk {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .badge-support {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--voci-dark-blue);
+            margin-top: 60px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--voci-blue);
+            display: inline-block;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--voci-blue) 0%, #0056b3 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .hub-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .hub-card:hover {
+            border-color: var(--voci-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .hub-icon {
+            font-size: 2.5rem;
+            color: var(--voci-blue);
+            margin-bottom: 15px;
+        }
+
+        .hub-card h4 {
+            color: var(--voci-dark-blue);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hub-card p {
+            font-size: 0.9rem;
+            color: var(--voci-gray-text);
+            margin-bottom: 0;
+        }
+
+        .challenge-box {
+            background: #fff8e1;
+            border-left: 4px solid var(--voci-gold);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .challenge-box h5 {
+            color: var(--voci-dark-blue);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .challenge-box .priority {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .priority-high {
+            background-color: #ffcccc;
+            color: #c00;
+        }
+
+        .challenge-box ul {
+            margin-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .challenge-box li {
+            color: var(--voci-gray-text);
+            margin-bottom: 6px;
+        }
+
+        .accomplishment-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .accomplishment-list li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            color: var(--voci-gray-text);
+            border-bottom: 1px solid #eee;
+        }
+
+        .accomplishment-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .accomplishment-list li:last-child {
+            border-bottom: none;
+        }
+
+        .recommendation-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommendation-list li {
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            background: #e6f2ff;
+            border-left: 3px solid var(--voci-blue);
+            border-radius: 4px;
+            color: var(--voci-gray-text);
+        }
+
+        .recommendation-list li strong {
+            color: var(--voci-dark-blue);
+        }
+
+        .report-meta {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--voci-blue);
+        }
+
+        .report-meta p {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .founder-name {
+            color: var(--voci-blue);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .progress-hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="VOCI OFFICIAL LOGO.png" alt="VOCI Logo" height="40" class="rounded-circle border border-2 border-white">
+                <span class="ms-2">VOCI</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="programs.html">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resources.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="progress-report.html">Progress Report</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="join.html">Join VOCI</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="progress-hero">
+        <div class="container">
+            <h1>VOCI Progress Report</h1>
+            <p class="subtitle">Cohort 1 - January 2026</p>
+            <p class="subtitle" style="font-size: 1rem; opacity: 0.85;">MUT Campus | Journey, Achievements & Strategic Vision</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <!-- Report Meta -->
+        <div class="report-meta">
+            <p><strong>Prepared by:</strong> <span class="founder-name">Brian H.E Ingwee</span>, Founder of VOCI</p>
+            <p><strong>Report Period:</strong> January 10 - January 31, 2026</p>
+            <p><strong>Report Date:</strong> January 28, 2026</p>
+            <p><strong>Location:</strong> MUT Campus</p>
+        </div>
+
+        <!-- Overview Section -->
+        <section class="mb-5">
+            <h2 class="section-title">Overview</h2>
+            <p class="lead">VOCI (Voice of Change Initiative) began its official Cohort 1 training program in January 2026 at MUT Campus. This report documents the significant progress made, challenges identified, and strategic recommendations for continued growth and member engagement.</p>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="mb-5">
+            <h2 class="section-title">Progress Timeline</h2>
+            
+            <div class="timeline-item">
+                <span class="timeline-date">January 10-11, 2026</span>
+                <h3>Hand-on Sessions & Orientation</h3>
+                <p>Met with all registered Cohort 1 members. Shared updated program of events and refined curriculum content. Established baseline expectations and member engagement protocols.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">January 15, 2026</span>
+                <h3>Session 1: Personal Vision & Self-Discovery</h3>
+                <p><strong>Focus:</strong> Members identified their unique abilities, potentials, and interests through guided exercises.</p>
+                <ul>
+                    <li>Exercise: List 3 unique abilities, 3 potentials, 3 main interests</li>
+                    <li>Objective: Foundation for drafting personal vision statements (to be refined progressively)</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">January 18 & 20, 2026</span>
+                <h3>Recap Sessions</h3>
+                <p>Thursday recap (Jan 18) and Saturday recap (Jan 20) to reinforce Session 1 concepts and ensure all members are aligned.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">January 17, 2026</span>
+                <h3>Session 2: The Power of Words and Precision</h3>
+                <p><strong>Curriculum Focus:</strong> Effective communication and the power of language.</p>
+                <ul>
+                    <li><strong>Assignment:</strong> Members prepared presentations with voice recordings</li>
+                    <li><strong>Submission:</strong> Via WhatsApp group to admin team</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">January 22, 2026</span>
+                <h3>Session 3: Active Listening & Feedback Loop</h3>
+                <p><strong>Curriculum:</strong> Active Listening techniques and feedback mechanisms for effective relationships.</p>
+                <p><em style="color: var(--voci-red);">Note: No recap session due to PREVA Week activities</em></p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">January 24, 2026</span>
+                <h3>Saturday Session: Careers, Calling & Influence</h3>
+                <p>Met with available members. Discussed intentional awareness of influence spheres and how to be deliberate about the spaces we occupy.</p>
+                <h5 style="color: var(--voci-dark-blue); margin-top: 15px;">Key Decisions Made:</h5>
+                <ul>
+                    <li>Begin sharing 1+ research articles/pieces weekly in areas of interest and influence</li>
+                    <li>Formation of VOCI HUBS (see section below)</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">January 21, 2026</span>
+                <h3>VOCI ELT Meeting</h3>
+                <p><strong>Leadership Team Alignment on Strategic Initiatives:</strong></p>
+                <ul>
+                    <li>Initiation of VOCI Peer Mentorship Groups process</li>
+                    <li>Book reading culture: "The Assignment" by Mike Murdock (31-day challenge)</li>
+                    <li>Active Listening & Feedback Assessment Form development</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">January 25-31, 2026</span>
+                <h3>Peer Mentorship Group Formation & Book Club Launch</h3>
+                <p>Established peer groups with book reading challenge: Members to read one chapter daily, document thoughts and lessons in peer group chats.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">January 31, 2026</span>
+                <h3>Session 4 (Upcoming): Structuring a Powerful Speech</h3>
+                <p>Saturday session to continue curriculum progression and build on previous learnings in communication.</p>
+            </div>
+        </section>
+
+        <!-- VOCI Hubs Section -->
+        <section class="mb-5">
+            <h2 class="section-title">VOCI Hubs Initiative</h2>
+            <p class="lead">In response to the principle that "you cannot sharpen what you are not aware of," four specialized hubs were established for knowledge sharing and resource interaction:</p>
+            
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="hub-card">
+                        <div class="hub-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4>Business & Entrepreneurship</h4>
+                        <p>For business-minded members to share and discuss entrepreneurial insights, case studies, and opportunities</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="hub-card">
+                        <div class="hub-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>Creative & Innovation</h4>
+                        <p>For creative professionals and innovators to collaborate on creative solutions and share industry trends</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="hub-card">
+                        <div class="hub-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Community Advocacy</h4>
+                        <p>For members passionate about community impact and social change initiatives</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="hub-card">
+                        <div class="hub-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h4>Governance & Policy</h4>
+                        <p>For members interested in policy development, institutional leadership, and governance</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 30px; color: var(--voci-gray-text);"><strong>Purpose:</strong> These hubs enable targeted knowledge sharing within areas of member interest while maintaining cohort unity and cross-hub learning opportunities.</p>
+        </section>
+
+        <!-- Member Categories -->
+        <section class="mb-5">
+            <h2 class="section-title">Member Categories Assessment</h2>
+
+            <!-- VOCI ELT -->
+            <div class="member-category-card elite">
+                <div class="category-title">
+                    <i class="fas fa-crown"></i>
+                    VOCI ELT (Executive Leadership Team)
+                    <span class="category-badge badge-elite">STRONG</span>
+                </div>
+                <h5 style="color: var(--voci-dark-blue); margin-top: 20px;">Performance Highlights:</h5>
+                <ul class="accomplishment-list">
+                    <li>Consistent leadership and strategic decision-making</li>
+                    <li>Active in curriculum development and session facilitation</li>
+                    <li>Engaged in peer mentorship group structuring</li>
+                    <li>Collaborative in planning VOCI Hubs and growth initiatives</li>
+                </ul>
+
+                <h5 style="color: var(--voci-dark-blue); margin-top: 25px; margin-bottom: 15px;">Recommendations:</h5>
+                <ul class="recommendation-list">
+                    <li><strong>Strengthen content creation</strong> and social media presence strategies</li>
+                    <li><strong>Establish accountability mechanisms</strong> for weekly social media posting</li>
+                    <li><strong>Assign specific responsibilities</strong> for hub management and coordination</li>
+                    <li><strong>Develop mentorship evaluation criteria</strong> and feedback mechanisms</li>
+                </ul>
+            </div>
+
+            <!-- Committed Members -->
+            <div class="member-category-card engaged">
+                <div class="category-title">
+                    <i class="fas fa-star"></i>
+                    VOCI Committed Members
+                    <span class="category-badge badge-engaged">ENGAGED</span>
+                </div>
+                <h5 style="color: var(--voci-dark-blue); margin-top: 20px;">Performance Highlights:</h5>
+                <ul class="accomplishment-list">
+                    <li>Consistent attendance at sessions and recap classes</li>
+                    <li>Active participation in exercises and assignments</li>
+                    <li>Engaged in peer mentorship groups</li>
+                    <li>Contributing to book club activities and discussions</li>
+                    <li>Showing progress in personal vision statement development</li>
+                </ul>
+
+                <h5 style="color: var(--voci-dark-blue); margin-top: 25px; margin-bottom: 15px;">Recommendations:</h5>
+                <ul class="recommendation-list">
+                    <li><strong>Recognize and celebrate</strong> their commitment publicly</li>
+                    <li><strong>Assign leadership roles</strong> in VOCI Hubs based on interests</li>
+                    <li><strong>Create mentorship opportunities</strong> where they guide newer members</li>
+                    <li><strong>Provide advanced resources</strong> to deepen their learning</li>
+                    <li><strong>Encourage documentation</strong> and sharing of their progress journeys</li>
+                </ul>
+            </div>
+
+            <!-- Non-Attending Members -->
+            <div class="member-category-card atrisk">
+                <div class="category-title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Members Yet to Attend Any Session
+                    <span class="category-badge badge-atrisk">AT RISK</span>
+                </div>
+                <h5 style="color: var(--voci-dark-blue); margin-top: 20px;">Identified Challenges:</h5>
+                <ul class="accomplishment-list">
+                    <li>Possible scheduling conflicts or logistical barriers</li>
+                    <li>Potential lack of clarity on program expectations</li>
+                    <li>May have registered impulsively without genuine commitment</li>
+                    <li>Possible communication gaps about session schedules</li>
+                </ul>
+
+                <h5 style="color: var(--voci-dark-blue); margin-top: 25px; margin-bottom: 15px;">Strategic Interventions Required:</h5>
+                <ul class="recommendation-list">
+                    <li><strong>Immediate Contact:</strong> Personal phone calls or WhatsApp messages from ELT members to understand barriers</li>
+                    <li><strong>Flexible Scheduling Options:</strong> Identify if recorded sessions or alternative timing works better</li>
+                    <li><strong>Onboarding Process:</strong> Conduct individual or small group onboarding sessions to clarify value and expectations</li>
+                    <li><strong>Commitment Conversation:</strong> Honest discussion about level of commitment and realistic participation</li>
+                    <li><strong>Low-Barrier Entry:</strong> Invite to social or informal VOCI Hub meetings to reduce pressure</li>
+                    <li><strong>Clear Deadline:</strong> Set a decision deadline (by Feb 14) for re-engagement or graceful exit</li>
+                </ul>
+            </div>
+
+            <!-- Inconsistent Attendees -->
+            <div class="member-category-card support">
+                <div class="category-title">
+                    <i class="fas fa-hands-helping"></i>
+                    Members Who Missed Some Sessions
+                    <span class="category-badge badge-support">NEEDS SUPPORT</span>
+                </div>
+                <h5 style="color: var(--voci-dark-blue); margin-top: 20px;">Identified Challenges:</h5>
+                <ul class="accomplishment-list">
+                    <li>Unavoidable circumstances: work, illness, family emergencies</li>
+                    <li>Academic or personal commitments conflicting with session times</li>
+                    <li>Inconsistent personal motivation or accountability</li>
+                    <li>PREVA Week and other institutional activities created scheduling conflicts</li>
+                </ul>
+
+                <h5 style="color: var(--voci-dark-blue); margin-top: 25px; margin-bottom: 15px;">Strategic Interventions Required:</h5>
+                <ul class="recommendation-list">
+                    <li><strong>Personalized Support:</strong> Assign peer mentors to help them catch up on missed content</li>
+                    <li><strong>Recorded Sessions:</strong> Ensure all sessions are recorded for asynchronous access</li>
+                    <li><strong>Makeup Sessions:</strong> Create smaller makeup session groups for those who missed key classes</li>
+                    <li><strong>Accountability Check-ins:</strong> Schedule brief 1-on-1 check-ins to understand barriers and offer solutions</li>
+                    <li><strong>Flexible Hub Participation:</strong> Allow hub participation even if full session attendance is challenging</li>
+                    <li><strong>Assignment Extensions:</strong> Provide reasonable deadlines for catching up on assignments</li>
+                    <li><strong>Re-engagement Strategy:</strong> Create a "coming back strong" messaging campaign</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Accomplishments -->
+        <section class="mb-5">
+            <h2 class="section-title">Key Accomplishments</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="accomplishment-list">
+                        <li>Successfully launched Cohort 1 with full orientation and member engagement</li>
+                        <li>Delivered 4 core curriculum sessions with recap classes</li>
+                        <li>Established VOCI ELT with clear leadership structure</li>
+                        <li>Initiated 4 VOCI Hubs aligned with member interests and career paths</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="accomplishment-list">
+                        <li>Launched Peer Mentorship program structure</li>
+                        <li>Started book club culture with 31-day "Assignment" reading challenge</li>
+                        <li>Created assignment and presentation delivery mechanisms (WhatsApp group submissions)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenges -->
+        <section class="mb-5">
+            <h2 class="section-title">Challenges Identified</h2>
+
+            <div class="challenge-box">
+                <h5>Inconsistent Social Media & Content Presence</h5>
+                <span class="priority priority-high">HIGH PRIORITY</span>
+                <ul>
+                    <li>Not consistently posting session moments and updates</li>
+                    <li>Lack of intentional time allocation for content creation and recording</li>
+                    <li>Momentum has slowed over the last week of January</li>
+                </ul>
+            </div>
+
+            <div class="challenge-box">
+                <h5>Low Initial Attendance & Member Drop-off</h5>
+                <span class="priority priority-high">CRITICAL</span>
+                <ul>
+                    <li>Some registered members have not attended any sessions</li>
+                    <li>Others have missed multiple sessions without clear communication</li>
+                    <li>Lack of systematic follow-up process for absent members</li>
+                </ul>
+            </div>
+
+            <div class="challenge-box">
+                <h5>Assessment Form Delays</h5>
+                <span class="priority priority-high">MEDIUM</span>
+                <ul>
+                    <li>Active Listening & Feedback assessment form still in development</li>
+                    <li>Need to formalize and launch evaluation mechanism</li>
+                </ul>
+            </div>
+
+            <div class="challenge-box">
+                <h5>External Institutional Conflicts</h5>
+                <span class="priority priority-high">MEDIUM</span>
+                <ul>
+                    <li>PREVA Week and other campus events disrupted session schedules</li>
+                    <li>Impacts member attendance and leadership capacity</li>
+                    <li>Need better coordination with campus calendar</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-5" style="background: var(--voci-bg-gradient); border-radius: 15px; margin-top: 60px; margin-bottom: 40px;">
+            <div class="text-center">
+                <h2 style="color: var(--voci-dark-blue); margin-bottom: 25px; font-size: 2rem;">Our Path Forward</h2>
+                <p style="font-size: 1.1rem; color: var(--voci-gray-text); max-width: 700px; margin: 0 auto 30px;">We've documented a comprehensive strategy with 59 actionable tasks organized across 3 strategic phases. See the complete TO DO LIST for detailed implementation plans.</p>
+                <a href="todo-list.html" class="btn btn-voci-blue" style="margin-right: 15px;">
+                    <i class="fas fa-clipboard-list"></i> View TO DO LIST
+                </a>
+                <a href="join.html" class="btn btn-voci-red">
+                    <i class="fas fa-user-plus"></i> Join VOCI
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>About VOCI</h5>
+                    <p>Voice of Change Initiative - Empowering the next generation of leaders through authentic communication and principled leadership.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-white-50">Home</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-white-50">About Us</a></li>
+                        <li><a href="programs.html" class="text-decoration-none text-white-50">Programs</a></li>
+                        <li><a href="contact.html" class="text-decoration-none text-white-50">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p class="text-white-50">Email: info@voci.com<br>Phone: +256 XXX XXX XXX</p>
+                </div>
+            </div>
+            <hr class="bg-white-50">
+            <div class="text-center">
+                <p class="text-white-50 mb-0">&copy; 2026 Voice of Change Initiative. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Preloader Hide -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const preloader = document.querySelector('.preloader');
+            if (preloader) {
+                preloader.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
