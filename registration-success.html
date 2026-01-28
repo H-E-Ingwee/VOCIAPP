@@ -197,31 +197,6 @@
             setTimeout(function() {
                 $('.preloader').fadeOut('slow');
             }, 500);
-
-            // Countdown Timer Logic
-            function updateCountdown() {
-                const countdownElement = document.getElementById('countdown-timer');
-                if (!countdownElement) return;
-
-                const deadline = new Date("2025-11-22T23:59:59+03:00").getTime();
-                const now = new Date().getTime();
-                const diff = deadline - now;
-
-                if (diff <= 0) {
-                    countdownElement.innerHTML = "Applications are closed.";
-                    $('.application-banner p').html('Applications are now closed. Stay tuned for future opportunities!');
-                    $('.application-banner a').hide();
-                    return;
-                }
-
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                
-                countdownElement.innerHTML = `Time remaining: <strong>${days}d ${hours}h ${minutes}m</strong>`;
-            }
-            updateCountdown();
-            setInterval(updateCountdown, 60000);
         });
     </script>
 </body>
