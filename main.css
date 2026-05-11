@@ -6,6 +6,7 @@ body {
     color: #333; /* Good contrast on white/light backgrounds */
     line-height: 1.75; /* Slightly increased line height for readability */
     overflow-x: hidden; /* Prevent horizontal scroll */
+    background: var(--voci-bg-gradient);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -325,6 +326,162 @@ textarea.form-control:focus {
     color: var(--voci-gray-text); /* Improved contrast */
     max-width: 700px;
     margin: 0 auto;
+}
+
+/* Homepage component styles */
+.event-highlight-section {
+    background-color: var(--voci-light-blue);
+}
+.cta-section {
+    position: relative;
+    overflow: hidden;
+}
+.cta-section .btn {
+    min-width: 200px;
+}
+.pillar-card,
+.initiative-card,
+.sphere-card,
+.event-calendar-item {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(15,23,42,0.06);
+}
+.pillar-card:hover,
+.initiative-card:hover,
+.sphere-card:hover,
+.event-calendar-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 55px rgba(0,0,0,0.12);
+}
+.pillar-card {
+    padding: 2rem;
+}
+.pillar-card .icon-box,
+.initiative-card .initiative-icon,
+.sphere-card .sphere-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-size: 1.8rem;
+}
+.pillar-card .icon-box {
+    margin: 0 auto 1.5rem;
+}
+.pillar-card h3,
+.initiative-card h4,
+.sphere-card h4 {
+    font-size: 1.35rem;
+    margin-bottom: 0.85rem;
+    color: var(--voci-dark-blue);
+}
+.pillar-card p,
+.initiative-card p,
+.sphere-card p,
+.event-calendar-details p {
+    color: var(--voci-gray-text);
+    line-height: 1.75;
+}
+.pillar-card .modules-list {
+    font-size: 0.95rem;
+    text-align: left;
+    padding-left: 1.25rem;
+    margin-top: 1.4rem;
+    color: var(--voci-gray-text);
+}
+.pillar-card .modules-list li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+.pillar-card .modules-list li i {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    font-size: 0.9rem;
+}
+#pillar-comm .icon-box { background-color: var(--voci-blue); }
+#pillar-comm:hover { border-color: rgba(0, 123, 255, 0.45); }
+#pillar-comm .modules-list li i { color: var(--voci-blue); }
+#pillar-brand .icon-box { background-color: var(--voci-red); }
+#pillar-brand:hover { border-color: rgba(176, 0, 0, 0.45); }
+#pillar-brand .modules-list li i { color: var(--voci-red); }
+#pillar-lead .icon-box { background-color: var(--voci-gold); }
+#pillar-lead:hover { border-color: rgba(194, 139, 0, 0.45); }
+#pillar-lead .modules-list li i { color: var(--voci-gold); }
+.initiative-card {
+    padding: 2rem;
+    text-align: left;
+}
+.initiative-card .initiative-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    margin-bottom: 1.25rem;
+}
+.sphere-card {
+    padding: 1.5rem;
+    text-align: center;
+}
+.sphere-card .sphere-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    margin: 0 auto 1rem;
+    font-size: 1.8rem;
+}
+.event-calendar-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.75rem;
+}
+.event-calendar-date {
+    flex: 0 0 120px;
+    text-align: center;
+    border-right: 2px solid var(--voci-gold);
+    padding-right: 1.5rem;
+}
+.event-calendar-date .day {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--voci-red);
+    line-height: 1.1;
+}
+.event-calendar-date .month {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--voci-gray-text);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+.event-calendar-details h5 {
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+    color: var(--voci-dark-blue);
+}
+@media (max-width: 991.98px) {
+    .event-calendar-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .event-calendar-date {
+        border-right: none;
+        border-bottom: 2px solid var(--voci-gold);
+        padding-right: 0;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+    .event-calendar-details {
+        padding-left: 0;
+    }
 }
 
 /* Global Card Styles */
