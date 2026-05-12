@@ -177,7 +177,7 @@
     background-color: transparent;
     border: 1px solid;
     color: var(--voci-blue); /* Default for team social links */
-    border-color: var(--vDoci-blue);
+
 }
 #leadership-team .btn-social-square:hover {
     background-color: var(--voci-blue);

@@ -57,6 +57,7 @@ small {
 .bg-voci-dark-blue { background-color: var(--voci-dark-blue) !important; }
 .bg-light-blue { background-color: var(--voci-light-blue) !important; }
 .bg-voci-dark-blue-light { background-color: rgba(20, 33, 61, 0.9) !important; } /* Adjusted to new dark-blue */
+.bg-gradient { background: linear-gradient(135deg, var(--voci-dark-blue) 0%, #0d1a33 100%) !important; color: white !important; }
 
 /* Utility Text Colors */
 .text-voci-blue { color: var(--voci-blue) !important; }
