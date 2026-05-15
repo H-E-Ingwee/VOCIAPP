@@ -64,8 +64,8 @@ export default function Navigation() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/contact">
-                Contact
+              <Link className="nav-link" href="/join">
+                Join Us
               </Link>
             </li>
           </ul>

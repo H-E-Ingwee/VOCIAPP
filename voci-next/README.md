@@ -1,22 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VOCI Website - Next.js Version
 
-## Getting Started
+This is the modernized VOCI website built with Next.js, featuring user registration with Firestore integration.
 
-First, run the development server:
+## Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Copy `.env.example` to `.env.local` and fill in your Firebase configuration.
+2. Install dependencies: `npm install`
+3. Run development server: `npm run dev`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Firebase Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Create a Firebase project at https://console.firebase.google.com/
+2. Enable Firestore Database
+3. Get your config keys and add to `.env.local`
+
+## Deployment
+
+Deploy to Vercel:
+
+1. Install Vercel CLI: `npm i -g vercel`
+2. Run `vercel` in the project root
+3. Follow prompts to deploy
+
+## Features
+
+- User registration form with Firestore storage
+- Responsive design with Tailwind CSS
+- SEO optimized
+- Modern React components
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
