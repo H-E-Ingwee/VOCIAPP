@@ -1,0 +1,41 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "projectSettings": {
+    "buildCommand": null,
+    "commandForIgnoringBuildStep": null
+  },
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  },
+  "env": [
+    {
+      "key": "NEXT_PUBLIC_FIREBASE_API_KEY",
+      "value": "AIzaSyA3Z9nOOFBftLgq6BvotnySBbbHDJgzBnk"
+    },
+    {
+      "key": "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
+      "value": "vociapp-63056.firebaseapp.com"
+    },
+    {
+      "key": "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
+      "value": "vociapp-63056"
+    },
+    {
+      "key": "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
+      "value": "vociapp-63056.firebasestorage.app"
+    },
+    {
+      "key": "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
+      "value": "336825204127"
+    },
+    {
+      "key": "NEXT_PUBLIC_FIREBASE_APP_ID",
+      "value": "1:336825204127:web:035903ebac371854d611aa"
+    }
+  ]
+}
